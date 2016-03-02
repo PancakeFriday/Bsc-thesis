@@ -1,0 +1,30 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {english}
+\contentsline {paragraph}{\nonumberline Abstract}{III}{section*.1}
+\select@language {ngerman}
+\contentsline {paragraph}{\nonumberline Zusammenfassung}{III}{section*.2}
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Stuff}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}More stuff}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Interesting stuff}{2}{section.1.3}
+\contentsline {chapter}{\numberline {2}Setup for high resolution imaging}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Experimental requirements}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Camera for double species imaging}{3}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Comparison with the present setup}{3}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Dark current}{3}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Readout noise}{4}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Quantum efficiency}{4}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Pixel correlations}{4}{subsection.2.2.5}
+\contentsline {section}{\numberline {2.3}Mechanical shutter}{4}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Electronic setup}{5}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Dynamical properties}{5}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Mask for the CCD sensor}{5}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Fast kinetics mode}{5}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Frequency response of an imaging system}{5}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Optimization of the masking setup}{6}{subsection.2.4.3}
+\contentsline {chapter}{\numberline {3}Testing the camera: Superfluids}{7}{chapter.3}
+\contentsline {chapter}{\numberline {4}Conclusion and outlook}{8}{chapter.4}
+\contentsline {chapter}{\numberline {A}Acquisition sequence}{9}{appendix.A}
+\contentsline {chapter}{\numberline {B}Testing software}{10}{appendix.B}
