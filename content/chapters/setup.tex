@@ -6,19 +6,27 @@
 \subsection{Comparison with the present setup}
 
 \subsection{Dark current}
-\plt{electrpp}{Dark noise}{The dark noise follows a power- law dependency in the high temperature regime. Since these measurements were taken without water cooling installed, deviations are visible in the low temperature parts of the plot.}
+\plt{electrpp}{Dark noise}{
+	The dark noise follows a power law dependency. Since these measurements were taken without water cooling installed, deviations are visible as the temperature reaches $\SI{-70}{\degreeCelsius}$. The convergence to zero on the counts and their variance indicates accurate imaging when low temperatures are used. Gain in this measurement was minimal and the exposure time set to $\SI{100}{\second}$, such that dark current was the dominant noise source.
+}
 
 \subsection{Readout noise}
-\plt{hvspeed}{}{}
+\plt{hvspeed}{Readout noise}{
+	The pixels are shifted row-wise into the readout register, depending on the vertical shift speed ($v_{ss}$) and then moved pixel-by-pixel with the horizontal shift speed into the analog to digital converter. Since noise reduction is important, minimal horizontal shift speeds will be used, while the vertical shift speed does not seem to affect the variance. To make the readout the dominant noise source, temperature was set to $\SI{-69}{\degreeCelsius}$ and exposure to $\SI{10}{\milli\second}$
+}
 
 \subsection{Quantum efficiency}
 
 \subsection{Pixel correlations}
 
 \section{Mechanical shutter}
-\plt{shutterDiodeSignal}{Shutter characterization}{The dynamics of the shutter were measured using a laser with a variable x offset, and a photodiode measuring the laser intensity. Fitting the signal using an error function yields the time until the shutter opened to this offset.}
-\plt{shutterOpen}{Shutter characterization}{
-
+\plt{shutterDiodeSignal}{
+	Shutter characterization}{The dynamics of the shutter were measured using a laser with a variable horizontal offset, which is fixed in this plot, and a photodiode measuring the laser intensity. For various offsets, error functions were fitted yielding the time until the shutter opens to this offset.
+	}
+\todo{appendix image}
+\plt{shutterOpen}{Sample dynamics}{
+	Opening velocity was measured using the beam diameter and the time the shutter needed to transverse it. It is noticable, that the opening velocity on the right side is faster at first than on the left side. This is due to the structure of the shutter, as can be seen in [Appendix image of shutter].
+	The overall opening speed on the other hand is not affected by this and seems to be linear with the offset.
 }
 
 \subsection{Electronic setup}
@@ -30,8 +38,12 @@
 \subsection{Fast kinetics mode}
 
 \subsection{Frequency response of an imaging system}
-\plt{slit}{Diffraction measurement}{The characterized the diffraction effect on the camera using a custom-built slit, placing it as close as possible to the chip. The parameters were measured as $d=\SI{10.9}{\milli\meter}$, $a=\SI{2.5}{\milli\meter}$ and $\lambda =\SI{852}{\nano\meter}$}.
-\plt{slit_dist}{}{}
+\plt{slit_dist}{Distance dependant diffraction}{
+	A slit was placed on a moving platform and diffraction was measured for various offsets. The diffraction frequency rises as the distance gets closer to the CCD. As soon as the frequency is of the order of one pixel, the diffraction is unnoticable, therefore higher frequencies, or closer slit positions are preferred.
+	}
+\plt{slit}{Diffraction measurement}{
+	In order to characterize the diffraction on the CCD, a slit was placed as close as possible. The parameters were then measured as distance $d=\SI{10.9}{\milli\meter}$, opening $a=\SI{2.5}{\milli\meter}$ using a ruler, and wavelength $\lambda =\SI{852}{\nano\meter}$ from the laser specifications. The blue curve is the experimental data, while the red curve was fitted, leaving distance and opening free. They were found to be $d^\prime=\SI{11.0\pm0.3}{\milli\meter}$ and $a^\prime=\SI{2.470\pm0.013}{\milli\meter}$, which is in close agreement.
+	}
 
 \subsection{Optimization of the masking setup}
 

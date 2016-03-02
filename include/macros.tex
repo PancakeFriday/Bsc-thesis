@@ -20,11 +20,19 @@
 		\begin{center}
 			\input{plots/#1.pgf}
 		\end{center}
-		\caption[#2]{\textbf{#2} \enskip #3}
+		\caption[#2]{ \textbf{#2} \enskip #3}
 		\label{fig:#1}
 	\end{figure}
 }
-
+\newcommand{\draft}[3]{
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics{drafts/#1.pdf}
+	\end{center}
+	\caption[#2]{ \textbf{#2} \enskip #3}
+	\label{fig:#1}
+\end{figure}
+}
 % Abbreviations
 
 % Math symbols

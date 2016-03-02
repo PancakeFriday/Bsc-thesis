@@ -1595,7 +1595,7 @@
 \pgftext[x=3.129746in,y=0.340224in,,top]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont \(\displaystyle 0.045\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=1.800532in,y=0.163249in,,top]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont Signal time [s]}%
+\pgftext[x=1.800532in,y=0.163249in,,top]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont Signal time [\(\displaystyle s\)]}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfpathrectangle{\pgfqpoint{0.471317in}{0.451335in}}{\pgfqpoint{2.658429in}{1.472216in}} %
@@ -1850,7 +1850,7 @@
 \pgftext[x=0.360206in,y=1.923551in,right,]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont \(\displaystyle 12\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=0.172704in,y=1.187443in,,bottom,rotate=90.000000]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont Amplitude [V]}%
+\pgftext[x=0.172704in,y=1.187443in,,bottom,rotate=90.000000]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont Amplitude [\(\displaystyle V\)]}%
 \end{pgfscope}%
 \end{pgfpicture}%
 \makeatother%

@@ -15,8 +15,8 @@
 %%
 %% Matplotlib used the following preamble
 %%   \usepackage{fontspec}
-%%   \setmainfont{Times New Roman}
-%%   \setmonofont{Courier New}
+%%   \setmainfont{DejaVu Serif}
+%%   \setmonofont{DejaVu Sans Mono}
 %%
 \begingroup%
 \makeatletter%
@@ -240,27 +240,19 @@
 \pgfpathlineto{\pgfqpoint{2.457651in}{1.560003in}}%
 \pgfpathlineto{\pgfqpoint{2.504474in}{1.544806in}}%
 \pgfpathlineto{\pgfqpoint{2.551296in}{1.560525in}}%
+\pgfpathlineto{\pgfqpoint{2.598119in}{1.557619in}}%
 \pgfpathlineto{\pgfqpoint{2.644941in}{1.556106in}}%
 \pgfpathlineto{\pgfqpoint{2.691764in}{1.569882in}}%
 \pgfpathlineto{\pgfqpoint{2.738586in}{1.570104in}}%
 \pgfpathlineto{\pgfqpoint{2.785409in}{1.566658in}}%
+\pgfpathlineto{\pgfqpoint{2.832231in}{1.571862in}}%
 \pgfpathlineto{\pgfqpoint{2.879054in}{1.575922in}}%
 \pgfpathlineto{\pgfqpoint{2.925876in}{1.574302in}}%
 \pgfpathlineto{\pgfqpoint{2.972698in}{1.574333in}}%
+\pgfpathlineto{\pgfqpoint{3.019521in}{1.579166in}}%
+\pgfpathlineto{\pgfqpoint{3.066343in}{1.584249in}}%
 \pgfpathlineto{\pgfqpoint{3.113166in}{1.587844in}}%
 \pgfpathlineto{\pgfqpoint{3.159470in}{1.589228in}}%
-\pgfpathlineto{\pgfqpoint{3.159470in}{1.589228in}}%
-\pgfusepath{stroke}%
-\end{pgfscope}%
-\begin{pgfscope}%
-\pgfsetrectcap%
-\pgfsetmiterjoin%
-\pgfsetlinewidth{0.501875pt}%
-\definecolor{currentstroke}{rgb}{0.000000,0.000000,0.000000}%
-\pgfsetstrokecolor{currentstroke}%
-\pgfsetdash{}{0pt}%
-\pgfpathmoveto{\pgfqpoint{0.624371in}{0.451335in}}%
-\pgfpathlineto{\pgfqpoint{3.145581in}{0.451335in}}%
 \pgfusepath{stroke}%
 \end{pgfscope}%
 \begin{pgfscope}%
@@ -272,6 +264,17 @@
 \pgfsetdash{}{0pt}%
 \pgfpathmoveto{\pgfqpoint{0.624371in}{0.451335in}}%
 \pgfpathlineto{\pgfqpoint{0.624371in}{1.923551in}}%
+\pgfusepath{stroke}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfsetrectcap%
+\pgfsetmiterjoin%
+\pgfsetlinewidth{0.501875pt}%
+\definecolor{currentstroke}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{currentstroke}%
+\pgfsetdash{}{0pt}%
+\pgfpathmoveto{\pgfqpoint{0.624371in}{0.451335in}}%
+\pgfpathlineto{\pgfqpoint{3.145581in}{0.451335in}}%
 \pgfusepath{stroke}%
 \end{pgfscope}%
 \begin{pgfscope}%
@@ -451,7 +454,7 @@
 \pgftext[x=3.145581in,y=0.340224in,,top]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont \(\displaystyle -0.6\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=1.884976in,y=0.169868in,,top]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont CCD Size [mm]}%
+\pgftext[x=1.884976in,y=0.163249in,,top]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont CCD Size [\(\displaystyle mm\)]}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfpathrectangle{\pgfqpoint{0.624371in}{0.451335in}}{\pgfqpoint{2.521210in}{1.472216in}} %
@@ -742,7 +745,7 @@
 \pgftext[x=0.513260in,y=1.923551in,right,]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont \(\displaystyle 1200\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=0.174907in,y=1.187443in,,bottom,rotate=90.000000]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont Intensity [AU]}%
+\pgftext[x=0.174907in,y=1.187443in,,bottom,rotate=90.000000]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont Intensity [\(\displaystyle Counts\)]}%
 \end{pgfscope}%
 \end{pgfpicture}%
 \makeatother%

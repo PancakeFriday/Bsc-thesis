@@ -23,8 +23,8 @@
 \contentsline {section}{\numberline {2.4}Mask for the CCD sensor}{5}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Fast kinetics mode}{5}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Frequency response of an imaging system}{5}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Optimization of the masking setup}{6}{subsection.2.4.3}
-\contentsline {chapter}{\numberline {3}Testing the camera: Superfluids}{7}{chapter.3}
-\contentsline {chapter}{\numberline {4}Conclusion and outlook}{8}{chapter.4}
-\contentsline {chapter}{\numberline {A}Acquisition sequence}{9}{appendix.A}
-\contentsline {chapter}{\numberline {B}Testing software}{10}{appendix.B}
+\contentsline {subsection}{\numberline {2.4.3}Optimization of the masking setup}{5}{subsection.2.4.3}
+\contentsline {chapter}{\numberline {3}Testing the camera: Superfluids}{8}{chapter.3}
+\contentsline {chapter}{\numberline {4}Conclusion and outlook}{9}{chapter.4}
+\contentsline {chapter}{\numberline {A}Acquisition sequence}{10}{appendix.A}
+\contentsline {chapter}{\numberline {B}Testing software}{11}{appendix.B}

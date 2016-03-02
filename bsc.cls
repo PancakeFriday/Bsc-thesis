@@ -14,6 +14,9 @@
 % Language
 \usepackage[ngerman,english]{babel} % all languages being used, with main language last in list
 
+% Todo lists
+\usepackage{todonotes}
+
 % Geometry
 \usepackage[onehalfspacing]{setspace}
 \usepackage[a4paper,width=150mm,top=30mm,bottom=30mm]{geometry}
