@@ -1,0 +1,46 @@
+\usepackage{amsmath,amssymb}
+\usepackage{esdiff} % derivatives
+\usepackage{commath} % math macros
+\usepackage{bbm} % blackboard style symbols
+\usepackage{xfrac} % sfrac
+\usepackage{mathtools} % coloneqq
+
+% Links
+\newcommand{\namedeqref}[2]{\hyperref[#2]{#1}~\eqref{#2}} % macro to reference equations by name
+\renewcommand{\appref}[1]{\hyperref[#1]{Appendix~\ref{#1}}} % macro to print appendix references
+
+% Equations
+\newcommand{\eqpunct}[1]{\mathpunct{#1}} % embed punctuation in equations
+\newcommand{\eqname}[2]{\label{#2} \\[-1em] \tag*{\llap{\emph{#1}}}} % print a title for the equation
+
+% Images
+\usepackage{pgf}
+\newcommand{\plt}[3]{
+	\begin{figure}[h]
+		\begin{center}
+			\input{plots/#1.pgf}
+		\end{center}
+		\caption[#2]{ \textbf{#2} \enskip #3}
+		\label{fig:#1}
+	\end{figure}
+}
+\newcommand{\draft}[3]{
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics{drafts/#1.pdf}
+	\end{center}
+	\caption[#2]{ \textbf{#2} \enskip #3}
+	\label{fig:#1}
+\end{figure}
+}
+% Abbreviations
+
+% Math symbols
+% TBD
+
+% Units
+\RequirePackage{siunitx}
+\DeclareSIUnit\parsec{pc}
+
+% Code
+\newcommand{\mmainline}[1]{\texttt{#1}}
