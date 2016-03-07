@@ -16,7 +16,7 @@
 % Images
 \usepackage{pgf}
 \newcommand{\plt}[3]{
-	\begin{figure}[h]
+	\begin{figure}[htb]
 		\begin{center}
 			\input{plots/#1.pgf}
 		\end{center}
@@ -25,15 +25,23 @@
 	\end{figure}
 }
 \newcommand{\draft}[3]{
-\begin{figure}[h]
+\begin{figure}[htb]
 	\begin{center}
-		\includegraphics{drafts/#1.pdf}
+		\includegraphics[width=0.5\textwidth]{drafts/#1.pdf}
 	\end{center}
 	\caption[#2]{ \textbf{#2} \enskip #3}
 	\label{fig:#1}
 \end{figure}
 }
 % Abbreviations
+
+% References
+\newcommand{\refFig}[1]{
+	Figure \ref{fig:#1}
+}
+\newcommand{\refSec}[1]{
+	Section \ref{sec:#1}	
+}
 
 % Math symbols
 % TBD

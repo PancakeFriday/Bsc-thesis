@@ -40,6 +40,19 @@
 %\setsansfont{Optima}
 %\setmonofont[Scale=MatchLowercase]{Menlo}
 
+\if@print
+\else
+\usepackage{xcolor}
+\definecolor{easygrey}{rgb}{.137,.137,.137}
+\makeatletter
+\newcommand{\globalcolor}[1]{%
+	\color{#1}\global\let\default@color\current@color
+}
+\makeatother
+
+\AtBeginDocument{\globalcolor{easygrey}}
+\fi
+
 % Units
 \usepackage[separate-uncertainty]{siunitx}
 

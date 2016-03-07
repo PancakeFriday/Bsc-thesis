@@ -1,20 +1,56 @@
 \chapter{Setup for high resolution imaging}
 
 \section{Experimental requirements}
-\begin{itemize}
-	\item Absorption imaging
-	\item How CCDs work
-	\item Cooling temperatures, timescales for imaging
-\end{itemize}
+
+\subsection{Experimental setup}
+	The atoms in our trap are confined in a vakuum chamber, which has windows in x,y and z direction for the incident lasers, to either trap or image the atoms in the center. The double species camera (Andor iKon M) is placed along the z axis, above the chamber on a breadboard, where it is also possible to switch to another camera.
+	
+	A bikonvex lens focuses the imaging beam onto the CCD camera. To minimize the incident background light, the imaging path is covered in SM3 tubes, which can be directly connected to the camera due to a custom made front panel (see Appendix image). \todo{Appendix image}
+	
+	The camera is also very sensitive to stray light, so that it has to be protected between measurements with a shutter, that covers the front end of the imaging path, such that no light will enter the camera, which will be covered in more detail in \refSec{shutter}
+	
+	\draft{imaging_path}{Imaging path}{The camera stands on a breadboard, together with the mirrors, the lens and the SM3 tube. The imaging beam originates from the z-axis (pointing out of the document), then transversing as shown.}
+
+\subsection{Basics of CCD cameras}
+	
+	Cameras operate by means of converting photons first into electrons then into voltage and finally read out as data.
+	
+	The photons are collected on an array of semiconductors, called the pixels, where ideally the spacing between the pixels is zero to get maximum accuracy. The resolution is then dependent on the pixel size, which is for scientific cameras usually between \SI{10}{\micro\meter} and \SI{20}{\micro\meter}. Bigger pixels means higher photon sensitivity but usually lower resolution.
+	
+	To create the digital image, the pixels have to be shifted into the analog digital converter (ADC). This is done, by vertically shifting them into the readout register and then horizontal into the ADC, where the charges are multiplied and converted to digital data.
+	
+	\draft{ccd_shifts}{CCD scheme}{
+		The pixels are arranged in the pixel array. During readout they are shifted upwards into the readout register and then to the side into the analog to digital converter
+	}
+	
+	The shifting is done by storing the charges after collecting them. Each storage can be seen as an electronic potential. To successfully shift the charges and prevent overlapping, three potentials $U_1$, $U_2$ and $U_3$ are necessary. \refFig{charge_shift} indicates the systematics behind the shifting.
+	
+	\draft{charge_shift}{Shifting charges}{
+		To shift charges from Pixel A to Pixel B, the potentials have to be set accordingly to allow the charge flow without overlapping each other. The drawing illustrates the charges moving from Pixel A to B, each row indicates the next step. Moving electrons to the next potential is a three-step process. The charges are first only present in the low potential $U_i$, while $U_{i+1}$ is kept high, then distributed across $U_i$ and $U_{i+1}$ by setting them both low and at last $U_i$ will be set high such that the charge is now fully in $U_{i+1}$.
+	}
+	
+\subsection{Atom imaging} \todo{better title}
+	\todo{not sure if it makes sense to write about this chapter}
 
 \section{Camera for double species imaging}
 \subsection{Comparison with the present setup}
-\begin{itemize}
-	\item Higher resolution
-	\item Faster readout
-	\item Higher quantum efficiency
-	\item Less dark noise (to be confirmed)
-\end{itemize}
+%\begin{itemize}
+%	\item Higher resolution
+%	\item Faster readout
+%	\item Higher quantum efficiency
+%	\item Less dark noise (to be confirmed)
+%\end{itemize}
+For the application of imaging small atom clouds, it is very important to have cameras with optimal noise reduction and maximal readout speed. The new setup improves on both attributes, with the ability to cool the chip down to reduce the dark noise as well as the fast kinetics mode, making it possible to acquire all images before reading out, improving the speed at which images can be taken significantly.
+
+The old setup used a Guppy-38B camera, which is a lot smaller than the Andor~iKon~M \todo{add reference to Marc Repp} (\SI{48.2x30x30}{\milli\meter} vs \SI{204.2x105x107}{\milli\meter}), therefore making an implementation on a full experimental table easier. To implement such a complicated camera system that the Andor is, a lot of preparation was made in the thesis of Carmen. \todo{reference carmen}
+
+Nevertheless, despite its size, the new camera offers the ability to image both Lithium and Caesium species at once, while two Guppy cameras were needed beforehand, which also meant placing them on different imaging axes.
+
+When comparing the resolution, the chip size also has to be considered. Since higher resolutions seem to be preferable at first, it also means that for the same pixel sizes, the photon sensitivities will decrease. The pixel sizes compare to \SI{11}{\micro\meter} to \SI{13}{\micro\meter} from the old versus the new setup respectively, while the resolutions are \SI{768x492}{} and \SI{1024x1024}{} making a larger magnification now possible.
+\todo{would be great to have maybe an image of the atoms with the old and new setup (maybe same cooling steps etc.)}
+
+As already mentioned, the readout speed is highly important in our setup. Since absorption imaging is the technique of choice to measure atom attributes, three images need to be taken each sequence, being the absorption, division and background image.
+For the Guppy camera, at a frame rate of 30fps, this meant the acquisition was finished after \SI{100}{\milli\second}, where the Andor camera is finished after \todo{finish sentence, clean up confusion} \SI{1.2}{\milli\second}
 
 \subsection{Dark current}
 \begin{itemize}
@@ -24,7 +60,7 @@
 	\item Water cooling
 \end{itemize}
 \plt{electrpp}{Dark noise}{
-	The dark noise follows a power law dependency. Since these measurements were taken without water cooling installed, deviations are visible as the temperature reaches $\SI{-70}{\degreeCelsius}$. The convergence to zero on the counts and their variance indicates accurate imaging when low temperatures are used. Gain in this measurement was minimal and the exposure time set to $\SI{100}{\second}$, such that dark current was the dominant noise source.
+	The dark noise follows a power law dependency. Since these measurements were taken without water cooling installed, deviations are visible as the temperature reaches \SI{-70}{\degreeCelsius}. The convergence to zero on the counts and their variance indicates accurate imaging when low temperatures are used. Gain in this measurement was minimal and the exposure time set to \SI{100}{\second}, such that dark current was the dominant noise source.
 }
 
 \newpage
@@ -33,8 +69,9 @@
 	\item How does pixel shifting work? %http://www.mssl.ucl.ac.uk/www_detector/ccdgroup/optheory/ccdoperation.html
 \end{itemize}
 \plt{hvspeed}{Readout noise}{
-	The pixels are shifted row-wise into the readout register, depending on the vertical shift speed ($v_{ss}$) and then moved pixel-by-pixel with the horizontal shift speed into the analogue to digital converter. Since noise reduction is important, minimal horizontal shift speeds will be used, while the vertical shift speed does not seem to affect the variance. To make the readout the dominant noise source, temperature was set to $\SI{-69}{\degreeCelsius}$ and exposure to $\SI{10}{\milli\second}$
+	The pixels are shifted row-wise into the readout register, depending on the vertical shift speed ($v_{ss}$) and then moved pixel-by-pixel with the horizontal shift speed into the analog to digital converter. Since noise reduction is important, minimal horizontal shift speeds will be used, while the vertical shift speed does not seem to affect the variance. To make the readout the dominant noise source, temperature was set to \SI{-69}{\degreeCelsius} and exposure to \SI{10}{\milli\second}.
 }
+\todo{Add reference}
 
 \newpage
 \subsection{Quantum efficiency}
@@ -49,6 +86,7 @@
 	\item Some example images here maybe?
 \end{itemize}
 
+\label{sec:shutter}
 \section{Mechanical shutter}
 
 \subsection{Electronic setup}
