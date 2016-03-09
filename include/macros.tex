@@ -4,6 +4,9 @@
 \usepackage{bbm} % blackboard style symbols
 \usepackage{xfrac} % sfrac
 \usepackage{mathtools} % coloneqq
+\usepackage{ifthen} % if structures
+\usepackage[percent]{overpic} % to label over a picture
+\usepackage{textpos} % also to label over pgfs
 
 % Links
 \newcommand{\namedeqref}[2]{\hyperref[#2]{#1}~\eqref{#2}} % macro to reference equations by name
@@ -14,14 +17,37 @@
 \newcommand{\eqname}[2]{\label{#2} \\[-1em] \tag*{\llap{\emph{#1}}}} % print a title for the equation
 
 % Images
+% my pltB and draftA commands suck balls. But I have no anticipation to make them right right now, since I only have 3 weeks left to finish this thesis.
 \usepackage{pgf}
-\newcommand{\plt}[3]{
+% optional argument: two images
+\newcommand{\plt}[4][]{
+	\begin{figure}[htb]
+		\ifthenelse{\equal{#1}{}}{}{\vspace{1em}}
+		\begin{center}
+			\input{plots/#2.pgf}
+		\end{center}
+		\ifthenelse{\equal{#1}{}}{}{
+			\begin{textblock}{2}(0.2,-2.75)
+				\textbf{a.}
+			\end{textblock}
+			\begin{textblock}{2}(5.7,-2.75)
+				\textbf{b.}
+			\end{textblock}
+		}
+		\caption[#3]{ \textbf{#3.} \enskip #4}
+		\label{fig:#2}
+	\end{figure}
+}
+\newcommand{\pltB}[4][0,0]{
 	\begin{figure}[htb]
 		\begin{center}
-			\input{plots/#1.pgf}
+			\input{plots/#2.pgf}
+			\begin{textblock}{2}(#1)
+				\textbf{b.}
+			\end{textblock}
 		\end{center}
-		\caption[#2]{ \textbf{#2} \enskip #3}
-		\label{fig:#1}
+		\caption[#3]{ \textbf{#3.} \enskip #4}
+		\label{fig:#2}
 	\end{figure}
 }
 \newcommand{\draft}[3]{
@@ -29,9 +55,29 @@
 	\begin{center}
 		\includegraphics[width=0.5\textwidth]{drafts/#1.pdf}
 	\end{center}
-	\caption[#2]{ \textbf{#2} \enskip #3}
+	\caption[#2]{ \textbf{#2.} \enskip #3}
 	\label{fig:#1}
 \end{figure}
+}
+\newcommand{\draftA}[4][0,0]{
+	\begin{figure}[htb]
+		\ifthenelse{\equal{#3}{}}
+		{
+			\begin{center}
+				\begin{overpic}[width=0.5\textwidth]{drafts/#2.pdf}
+					\put (#1) {\textbf{a.}}
+				\end{overpic}
+				\vspace{-2.1em}
+			\end{center}
+		}
+		{
+			\begin{center}
+				\includegraphics[width=0.5\textwidth]{drafts/#2.pdf}
+			\end{center}
+			\caption[#3]{ \textbf{#3.} \enskip #4}
+		}
+	\label{fig:#2}
+	\end{figure}
 }
 % Abbreviations
 
@@ -41,6 +87,9 @@
 }
 \newcommand{\refSec}[1]{
 	Section \ref{sec:#1}	
+}
+\newcommand{\refCh}[1]{
+	Chapter \ref{ch:#1}	
 }
 
 % Math symbols

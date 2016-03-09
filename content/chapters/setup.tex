@@ -12,6 +12,7 @@
 	\draft{imaging_path}{Imaging path}{The camera stands on a breadboard, together with the mirrors, the lens and the SM3 tube. The imaging beam originates from the z-axis (pointing out of the document), then transversing as shown.}
 
 \subsection{Basics of CCD cameras}
+\label{ch:ccd_basics}
 	
 	Cameras operate by means of converting photons first into electrons then into voltage and finally read out as data.
 	
@@ -59,7 +60,7 @@ For the Guppy camera, at a frame rate of 30fps, this meant the acquisition was f
 	\item Logarithmic dependency
 	\item Water cooling
 \end{itemize}
-\plt{electrpp}{Dark noise}{
+\plt[true]{electrpp}{Dark noise}{
 	The dark noise follows a power law dependency. Since these measurements were taken without water cooling installed, deviations are visible as the temperature reaches \SI{-70}{\degreeCelsius}. The convergence to zero on the counts and their variance indicates accurate imaging when low temperatures are used. Gain in this measurement was minimal and the exposure time set to \SI{100}{\second}, such that dark current was the dominant noise source.
 }
 
@@ -68,10 +69,16 @@ For the Guppy camera, at a frame rate of 30fps, this meant the acquisition was f
 \begin{itemize}
 	\item How does pixel shifting work? %http://www.mssl.ucl.ac.uk/www_detector/ccdgroup/optheory/ccdoperation.html
 \end{itemize}
+As seen in \refCh{ccd_basics}, pixels get shifted in order to be read out. Moving charges from pixel to pixel causes noise to accumulate over each iteration. In theory, this is visible as a gradient since each shift adds new charges due to excitations in the semiconductors. A possible characterization of this effect is to simply take the variance of an image.
+
+Although the shifting gradient is not visible in the final picture, since it is removed by subtracting the background image, it is still important to minimalize the noise originating from shifting the charges, which was found to be the case for minimal readout speed, see \refFig{hvspeed}.
+
 \plt{hvspeed}{Readout noise}{
 	The pixels are shifted row-wise into the readout register, depending on the vertical shift speed ($v_{ss}$) and then moved pixel-by-pixel with the horizontal shift speed into the analog to digital converter. Since noise reduction is important, minimal horizontal shift speeds will be used, while the vertical shift speed does not seem to affect the variance. To make the readout the dominant noise source, temperature was set to \SI{-69}{\degreeCelsius} and exposure to \SI{10}{\milli\second}.
 }
 \todo{Add reference}
+
+This is intuitive, since shifting charges means increasing and decreasing potential wells, so that they can move from one into the other. If this is done fast enough, electrons are more likely to excite others from the valence to the conduction band, therefore adding noise.
 
 \newpage
 \subsection{Quantum efficiency}
@@ -115,9 +122,10 @@ For the Guppy camera, at a frame rate of 30fps, this meant the acquisition was f
 \end{itemize}
 
 \newpage
-\subsection{Frequency response of an imaging system}
-\plt{slit_dist}{Distance dependant diffraction}{
-	A slit was placed on a movable platform and diffraction was measured for various offsets. The diffraction frequency rises as the distance gets closer to the CCD. As soon as the frequency is of the order of one pixel, the diffraction is unnoticable, therefore higher frequencies, or closer slit positions are preferred.
+\subsection{Frequency response of a slit}
+\draftA[-8,28]{slit_scheme}{}{}
+\pltB[1.6,-2.75]{slit_dist}{Distance dependant diffraction}{
+	\textbf{a.}\, A slit was placed on a movable platform and diffraction was measured for various offsets. \textbf{b.}\, The diffraction frequency rises as the distance gets closer to the CCD. As soon as the frequency is of the order of one pixel, the diffraction is unnoticable, therefore higher frequencies, or closer slit positions are preferred.
 	}
 \plt{slit}{Diffraction measurement}{
 	In order to characterize the diffraction on the CCD, a slit was placed as close as possible. The parameters were then measured as distance $d=\SI{10.9}{\milli\meter}$, opening $a=\SI{2.5}{\milli\meter}$ using a ruler, and wavelength $\lambda =\SI{852}{\nano\meter}$ from the laser specifications. The blue curve is the experimental data, while the red curve was fitted, leaving distance and opening free. They were found to be $d^\prime=\SI{11.0\pm0.3}{\milli\meter}$ and $a^\prime=\SI{2.470\pm0.013}{\milli\meter}$, which is in close agreement.
