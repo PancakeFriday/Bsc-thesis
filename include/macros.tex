@@ -20,6 +20,15 @@
 % my pltB and draftA commands suck balls. But I have no anticipation to make them right right now, since I only have 3 weeks left to finish this thesis.
 \usepackage{pgf}
 % optional argument: two images
+\newcommand{\setCaption}[2]{
+	\ifthenelse{\equal{#1}{}}{}{
+		\ifthenelse{\equal{#2}{}}{
+			\caption[#1]{ \textbf{#1}}
+		}{
+			\caption[#1]{ \textbf{#1.} \enskip #2}
+		}
+	}
+}
 \newcommand{\plt}[4][]{
 	\begin{figure}[htb]
 		\ifthenelse{\equal{#1}{}}{}{\vspace{1em}}
@@ -34,19 +43,15 @@
 				\textbf{b.}
 			\end{textblock}
 		}
-		\caption[#3]{ \textbf{#3.} \enskip #4}
+		\setCaption{#3}{#4}
 		\label{fig:#2}
 	\end{figure}
 }
-\newcommand{\pltB}[4][0,0]{
+\newcommand{\pltCustom}[4]{
+	%1: custom body, 2: label title, 3: caption title, 4: caption
 	\begin{figure}[htb]
-		\begin{center}
-			\input{plots/#2.pgf}
-			\begin{textblock}{2}(#1)
-				\textbf{b.}
-			\end{textblock}
-		\end{center}
-		\caption[#3]{ \textbf{#3.} \enskip #4}
+		#1
+		\setCaption{#3}{#4}
 		\label{fig:#2}
 	\end{figure}
 }
@@ -55,29 +60,9 @@
 	\begin{center}
 		\includegraphics[width=0.5\textwidth]{drafts/#1.pdf}
 	\end{center}
-	\caption[#2]{ \textbf{#2.} \enskip #3}
+	\setCaption{#2}{#3}
 	\label{fig:#1}
 \end{figure}
-}
-\newcommand{\draftA}[4][0,0]{
-	\begin{figure}[htb]
-		\ifthenelse{\equal{#3}{}}
-		{
-			\begin{center}
-				\begin{overpic}[width=0.5\textwidth]{drafts/#2.pdf}
-					\put (#1) {\textbf{a.}}
-				\end{overpic}
-				\vspace{-2.1em}
-			\end{center}
-		}
-		{
-			\begin{center}
-				\includegraphics[width=0.5\textwidth]{drafts/#2.pdf}
-			\end{center}
-			\caption[#3]{ \textbf{#3.} \enskip #4}
-		}
-	\label{fig:#2}
-	\end{figure}
 }
 % Abbreviations
 
@@ -87,6 +72,9 @@
 }
 \newcommand{\refSec}[1]{
 	Section \ref{sec:#1}	
+}
+\newcommand{\refSubsec}[1]{
+	SubSection \ref{subsec:#1}	
 }
 \newcommand{\refCh}[1]{
 	Chapter \ref{ch:#1}	

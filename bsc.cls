@@ -54,7 +54,8 @@
 \fi
 
 % Units
-\usepackage[separate-uncertainty]{siunitx}
+\usepackage[separate-uncertainty, binary-units = true]{siunitx}
+\DeclareSIUnit\px{px}
 
 % Tables
 \usepackage{array} % for math mode in tables

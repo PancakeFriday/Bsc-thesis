@@ -6,6 +6,7 @@
 	The atoms in our trap are confined in a vakuum chamber, which has windows in x,y and z direction for the incident lasers, to either trap or image the atoms in the center. The double species camera (Andor iKon M) is placed along the z axis, above the chamber on a breadboard, where it is also possible to switch to another camera.
 	
 	A bikonvex lens focuses the imaging beam onto the CCD camera. To minimize the incident background light, the imaging path is covered in SM3 tubes, which can be directly connected to the camera due to a custom made front panel (see Appendix image). \todo{Appendix image}
+	\todo{cite carmen}
 	
 	The camera is also very sensitive to stray light, so that it has to be protected between measurements with a shutter, that covers the front end of the imaging path, such that no light will enter the camera, which will be covered in more detail in \refSec{shutter}
 	
@@ -14,9 +15,9 @@
 \subsection{Basics of CCD cameras}
 \label{ch:ccd_basics}
 	
-	Cameras operate by means of converting photons first into electrons then into voltage and finally read out as data.
+	Cameras operate by means of converting photons first into electrons then into voltage and finally read out as data. Each conversion process can add noise to the final image, which needs to be minimized in order to acquire accurate data, which will be covered in \refCh{camera}.
 	
-	The photons are collected on an array of semiconductors, called the pixels, where ideally the spacing between the pixels is zero to get maximum accuracy. The resolution is then dependent on the pixel size, which is for scientific cameras usually between \SI{10}{\micro\meter} and \SI{20}{\micro\meter}. Bigger pixels means higher photon sensitivity but usually lower resolution.
+	The photons are collected on an array of semiconductors, called the pixels, where ideally the spacing between the pixels is zero to get maximum accuracy. The resolution is then dependent on the pixel size, which is for scientific cameras usually between \SI{10}{\micro\meter} and \SI{20}{\micro\meter} per pixel. Bigger pixels means higher photon sensitivity but usually lower resolution.
 	
 	To create the digital image, the pixels have to be shifted into the analog digital converter (ADC). This is done, by vertically shifting them into the readout register and then horizontal into the ADC, where the charges are multiplied and converted to digital data.
 	
@@ -34,13 +35,9 @@
 	\todo{not sure if it makes sense to write about this chapter}
 
 \section{Camera for double species imaging}
+\label{ch:camera}
+
 \subsection{Comparison with the present setup}
-%\begin{itemize}
-%	\item Higher resolution
-%	\item Faster readout
-%	\item Higher quantum efficiency
-%	\item Less dark noise (to be confirmed)
-%\end{itemize}
 For the application of imaging small atom clouds, it is very important to have cameras with optimal noise reduction and maximal readout speed. The new setup improves on both attributes, with the ability to cool the chip down to reduce the dark noise as well as the fast kinetics mode, making it possible to acquire all images before reading out, improving the speed at which images can be taken significantly.
 
 The old setup used a Guppy-38B camera, which is a lot smaller than the Andor~iKon~M \todo{add reference to Marc Repp} (\SI{48.2x30x30}{\milli\meter} vs \SI{204.2x105x107}{\milli\meter}), therefore making an implementation on a full experimental table easier. To implement such a complicated camera system that the Andor is, a lot of preparation was made in the thesis of Carmen. \todo{reference carmen}
@@ -51,7 +48,7 @@ When comparing the resolution, the chip size also has to be considered. Since hi
 \todo{would be great to have maybe an image of the atoms with the old and new setup (maybe same cooling steps etc.)}
 
 As already mentioned, the readout speed is highly important in our setup. Since absorption imaging is the technique of choice to measure atom attributes, three images need to be taken each sequence, being the absorption, division and background image.
-For the Guppy camera, at a frame rate of 30fps, this meant the acquisition was finished after \SI{100}{\milli\second}. The Andor camera on the other hand can take images quickly without the need to read out inbetween. At the fastest shift speed, the acquisition is finished after \SI{1.2}{\milli\second}.
+For the Guppy camera, at a frame rate of 30fps, this meant the acquisition was finished after \SI{100}{\milli\second}. The Andor camera, on the other hand, can take images quickly without the need to read out in-between. At the fastest shift speed, the acquisition is finished after \SI{1.2}{\milli\second}, improving the speed by a factor of almost $100$.
 
 \subsection{Dark current}
 \begin{itemize}
@@ -71,7 +68,7 @@ For the Guppy camera, at a frame rate of 30fps, this meant the acquisition was f
 \end{itemize}
 As seen in \refCh{ccd_basics}, pixels get shifted in order to be read out. Moving charges from pixel to pixel causes noise to accumulate over each iteration. In theory, this is visible as a gradient since each shift adds new charges due to excitations in the semiconductors. A possible characterization of this effect is to simply take the variance of an image.
 
-Although the shifting gradient is not visible in the final picture, since it is removed by subtracting the background image, it is still important to minimalize the noise originating from shifting the charges, which was found to be the case for minimal readout speed, see \refFig{hvspeed}.
+Although the shifting gradient is not visible in the final picture, since it is removed by subtracting the background image, it is still important to minimalize the noise originating from shifting the charges, which was found to be the case for slow readout speeds, see \refFig{hvspeed}.
 
 \plt{hvspeed}{Readout noise}{
 	The pixels are shifted row-wise into the readout register, depending on the vertical shift speed ($v_{ss}$) and then moved pixel-by-pixel with the horizontal shift speed into the analog to digital converter. Since noise reduction is important, minimal horizontal shift speeds will be used, while the vertical shift speed does not seem to affect the variance. To make the readout the dominant noise source, temperature was set to \SI{-69}{\degreeCelsius} and exposure to \SI{10}{\milli\second}.
@@ -116,21 +113,75 @@ This is intuitive, since shifting charges means increasing and decreasing potent
 \newpage
 \section{Mask for the CCD sensor}
 \subsection{Fast kinetics mode}
+%\begin{itemize}
+%	\item Why it is good
+%	\item Shifting timescales
+%\end{itemize}
+The experiment needs to image both Lithium and Caesium back to back as fast as possible, so that the system does not change significantly during the acquisition of both species.
+
+As explained earlier in \refCh{ccd_basics}, the readout consists of first shifting a row into the readout register and then horizontally shifting them into the ADC. This is a very time consuming process, since the total readout time is described by
+\begin{equation}
+t_{ij} = i*vspeed + (i-1)*j_{max}*hspeed+j*hspeed
+\end{equation}
+This equation describes a readout process until a pixel with the coordinates $i$ and $j$, where readout of all pixels beforehand is also taken into account, hence the $j_{max}$ which is the width of the chip in pixels.
+As can be seen, for the terms of the horizontal speed, the pixel position has for the last pixel in a row a quadratic dependency, being the dominant terms for the readout, which is necessary to shift the pixels into the ADC.
+
+Therefore, the fast kinetics mode allows the image acquisition to be only dependant on the vertical shift speed, reducing the acquisition time significantly. Only a portion of the CCD is illuminated, while the dark parts of the chip will be used as a storage. This means, that as soon as an image is taken, the illuminated pixels are shifted vertically behind a mask, such that no photons can reach them any more. When the chip is then full or the user has finished their acquisition, the known readout process is then started, including the shift into the ADC, at which point the speed should not matter too much any more, because the experiment is then finished.
+
+\pltCustom{
+	\begin{center}
+		\begin{overpic}[width=0.5\textwidth]{drafts/fast_kinetics.pdf}
+			\put (-6,92) {\textbf{a.}}
+			\put (41,92) {\textbf{b.}}
+			\put (58,92) {\textbf{c.}}
+			\put (5,44) {\textbf{d.}}
+			\put (27,44) {\textbf{e.}}
+			\put (49,44) {\textbf{f.}}
+			\put (69,44) {\textbf{g.}}
+		\end{overpic}
+	\end{center}
+}{fast_kinetics}{Schematics of fast kinetics mode}{
+\textbf{a.}\enskip Laser photons excite electrons in the pixel, creating the first absorption image.
+\textbf{b.}\enskip The illuminated pixels are shifted down behind the cover of the slit, while the laser is shut off.
+\textbf{c.}\enskip The second absorption image is taken without affecting the last measurement.
+\textbf{d.}\enskip Both images are shifted down before starting the readout process, to not falsify the data with stray light.
+\textbf{e.}\enskip The readout process starts, the first row is shifted into the readout register.
+\textbf{f.}\enskip The first pixels are shifted into the ADC.
+\textbf{g.}\enskip Step e. to f. are repeated until the chip is cleared.
+}
+
+To set up the fast kinetics mode, there are several parameters that need to be set in advance.
 \begin{itemize}
-	\item Why it is good
-	\item Shifting timescales
+	\item \textbf{Series length}\, How many images are acquired before the readout phase is initiated.
+	\item \textbf{Exposed rows}\, The height of an image in the fast kinetic series.
+	\item \textbf{Offset from bottom}\, Number of rows below each image which is not read out due to diffraction effects of the masking setup which have to be discarded anyways, see \refSubsec{slit}.
 \end{itemize}
 
-\newpage
+It can be already seen, that the parameters are limited by the height of the CCD in pixels:
+%The CCD has a pixel height of \SI{1024}{\px}, such that the condition
+\begin{equation}
+\mathbf{Series\,length} * (\mathbf{Exposed\,rows} + \mathbf{Offset\,from\,bottom}) \leq \SI{1024}{px}
+\end{equation}
+We find it optimal for our application, to expose \SI{200}{\px}, therefore giving a series length of $5$ and an offset of \todo{offset?}. This is since we will be imaging two species, therefore taking an absorption image for each species, followed by two division images, one for each species. The fifth image is left empty, since it would be illumated during readout, therefore falsifying the data as stated in \refFig{fast_kinetics}. As a matter of fact, the fifth image is cropped out, so that it even the readout time.
+
 \subsection{Frequency response of a slit}
-\draftA[-8,28]{slit_scheme}{}{}
-\pltB[1.6,-2.75]{slit_dist}{Distance dependant diffraction}{
-	\textbf{a.}\, A slit was placed on a movable platform and diffraction was measured for various offsets. \textbf{b.}\, The diffraction frequency rises as the distance gets closer to the CCD. As soon as the frequency is of the order of one pixel, the diffraction is unnoticable, therefore higher frequencies, or closer slit positions are preferred.
-	}
+\label{subsec:slit}
+\todo{make first image prettier}
+\pltCustom{
+	\begin{overpic}[width=0.5\textwidth]{drafts/slit_scheme.pdf}
+		\put (-5,67) {\textbf{a.}}
+	\end{overpic}
+	\input{plots/slit_dist.pgf}
+	\begin{textblock}{2}(6,-2.955)
+		\textbf{b.}
+	\end{textblock}
+	%\vspace{-2.1em}
+}{slit_scheme}{Distance dependent diffraction}{
+\textbf{a.}\, A slit was placed on a movable platform and diffraction was measured for various offsets. \textbf{b.}\, The diffraction frequency rises as the distance gets closer to the CCD. As soon as the frequency is of the order of one pixel, the diffraction is unnoticable, therefore higher frequencies, or closer slit positions are preferred.}
 \plt{slit}{Diffraction measurement}{
 	In order to characterize the diffraction on the CCD, a slit was placed as close as possible. The parameters were then measured as distance $d=\SI{10.9}{\milli\meter}$, opening $a=\SI{2.5}{\milli\meter}$ using a ruler, and wavelength $\lambda =\SI{852}{\nano\meter}$ from the laser specifications. The blue curve is the experimental data, while the red curve was fitted, leaving distance and opening free. They were found to be $d^\prime=\SI{11.0\pm0.3}{\milli\meter}$ and $a^\prime=\SI{2.470\pm0.013}{\milli\meter}$, which is in close agreement.
 	}
-
+\todo{Why slit not in focus in 1:1?}
 \newpage
 \subsection{Optimization of the masking setup}
 \begin{itemize}
