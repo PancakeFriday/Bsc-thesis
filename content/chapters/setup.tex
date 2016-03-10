@@ -3,7 +3,7 @@
 \section{Experimental requirements}
 
 \subsection{Experimental setup}
-	The atoms in our trap are confined in a vakuum chamber, which has windows in x,y and z direction for the incident lasers, to either trap or image the atoms in the center. The double species camera (Andor iKon M) is placed along the z axis, above the chamber on a breadboard, where it is also possible to switch to another camera.
+	The atoms in our trap are confined in a vacuum chamber, which has windows in x,y and z direction for the incident lasers, to either trap or image the atoms in the centre. The double species camera (Andor iKon M) is placed along the z axis, above the chamber on a breadboard, where it is also possible to switch to another camera.
 	
 	A bikonvex lens focuses the imaging beam onto the CCD camera. To minimize the incident background light, the imaging path is covered in SM3 tubes, which can be directly connected to the camera due to a custom made front panel (see Appendix image). \todo{Appendix image}
 	\todo{cite carmen}
@@ -68,7 +68,7 @@ For the Guppy camera, at a frame rate of 30fps, this meant the acquisition was f
 \end{itemize}
 As seen in \refCh{ccd_basics}, pixels get shifted in order to be read out. Moving charges from pixel to pixel causes noise to accumulate over each iteration. In theory, this is visible as a gradient since each shift adds new charges due to excitations in the semiconductors. A possible characterization of this effect is to simply take the variance of an image.
 
-Although the shifting gradient is not visible in the final picture, since it is removed by subtracting the background image, it is still important to minimalize the noise originating from shifting the charges, which was found to be the case for slow readout speeds, see \refFig{hvspeed}.
+Although the shifting gradient is not visible in the final picture, since it is removed by subtracting the background image, it is still important to minimize the noise originating from shifting the charges, which was found to be the case for slow readout speeds, see \refFig{hvspeed}.
 
 \plt{hvspeed}{Readout noise}{
 	The pixels are shifted row-wise into the readout register, depending on the vertical shift speed ($v_{ss}$) and then moved pixel-by-pixel with the horizontal shift speed into the analog to digital converter. Since noise reduction is important, minimal horizontal shift speeds will be used, while the vertical shift speed does not seem to affect the variance. To make the readout the dominant noise source, temperature was set to \SI{-69}{\degreeCelsius} and exposure to \SI{10}{\milli\second}.
@@ -102,7 +102,7 @@ This is intuitive, since shifting charges means increasing and decreasing potent
 \newpage
 \subsection{Dynamical properties}
 \plt{shutterDiodeSignal}{
-	Shutter characterization}{The dynamics of the shutter were measured using a laser with a variable horizontal offset, which is fixed in this plot, and a photodiode measuring the laser intensity. For various offsets, error functions were fitted yielding the time until the shutter opens to this offset.
+	Shutter characterization}{The dynamics of the shutter were measured using a laser with a variable horizontal offset, which is fixed in this plot, and a photo diode measuring the laser intensity. For various offsets, error functions were fitted yielding the time until the shutter opens to this offset.
 }
 \todo{appendix image}
 \plt{shutterOpen}{Sample dynamics}{
@@ -152,9 +152,9 @@ Therefore, the fast kinetics mode allows the image acquisition to be only depend
 
 To set up the fast kinetics mode, there are several parameters that need to be set in advance.
 \begin{itemize}
-	\item \textbf{Series length}\, How many images are acquired before the readout phase is initiated.
+	\item \textbf{Series length}\, The number of images acquired before the readout phase is initiated.
 	\item \textbf{Exposed rows}\, The height of an image in the fast kinetic series.
-	\item \textbf{Offset from bottom}\, Number of rows below each image which is not read out due to diffraction effects of the masking setup which have to be discarded anyways, see \refSubsec{slit}.
+	\item \textbf{Offset from bottom}\, Number of rows below each image which is not read out due to diffraction effects of the masking setup which have to be discarded anyway, see \refSubsec{slit}.
 \end{itemize}
 
 It can be already seen, that the parameters are limited by the height of the CCD in pixels:
@@ -162,10 +162,63 @@ It can be already seen, that the parameters are limited by the height of the CCD
 \begin{equation}
 \mathbf{Series\,length} * (\mathbf{Exposed\,rows} + \mathbf{Offset\,from\,bottom}) \leq \SI{1024}{px}
 \end{equation}
-We find it optimal for our application, to expose \SI{200}{\px}, therefore giving a series length of $5$ and an offset of \todo{offset?}. This is since we will be imaging two species, therefore taking an absorption image for each species, followed by two division images, one for each species. The fifth image is left empty, since it would be illumated during readout, therefore falsifying the data as stated in \refFig{fast_kinetics}. As a matter of fact, the fifth image is cropped out, so that it even the readout time.
+We find it optimal for our application, to expose \SI{200}{\px}, therefore giving a series length of $5$ and an offset of \todo{offset?}. This is since we will be imaging two species, therefore taking an absorption image for each species, followed by two division images, one for each species. The fifth image is left empty, since it would be illuminated during readout, therefore falsifying the data as stated in \refFig{fast_kinetics}. As a matter of fact, the fifth image is cropped out, so that it even the readout time.
 
 \subsection{Frequency response of a slit}
 \label{subsec:slit}
+
+In the previous section, the fast kinetics mode was introduced as well as the experimental setup required. The slit in front of the camera is yet another optical element in the path, which will introduce a systematic error: Diffraction.
+
+It is known from Huygens principle, that each point from a planar wave can be seen as the origin of a spherical wave. The spherical waves will interfere with each other, making use of the superposition principle and therefore building up the new wavefront.
+
+\todo{reference d. steck}
+The mathematical formalism of Huygens principle is simply the sum of all spherical waves, which is for infinitely small distances given as:
+\begin{equation}
+E(x,z) = E_0 C \int_{Slit} \frac{1}{r^2} \mathrm{exp}(-ikr)\mathrm{d}x'
+\end{equation}
+Here, $r=\sqrt{(x-x')^2 + z^2}$ is the radius of a two dimensional wave, C is a normalization constant.
+Taylor expansion allows us, to substitute $r^2$ with $z^2$ and $r$ with $\frac{(x-x')^2}{2z} + z^2$, while also the approximation $(x-x') \ll z$ needs to be fulfilled. Therefore we get:
+\begin{equation}
+E(x,z) = E_0 e^{-ikz}\sqrt{\frac{ik}{2\pi z}}\int_{Slit} \mathrm{exp}(-\frac{ik}{2z}(x-x')^2)\mathrm{d}x'
+\end{equation}
+The normalization was derived from the gaussian normal distribution. The integral will run over the slit size, with the origin in its middle, the width being $a$.
+We want to also write the exponential as a function of $-\frac{i\pi t^2}{2}$, due to the definition of fresnel integrals. The substitution follows:
+\begin{equation}
+\frac{k}{2z}(x-x')^2 = \frac{\pi t^2}{2}
+\end{equation}
+\begin{equation}
+\Rightarrow t = \sqrt{\frac{k}{z\pi}}(x-x') \\
+\end{equation}
+\begin{equation}
+\Rightarrow \mathrm{d}x' = -\mathrm{d}t \sqrt{\frac{z\pi}{k}}
+\end{equation}
+such that the field becomes
+\begin{equation}
+E(x,z) = -E_0 e^{-ikz}\sqrt{\frac{i}{2}}\int_{t(-a/2)}^{t(a/2)} \mathrm{exp}(-\frac{i\pi t^2}{2})\mathrm{d}t
+\end{equation}
+The fresnel integrals are defined by
+\begin{equation}
+C(x) = \int_0^x \mathrm{cos}(\frac{\pi t^2}{2})\mathrm{d} t
+\end{equation}
+\begin{equation}
+S(x) = \int_0^x \mathrm{sin}(\frac{\pi t^2}{2})\mathrm{d} t
+\end{equation}
+The final equation is then
+\begin{equation}
+E(x,z) = E_0 \sqrt{\frac{i}{2}} e^{-ikz} \left [ C(-a/2) - C(a/2) - iS(-a/2) + iS(a/2) \right ]
+\end{equation}
+when applying Eulers equations and splitting up the integrals.
+
+The wavelength is fixed, while the slit opening $a$ and the distance $z$ can be varied. Plotting the intensity
+\begin{equation}
+I(x,z) = \frac{2 \lvert E(x,z) \rvert ^2}{\epsilon_0 c}
+\end{equation}
+with the dielectric constant $\epsilon_0$ and the speed of light $c$, gives the representation on the camera.
+It can be seen, that the frequencies on the outer ends of the function are broader than on the inside, which will help to reduce diffraction on the camera. 
+Bringing the slit closer to the camera increases the frequencies of the intensity, bringing it closer to the classically expected shadow of a slit, while the slit opening broadens the function.
+Since the pixels rasterize the function, an image of a maximum is still a maximum, but the image of a full period, being a maximum and a minimum gives the mean of both, which would be desired, because then the diffraction is not noticeable any more.
+%Therefore higher frequencies or closer slit distances are preferred. This was achieved in \refSubsec{slit_optim}.
+
 \todo{make first image prettier}
 \pltCustom{
 	\begin{overpic}[width=0.5\textwidth]{drafts/slit_scheme.pdf}
@@ -177,14 +230,18 @@ We find it optimal for our application, to expose \SI{200}{\px}, therefore givin
 	\end{textblock}
 	%\vspace{-2.1em}
 }{slit_scheme}{Distance dependent diffraction}{
-\textbf{a.}\, A slit was placed on a movable platform and diffraction was measured for various offsets. \textbf{b.}\, The diffraction frequency rises as the distance gets closer to the CCD. As soon as the frequency is of the order of one pixel, the diffraction is unnoticable, therefore higher frequencies, or closer slit positions are preferred.}
-\plt{slit}{Diffraction measurement}{
-	In order to characterize the diffraction on the CCD, a slit was placed as close as possible. The parameters were then measured as distance $d=\SI{10.9}{\milli\meter}$, opening $a=\SI{2.5}{\milli\meter}$ using a ruler, and wavelength $\lambda =\SI{852}{\nano\meter}$ from the laser specifications. The blue curve is the experimental data, while the red curve was fitted, leaving distance and opening free. They were found to be $d^\prime=\SI{11.0\pm0.3}{\milli\meter}$ and $a^\prime=\SI{2.470\pm0.013}{\milli\meter}$, which is in close agreement.
-	}
+\textbf{a.}\, A slit was placed on a movable platform and diffraction was measured for various offsets $z$, while the slit opening $a$ was kept constant. \textbf{b.}\, The diffraction frequency rises as the distance gets closer to the CCD. As soon as the frequency is of the order of one pixel, the diffraction is unnoticeable, therefore higher frequencies, or closer slit positions are preferred.}
+
+This was also experimentally verified in \refFig{slit_scheme}, where the slit distance was varied relative to the camera. The rasterization effect is also visible as the offset approaches the center of the CCD, when the amplitudes start to flatten out. Because this is sooner the case for closer distances, as was suggested by theory, we find that closer distances are preferable. The setup for the closest distance to the camera is described in \refSubsec{slit_optim}.
 \todo{Why slit not in focus in 1:1?}
 \newpage
 \subsection{Optimization of the masking setup}
+\label{subsec:slit_optim}
 \begin{itemize}
 	\item Custom slit properties
 \end{itemize}
+
+\plt{slit}{Diffraction measurement}{
+	In order to characterize the diffraction on the CCD, a slit was placed as close as possible. The parameters were then measured as distance $d=\SI{10.9}{\milli\meter}$, opening $a=\SI{2.5}{\milli\meter}$ using a ruler, and wavelength $\lambda =\SI{852}{\nano\meter}$ from the laser specifications. The blue curve is the experimental data, while the red curve was fitted, leaving distance and opening free. They were found to be $d^\prime=\SI{11.0\pm0.3}{\milli\meter}$ and $a^\prime=\SI{2.470\pm0.013}{\milli\meter}$, which is in close agreement.
+}
 
