@@ -167,59 +167,74 @@ We find it optimal for our application, to expose \SI{200}{\px}, therefore givin
 \subsection{Frequency response of a slit}
 \label{subsec:slit}
 
-In the previous section, the fast kinetics mode was introduced as well as the experimental setup required. The slit in front of the camera is yet another optical element in the path, which will introduce a systematic error: Diffraction.
+In the previous section, the fast kinetics mode was introduced as well as the experimental setup required. The slit in front of the camera is yet another optical element in the path, which will introduce diffraction on the chip - an effect due to the wave nature of light.
+\refFig{slit_sketch} is a sketch of the systematics behind a laser wave approaching a slit.
+
+\draft{slit_sketch}{Diffraction on a single slit}{A planar wave with the wavelength $\lambda$ approaches the slit having a width $a$, where the maxima of the wave are drawn as dashed lines. After the slit, Huygens principle is sketched as spherical waves, in purple and green, interfering with each other, which is described in more detail below. The new wavefront is therefore where the 	waves cross each other and is as such visible on the screen to the right.}
+
+The incoming planar wave can be described by the formula:
+\begin{equation}
+E(x,z) = E_0 e^{-ikz},
+\end{equation}
+where the wave is propagating in the $z$-Direction with the wave number $k$ and an amplitude $E_0$.
 
 It is known from Huygens principle, that each point from a planar wave can be seen as the origin of a spherical wave. The spherical waves will interfere with each other, making use of the superposition principle and therefore building up the new wavefront.
 
 \todo{reference d. steck}
 The mathematical formalism of Huygens principle is simply the sum of all spherical waves, which is for infinitely small distances given as:
 \begin{equation}
-E(x,z) = E_0 C \int_{Slit} \frac{1}{r^2} \mathrm{exp}(-ikr)\mathrm{d}x'
+E(x,z) = E_0 C \int_{Slit} \frac{1}{r^2} \mathrm{exp}(-ikr)\mathrm{d}x'.
 \end{equation}
 Here, $r=\sqrt{(x-x')^2 + z^2}$ is the radius of a two dimensional wave, C is a normalization constant.
 Taylor expansion allows us, to substitute $r^2$ with $z^2$ and $r$ with $\frac{(x-x')^2}{2z} + z^2$, while also the approximation $(x-x') \ll z$ needs to be fulfilled. Therefore we get:
 \begin{equation}
-E(x,z) = E_0 e^{-ikz}\sqrt{\frac{ik}{2\pi z}}\int_{Slit} \mathrm{exp}(-\frac{ik}{2z}(x-x')^2)\mathrm{d}x'
+E(x,z) = E_0 e^{-ikz}\sqrt{\frac{ik}{2\pi z}}\int_{Slit} \mathrm{exp}(-\frac{ik}{2z}(x-x')^2)\mathrm{d}x'.
 \end{equation}
 The normalization was derived from the gaussian normal distribution. The integral will run over the slit size, with the origin in its middle, the width being $a$.
 We want to also write the exponential as a function of $-\frac{i\pi t^2}{2}$, due to the definition of fresnel integrals. The substitution follows:
 \begin{equation}
-\frac{k}{2z}(x-x')^2 = \frac{\pi t^2}{2}
+\frac{k}{2z}(x-x')^2 = \frac{\pi t^2}{2},
 \end{equation}
 \begin{equation}
-\Rightarrow t = \sqrt{\frac{k}{z\pi}}(x-x') \\
+\Rightarrow t = \sqrt{\frac{k}{z\pi}}(x-x'), \\
 \end{equation}
 \begin{equation}
-\Rightarrow \mathrm{d}x' = -\mathrm{d}t \sqrt{\frac{z\pi}{k}}
+\Rightarrow \mathrm{d}x' = -\mathrm{d}t \sqrt{\frac{z\pi}{k}},
 \end{equation}
 such that the field becomes
 \begin{equation}
-E(x,z) = -E_0 e^{-ikz}\sqrt{\frac{i}{2}}\int_{t(-a/2)}^{t(a/2)} \mathrm{exp}(-\frac{i\pi t^2}{2})\mathrm{d}t
+E(x,z) = -E_0 e^{-ikz}\sqrt{\frac{i}{2}}\int_{t(-a/2)}^{t(a/2)} \mathrm{exp}(-\frac{i\pi t^2}{2})\mathrm{d}t.
 \end{equation}
 The fresnel integrals are defined by
 \begin{equation}
-C(x) = \int_0^x \mathrm{cos}(\frac{\pi t^2}{2})\mathrm{d} t
+C(x) = \int_0^x \mathrm{cos}(\frac{\pi t^2}{2})\mathrm{d}t,
 \end{equation}
 \begin{equation}
-S(x) = \int_0^x \mathrm{sin}(\frac{\pi t^2}{2})\mathrm{d} t
+S(x) = \int_0^x \mathrm{sin}(\frac{\pi t^2}{2})\mathrm{d}t,
 \end{equation}
-The final equation is then
-\begin{equation}
-E(x,z) = E_0 \sqrt{\frac{i}{2}} e^{-ikz} \left [ C(-a/2) - C(a/2) - iS(-a/2) + iS(a/2) \right ]
-\end{equation}
-when applying Eulers equations and splitting up the integrals.
 
-The wavelength is fixed, while the slit opening $a$ and the distance $z$ can be varied. Plotting the intensity
+so that in combination with Eulers equations and splitting up the integrals the equation for the electric field is:
 \begin{equation}
-I(x,z) = \frac{2 \lvert E(x,z) \rvert ^2}{\epsilon_0 c}
+E(x,z) = E_0 \sqrt{\frac{i}{2}} e^{-ikz} \left [ C(-a/2) - C(a/2) - iS(-a/2) + iS(a/2) \right ].
 \end{equation}
-with the dielectric constant $\epsilon_0$ and the speed of light $c$, gives the representation on the camera.
-It can be seen, that the frequencies on the outer ends of the function are broader than on the inside, which will help to reduce diffraction on the camera. 
-Bringing the slit closer to the camera increases the frequencies of the intensity, bringing it closer to the classically expected shadow of a slit, while the slit opening broadens the function.
-Since the pixels rasterize the function, an image of a maximum is still a maximum, but the image of a full period, being a maximum and a minimum gives the mean of both, which would be desired, because then the diffraction is not noticeable any more.
-%Therefore higher frequencies or closer slit distances are preferred. This was achieved in \refSubsec{slit_optim}.
 
-\todo{make first image prettier}
+In a real experiment, the light would fall on a CCD chip with its electric field $E(x,z)$, while the representation would later be the intensity, which is given by
+\begin{equation}
+I(x,z) = \frac{2 \lvert E(x,z) \rvert ^2}{\epsilon_0 c} ,
+\end{equation}
+with the dielectric constant $\epsilon_0$ and the speed of light $c$.
+
+To verify the theory, we set up a simple experiment with a collimated laser beam pointing at the CCD of the Andor camera, with a slit in between, the results of which can be seen in \refFig{slit}.
+
+\plt{slit}{Diffraction measurement}{
+	In order to characterize the diffraction on the CCD, a slit was placed as close as possible. The parameters were then measured as distance $d=\SI{10.9}{\milli\meter}$, opening $a=\SI{2.5}{\milli\meter}$ using a ruler, therefore limiting the accuracy to \SI{0.5}{\milli\meter}. The wavelength was $\lambda =\SI{852}{\nano\meter}$ found from the laser specifications. The blue curve is the experimental data, while the red curve was fitted, leaving distance and opening free. They were found to be $d^\prime=\SI{11.0\pm0.3}{\milli\meter}$ and $a^\prime=\SI{2.470\pm0.013}{\milli\meter}$, which is in close agreement. The laser does not have a constant intensity over the chip size, therefore deviations in amplitude are visible.
+}
+
+Apparently, the theory matches the experiment very well, since the deviations are in the expected regimes.
+The function washes out as it approaches the centre of the chip. This is due to the nature of the pixels, which only have a finite size and the fact, that the frequencies of the oscillations are lower on the outer ends. All oscillations that fit into one pixel are averaged, therefore diffraction is not visible and it can be said that the data is accurate.
+
+A further experiment has been deduced to also find a relation of the frequencies to the slit distance, which can be seen in \refFig{slit_scheme}.
+
 \pltCustom{
 	\begin{overpic}[width=0.5\textwidth]{drafts/slit_scheme.pdf}
 		\put (-5,67) {\textbf{a.}}
@@ -230,9 +245,9 @@ Since the pixels rasterize the function, an image of a maximum is still a maximu
 	\end{textblock}
 	%\vspace{-2.1em}
 }{slit_scheme}{Distance dependent diffraction}{
-\textbf{a.}\, A slit was placed on a movable platform and diffraction was measured for various offsets $z$, while the slit opening $a$ was kept constant. \textbf{b.}\, The diffraction frequency rises as the distance gets closer to the CCD. As soon as the frequency is of the order of one pixel, the diffraction is unnoticeable, therefore higher frequencies, or closer slit positions are preferred.}
+\textbf{a.}\, A slit was placed on a movable platform and diffraction was measured for various offsets $z$, while the slit opening $a$ was kept constant. \textbf{b.}\, The diffraction frequency rises as the distance gets closer to the CCD.}
 
-This was also experimentally verified in \refFig{slit_scheme}, where the slit distance was varied relative to the camera. The rasterization effect is also visible as the offset approaches the center of the CCD, when the amplitudes start to flatten out. Because this is sooner the case for closer distances, as was suggested by theory, we find that closer distances are preferable. The setup for the closest distance to the camera is described in \refSubsec{slit_optim}.
+The optimal slit position is therefore close to the chip, since at this position the frequencies are maximal, therefore more oscillations fit into one pixel.
 \todo{Why slit not in focus in 1:1?}
 \newpage
 \subsection{Optimization of the masking setup}
@@ -240,8 +255,4 @@ This was also experimentally verified in \refFig{slit_scheme}, where the slit di
 \begin{itemize}
 	\item Custom slit properties
 \end{itemize}
-
-\plt{slit}{Diffraction measurement}{
-	In order to characterize the diffraction on the CCD, a slit was placed as close as possible. The parameters were then measured as distance $d=\SI{10.9}{\milli\meter}$, opening $a=\SI{2.5}{\milli\meter}$ using a ruler, and wavelength $\lambda =\SI{852}{\nano\meter}$ from the laser specifications. The blue curve is the experimental data, while the red curve was fitted, leaving distance and opening free. They were found to be $d^\prime=\SI{11.0\pm0.3}{\milli\meter}$ and $a^\prime=\SI{2.470\pm0.013}{\milli\meter}$, which is in close agreement.
-}
 
