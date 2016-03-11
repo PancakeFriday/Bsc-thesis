@@ -113,6 +113,7 @@ This is intuitive, since shifting charges means increasing and decreasing potent
 \newpage
 \section{Mask for the CCD sensor}
 \subsection{Fast kinetics mode}
+\label{ch:fast_kin}
 %\begin{itemize}
 %	\item Why it is good
 %	\item Shifting timescales
@@ -252,7 +253,16 @@ The optimal slit position is therefore close to the chip, since at this position
 \newpage
 \subsection{Optimization of the masking setup}
 \label{subsec:slit_optim}
-\begin{itemize}
-	\item Custom slit properties
-\end{itemize}
+As already discussed in \refCh{fast_kin}, part of the chip needs to be covered in order to take images using the fast kinetics mode. In \refSubsec{slit}, it was then derived, that the slit needs to be as close to the chip as possible. In order to achieve that, we needed to do some modifications on the camera.
 
+\draft{camera}{Drawing of the camera}{As can be seen in this drawing, the CCD chip is first hidden behind a cover, that also includes an internal shutter and then offset by an additional \SI{5}{\milli\meter}.} \todo{also put here technical drawing of the custom plate}
+
+The cover, which can be seen in \refFig{cam_drawing} has a width of \SI{12.5}{\milli\meter}, which adds additional space before the chip. The cover is mainly for a manual cap to cover the chip, when the camera is not used, and an internal shutter. Since we knew, that the internal shutter was not needed, we were able to remove the cover bringing us closer to the chip. Images of under the cover can be found in Appendix \todo{A/B/C? Image?}.
+
+The holes for M4 screws were already there, so a custom plate was built on which the slit could be mounted on.
+In the technical drawing in \refFig{cam_drawing}, the centre-most holes are reserved for the slit, which can be moved up and down to select the appropriate height needed for the imaging.
+The plate also gives the opportunity to move the whole set with the long holes in the outer-most edges.
+
+It is also important to note, that the camera is very sensitive to stray light. The necessity to cover the laser path is unavoidable, but fortunately a simple solution. The plate offers another set of screw holes, which will hold a SM3-mount, therefore eliminating any gap that could allow photons to reach the camera externally.
+
+The long path of SM3 tubes then only allows the smallest amount of stray light to enter the camera, which will have significantly lower intensity than the actual absorption image.

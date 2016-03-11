@@ -55,30 +55,22 @@
 		\label{fig:#2}
 	\end{figure}
 }
-\newcommand{\draft}[3]{
+\newcommand{\draft}[4][pdf]{
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[width=0.5\textwidth]{drafts/#1.pdf}
+		\includegraphics[width=0.5\textwidth]{drafts/#2.#1}
 	\end{center}
-	\setCaption{#2}{#3}
-	\label{fig:#1}
+	\setCaption{#3}{#4}
+	\label{fig:#2}
 \end{figure}
 }
 % Abbreviations
 
 % References
-\newcommand{\refFig}[1]{
-	Figure \ref{fig:#1}
-}
-\newcommand{\refSec}[1]{
-	Section \ref{sec:#1}	
-}
-\newcommand{\refSubsec}[1]{
-	Subsection \ref{subsec:#1}	
-}
-\newcommand{\refCh}[1]{
-	Chapter \ref{ch:#1}	
-}
+\newcommand{\refFig}[1]		{Figure \ref{fig:#1}}
+\newcommand{\refSec}[1]		{Section \ref{sec:#1}}
+\newcommand{\refSubsec}[1]	{Subsection \ref{subsec:#1}}
+\newcommand{\refCh}[1]		{Chapter \ref{ch:#1}}
 
 % Math symbols
 % TBD
