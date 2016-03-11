@@ -27,9 +27,9 @@
      showgrid="false"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
-     inkscape:cy="794.34291"
-     inkscape:cx="364.34414"
-     inkscape:zoom="2.828427"
+     inkscape:cy="771.83248"
+     inkscape:cx="291.17563"
+     inkscape:zoom="15.999999"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -600,10 +600,10 @@
     <path
        id="path15238"
        title="sin(x)"
-       d="m 288.32293,206.00587 c -0.2524,2.15629 -2.2594,4.31257 -3.9717,6.46887 -1.71229,2.15628 -2.701,4.31258 -1.96124,6.46886 0.73977,2.1563 3.02818,4.3126 4.52992,6.46888 1.50174,2.15629 1.8391,4.31257 0.67189,6.46887 -1.1672,2.15628 -3.55164,4.31258 -4.72116,6.46886 -1.16951,2.15629 -0.82819,4.31258 0.67189,6.46887 1.50008,2.15629 3.78738,4.31258 4.52992,6.46887 0.74255,2.15629 -0.2498,4.31258 -1.96124,6.46886 -1.71143,2.15631 -3.71627,4.31259 -3.97169,6.46888 -0.11793,0.99558 0.15178,1.99116 0.65193,2.98674"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#232323;stroke-width:1.42700005;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 288.22648,206.10381 c -0.24456,2.86207 -2.18918,5.72413 -3.84826,8.5862 -1.65909,2.86206 -2.61706,5.72414 -1.9003,8.58619 0.71678,2.86208 2.93407,5.72416 4.38915,8.58621 1.45506,2.86207 1.78193,5.72413 0.65101,8.5862 -1.13093,2.86206 -3.44126,5.72414 -4.57445,8.5862 -1.13316,2.86206 -0.80244,5.72413 0.65101,8.5862 1.45347,2.86206 3.66968,5.72413 4.38915,8.5862"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#232323;stroke-width:1.61828411;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="csssssssssc" />
+       sodipodi:nodetypes="cssssssc" />
     <rect
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.42700005;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect15355"
