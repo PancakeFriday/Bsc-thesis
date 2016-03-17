@@ -94,27 +94,52 @@ This is intuitive, since shifting charges means increasing and decreasing potent
 \section{Mechanical shutter}
 
 \subsection{Electronic setup}
-\begin{itemize}
-	\item A simplified circuit
-	\item Explanation of the parts
-\end{itemize}
+\ref{subsec:shutter_electronic}
+\todo{headline}
+
+The Andor camera has a very sensitive chip, which needs to be protected. In order to not unnecessarily illuminate the chip between measurements, a shutter is built into the optical path, which can also be seen in \refFig{imaging_path}. The shutter has five fans, as seen in \todo{appendix image}, which are mechanically guided, such that they together perform a circular motion outwards. The circular motion is best achieved for narrow fans, therefore needing more in order to close the shutter properly.
+
+The guides are connected to each other and can be pulled outwards with a mechanical switch, that can be manually pushed or pulled. To drive the shutter electronically, a magnetic coil and a magnet are used. When the coil receives a current, the magnet, which is connected to the switch will pull the guides, moving them outwards, therefore opening the shutter.
+
+Although the coil can pull the magnet in, it cannot be pushed away. This is compensated using a spring, which is connected to the switch. This also means, that the current driving the coil needs to be high enough, to also work against the spring.
+
+The most optimal case would be now to have fast opening and closing times, since again we want to prevent illumation between measurements. This can be achieved by testing several springs and to make the pull from the magnetic coils as fast as possible, which means increasing the current to drive it. To achieve the latter, a custom circuit is used, as outlined in \refFig{shutter_circuit_simplified}.
+
+The springs were tested in \refSubsec{shutter_dynamical}, and were found to be a substantial part in the setup.
+
 \pltCustom{
 	\begin{center}
-		\includegraphics[width=1\textwidth]{drafts/shutter_circuit_simplified.png}
+		\includegraphics[width=1\textwidth]{drafts/shutter_circuit_simplified.pdf}
 	\end{center}
-}{shutter_circuit_simplified}{}{}
+}{shutter_circuit_simplified}{Simplified circuit to control the shutter}{
+The mechanical shutter has to have a high amplitude input, in order to open as fast as possible. To achieve that, a metal–oxide–semiconductor field-effect transistor (or short, MOSFET) is used.
+The experiment uses several magnetic fields, so that it is mandatory to decouple parts from the circuit, in order to not create loops, which would induce charges. This is achieved using the optocoupler.
+Apart from that, all remaining parts in this curcuit are optional, as they can be skipped, by setting the jumpers that are highlighted in red. The inverter will flip the sign on the voltage. The MOSFET driver is used in order to serve the correct voltage at the transistor's gate and to help during discharge, such that the MOSFET will not overheat. The transistor will finally serve a high current \SI{2}{\ampere}, that is ouptput to the shutter.
+The jumpers in this figure are set as they are used in the experiment.
+}
+\todo{appendix}
+\todo{verify current}
 
 \newpage
 \subsection{Dynamical properties}
+It was discussed before, in \refSubsec{shutter_electronic}, that more fans give a better approximation to a circular motion. Optimally, we would expect the shutter to open perfectly circular with linear velocity.
+
+In order to find the actual dynamics of the shutter, an experiment was set up. The shutter was probed at several positions, using a laser, to find the opening time. An example of one of many measurements is shown in \refFig{shutterOpen}.
+
+The points have been found using a photo diode on the other side of the shutter. Since the laser has a finite radius, there is a transition in the signal from the minimum to the maximum, which is due to the approximately linear opening velocity of the shutter and the gaussian intensity distribution of the laser beam.
+
+
 \plt{shutterDiodeSignal}{
-	Shutter characterization}{The dynamics of the shutter were measured using a laser with a variable horizontal offset, which is fixed in this plot, and a photo diode measuring the laser intensity. For various offsets, error functions were fitted yielding the time until the shutter opens to this offset.
+	Shutter characterization}{The dynamics of the shutter were measured using a laser with a variable horizontal offset, which is fixed in this plot, and a photo diode measuring the laser intensity. For various offsets, error functions were fitted yielding the time until the shutter opens to this offset. The opening time was hereby defined, where the error function has its mean value.
 }
+
 \todo{appendix image}
 \plt{shutterOpen}{Sample dynamics}{
-	Opening velocity was measured using the beam diameter and the time the shutter needed to transverse it. It is noticable, that the opening velocity on the right side is faster at first than on the left side. This is due to the structure of the shutter, as can be seen in [Appendix image of shutter].
+	Opening velocity was measured using the beam diameter and the time the shutter needed to transverse it. For each offset, a set of ~100 images were taken and the errors found as being the variance. It is noticeable, that the opening velocity on the right side is faster at first than on the left side. This is due to the structure of the shutter, as can be seen in [Appendix image of shutter].
 	The overall opening speed on the other hand is not affected by this and seems to be linear with the offset.
 }
 
+The characterization of the shutter is indeed very important, since then the acquisitions can be accurately timed when the shutter is fully open. But in order to optimize it, there were two shutters at hand, and several springs to choose from. Each combination was tested carefully and it was found, that opening and closing of the shutter are connected. This is a consequence of the mechanics, where the several springs have a higher force, therefore closing faster, but making it more difficult for the coil to pull the magnet in, to open it. 
 \newpage
 \section{Mask for the CCD sensor}
 \subsection{Fast kinetics mode}
