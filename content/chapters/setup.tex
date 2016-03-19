@@ -32,7 +32,25 @@
 	}
 	
 \subsection{Atom imaging} \todo{better title}
-	\todo{not sure if it makes sense to write about this chapter}
+\todo{cite stephan helmrich}
+The field of ultracold gases explores microscopical features of atoms or systems of few atoms, in order to find fundamental laws of physics. This can be achieved in an environment, where atoms are being cooled down to close to zero temperatures and are confined in a potential. This way, the density is high, while the velocities are low, therefore the atoms can be observed as a whole cloud.
+
+In order to understand how atoms can be observed, one has to look at how atoms interact with light. From quantum mechanics, it is known, that atoms have certain energy levels. In a two-level system, a photon with the same frequency $\delta f$ as the transition can therefore excite atoms into the higher state when they absorb the light.
+The atom will now reemit photons based on two effects: stimulated or spontaneous emission. In the first case, the atom will immediately decay back to the ground state, emitting to photons with the same direction, frequency, phase, amplitude and polarity as the incoming light, while on the other hand for spontaneous emission, the atom will decay after some time, emitting a photon in a random direction, while also having the same frequency as the transition of the decay.
+
+To now detect atoms, laser light with the correct frequency will excite atoms in the higher energy state, which will absorb the atom, which can be seen as a shadow. This therefore requires, that spontaneous emission is kept minimal, since this would not produce a shadow.
+
+This can be put into equations, by introducing the excitation rate $\gamma_p$, when assuming when neglecting the velocity of the atoms:
+\begin{equation}
+	\gamma_p = \frac{1}{I_s 2\tau \left[ 1+\frac{I}{I_s} \right]}
+\end{equation}
+with the saturation intensity
+\begin{equation}
+	I_s = \frac{\pi hc}{3\lambda^3\tau}
+\end{equation}
+the wavelength $\lambda$ and the decay rate $\tau$.
+\todo{cite fp}
+
 
 \section{Camera for double species imaging}
 \label{ch:camera}
