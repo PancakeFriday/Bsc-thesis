@@ -1,7 +1,7 @@
 \chapter{Setup for high resolution imaging}
 
 \section{Experimental requirements}
-
+\todo{cite marc repp for setup}
 \subsection{Experimental setup}
 	The atoms in our trap are confined in a vacuum chamber, which has windows in x,y and z direction for the incident lasers, to either trap or image the atoms in the centre. The double species camera (Andor iKon M) is placed along the z axis, above the chamber on a breadboard, where it is also possible to switch to another camera.
 	
@@ -33,24 +33,34 @@
 	
 \subsection{Atom imaging} \todo{better title}
 \todo{cite stephan helmrich}
-The field of ultracold gases explores microscopical features of atoms or systems of few atoms, in order to find fundamental laws of physics. This can be achieved in an environment, where atoms are being cooled down to close to zero temperatures and are confined in a potential. This way, the density is high, while the velocities are low, therefore the atoms can be observed as a whole cloud.
+\todo{cite simon murmann}
+In order to find microscopic attributes of atoms, or systems of atoms, it is necessary to look at the atoms themselves. This is commonly accomplished using either fluorescence or absorption imaging. In both cases, a laser is pointed at an atomic cloud, that is cooled and confined in a trap. In fluorescence imaging, the experimentalist will look at the light, the cloud radiates, since it is illuminated by the incident light.
+Naturally, the intensity from the light through this method is not very high, since it is radiated in all directions, but is nevertheless useful for single-atom detection.
 
-In order to understand how atoms can be observed, one has to look at how atoms interact with light. From quantum mechanics, it is known, that atoms have certain energy levels. In a two-level system, a photon with the same frequency $\delta f$ as the transition can therefore excite atoms into the higher state when they absorb the light.
-The atom will now reemit photons based on two effects: stimulated or spontaneous emission. In the first case, the atom will immediately decay back to the ground state, emitting to photons with the same direction, frequency, phase, amplitude and polarity as the incoming light, while on the other hand for spontaneous emission, the atom will decay after some time, emitting a photon in a random direction, while also having the same frequency as the transition of the decay.
+In absorption imaging, the imaging system is parallel to the imaging beam. Without atoms, one would therefore see a beam profile of the laser, although with atoms, a shadow is visible due to the atoms blocking the light. This is accomplished, by correctly tuning the laser to a resonance frequency of the atoms, which enables them to absorb the light, exciting them to a higher state. Through spontaneous emission, the atoms will decay, making it possible to excite them once again. For a dense cloud, enough light is absorbed, such that the blocked light intensity differs enough to distinguish them from the laser profile.
 
-To now detect atoms, laser light with the correct frequency will excite atoms in the higher energy state, which will absorb the atom, which can be seen as a shadow. This therefore requires, that spontaneous emission is kept minimal, since this would not produce a shadow.
+\todo{example two level atom excitation image}
 
-This can be put into equations, by introducing the excitation rate $\gamma_p$, when assuming when neglecting the velocity of the atoms:
+There are a set of optical elements in the imaging path, like lenses to collimate the image and refocus it, or mirrors to guide the light into the camera. Since the surfaces will most likely introduce errors into the imaging, for example from impurities or dust, only the absorption image will not suffice to gain reliable data. This is compensated by taking a total of three pictures, in order to extract only the relevant information from the image.
+
+This can be understood when looking at the light intensity reaching the camera. The atom cloud has a optical density $OD$, therefore the intensity can be written as
 \begin{equation}
-	\gamma_p = \frac{1}{I_s 2\tau \left[ 1+\frac{I}{I_s} \right]}
+I_{CCD} = I_0 e^{-OD} + I_{back},
 \end{equation}
-with the saturation intensity
+where the intensity decreases from the incident laser intensity $I_0$ as the optical density rises. The intensity $I_{back}$ contains statistical errors, that are found when the CCD is not being illuminated such as readout noise or dark noise. All the interesting attributes of atoms are found by looking at the optical density, therefore in order to extract that, a background frame is subtracted from the absorption image and the laser profile divided, leaving
 \begin{equation}
-	I_s = \frac{\pi hc}{3\lambda^3\tau}
+\frac{I_{CCD} - I_{back}}{I_0} = e^{-OD}.
 \end{equation}
-the wavelength $\lambda$ and the decay rate $\tau$.
-\todo{cite fp}
+The laser intensity $I_0$ has to be taken as a whole separate image, containing the laser intensiy $I_0'$ and also the background $I_{back}$, therefore the equation yields
+\begin{equation}
+\frac{I_{CCD} - I_{back}}{I_0' - I_{back}} = e^{-OD}.
+\end{equation}
+\todo{three images as example}
+%cool reference: http://muellergroup.lassp.cornell.edu/basictraining2009/OpticalAbs.pdf
+\todo{read comment}
 
+From the resulting optical density, one can now conclude for example atom density distributions, atom numbers or excitation rates.
+In the course of this thesis, the goal will be pursued to minimize all errors that can occur during acquisition. It will be seen, that features from the camera such as water cooling and quantum efficiency play a high role to accomplish that goal. Consequently, the next chapter is dedicated to the camera that will be used for future measurements.
 
 \section{Camera for double species imaging}
 \label{ch:camera}
@@ -58,7 +68,7 @@ the wavelength $\lambda$ and the decay rate $\tau$.
 \subsection{Comparison with the present setup}
 For the application of imaging small atom clouds, it is very important to have cameras with optimal noise reduction and maximal readout speed. The new setup improves on both attributes, with the ability to cool the chip down to reduce the dark noise as well as the fast kinetics mode, making it possible to acquire all images before reading out, improving the speed at which images can be taken significantly.
 
-The old setup used a Guppy-38B camera, which is a lot smaller than the Andor~iKon~M \todo{add reference to Marc Repp} (\SI{48.2x30x30}{\milli\meter} vs \SI{204.2x105x107}{\milli\meter}), therefore making an implementation on a full experimental table easier. To implement such a complicated camera system that the Andor is, a lot of preparation was made in the thesis of Carmen. \todo{reference carmen}
+The old setup used a Guppy-38B camera, which is a lot smaller than the Andor iKon M \todo{add reference to Marc Repp} (\SI{48.2x30x30}{\milli\meter} vs \SI{204.2x105x107}{\milli\meter}), therefore making an implementation on a full experimental table easier. To implement such a complicated camera system that the Andor is, a lot of prseparation was made in the thesis of Carmen. \todo{reference carmen}
 
 Nevertheless, despite its size, the new camera offers the ability to image both Lithium and Caesium species at once, while two Guppy cameras were needed beforehand, which also meant placing them on different imaging axes.
 
@@ -69,21 +79,32 @@ As already mentioned, the readout speed is highly important in our setup. Since 
 For the Guppy camera, at a frame rate of 30fps, this meant the acquisition was finished after \SI{100}{\milli\second}. The Andor camera, on the other hand, can take images quickly without the need to read out in-between. At the fastest shift speed, the acquisition is finished after \SI{1.2}{\milli\second}, improving the speed by a factor of almost $100$.
 
 \subsection{Dark current}
-\begin{itemize}
-	\item Theory on Dark current
-	\item Temperature dependent
-	\item Logarithmic dependency
-	\item Water cooling
-\end{itemize}
+\todo{cite, see comment}
+%http://www.kip.uni-heidelberg.de/matterwaveoptics/publications/theses/diplom_ottenstein.pdf
+%http://www.mpia.de/AO/INSTRUMENTS/FPRAKT/4_F36_CCDscript2011.pdf
+A common noise source that is apparent in all CCD cameras, is the so-called dark current. This noise accumulates seemingly random on the pixels, distributing the electron counts gaussian.
+
+It originates from the nature of the pixels. Since they are made of semiconductors, once in a while, an electron can pass the potential between valence and conduction band simply due to thermal energy.
+
+Luckily, the noise has a strong temperature dependece found from
+\begin{equation}
+I_{dark}(T) \propto T^{\frac{3}{2}} \mathrm{exp}(-E_g/2kT),
+\end{equation}
+while $E_g$ is the potential in the semiconductor, $T$ the temperature and the Boltzmann constant $k$.
+Therefore in order to reduce dark current noise, the temperature of the chip can be reduced, therefore decreasing the thermal energy of the electrons.
+
+This has been measured and verified in \refFig{electrpp}, using the built-in peltier element in the Andor camera.
+
+When acquiring images with a high temperature, the dark current accumulating on the chip can be seen uniformly, adding a common offset to the pixels. Together with the finite readout speed, a gradient is visible on the chip, as dark current is still apparent on pixels that have not yet been read out. Therefore the first pixel will have fewer counts as the last pixel.
+This can be seen for example in \todo{add a figure for the gradient}.
+
 \plt[true]{electrpp}{Dark noise}{
 	The dark noise follows a power law dependency. Since these measurements were taken without water cooling installed, deviations are visible as the temperature reaches \SI{-70}{\degreeCelsius}. The convergence to zero on the counts and their variance indicates accurate imaging when low temperatures are used. Gain in this measurement was minimal and the exposure time set to \SI{100}{\second}, such that dark current was the dominant noise source.
 }
 
 \newpage
 \subsection{Readout noise}
-\begin{itemize}
-	\item How does pixel shifting work? %http://www.mssl.ucl.ac.uk/www_detector/ccdgroup/optheory/ccdoperation.html
-\end{itemize}
+%http://www.mssl.ucl.ac.uk/www_detector/ccdgroup/optheory/ccdoperation.html
 As seen in \refCh{ccd_basics}, pixels get shifted in order to be read out. Moving charges from pixel to pixel causes noise to accumulate over each iteration. In theory, this is visible as a gradient since each shift adds new charges due to excitations in the semiconductors. A possible characterization of this effect is to simply take the variance of an image.
 
 Although the shifting gradient is not visible in the final picture, since it is removed by subtracting the background image, it is still important to minimize the noise originating from shifting the charges, which was found to be the case for slow readout speeds, see \refFig{hvspeed}.
@@ -97,10 +118,20 @@ This is intuitive, since shifting charges means increasing and decreasing potent
 
 \newpage
 \subsection{Quantum efficiency}
-\begin{itemize}
-	\item Little bit of theory
-	\item Reference to Carmens' thesis
-\end{itemize}
+When selecting cameras for scientific imaging, one of the attributes to look out for is quantum efficiency. This is not noise per-se, but merely describes the fraction of photons that are converted into electrons. A quantum efficiency $QE$ of 100\% would mean, that every photon is detected on the chip. This can be put into equations as
+\begin{equation}
+QE = \frac{N_{detected}}{N_{total}}.
+\end{equation}
+
+The measurement of the quantum efficiency has been previously carried out by Carmen Renner in her diploma thesis. In order to do that, the detected photons can be rewritten according to \todo{murmann}:
+\begin{equation}
+N_{total} = \frac{E_{beam}}{E_\gamma} = \frac{P t_{exp}}{E_\gamma}
+\end{equation}
+using the energy of all photons reaching the camera $E_{beam}$ which was rewritten using the power $P$ and exposure time $t_{exp}$. The photon energy $E_\gamma$ can be simply calculated from $E_\gamma= h\nu$.
+
+The counts will be plotted against the exposure time, yielding the quantum efficiency, which was measured as \todo{make this sentence right} for \SI{852}{\nano\meter} and for \SI{10}{\nano\meter} light.
+
+This camera was especially chosen upon the quantum efficiency, since it is important for us to be able to detect most photons from lithium as well as caesium absorption.
 
 \subsection{Pixel correlations}
 \begin{itemize}
@@ -108,12 +139,13 @@ This is intuitive, since shifting charges means increasing and decreasing potent
 	\item Some example images here maybe?
 \end{itemize}
 
-\label{sec:shutter}
 \section{Mechanical shutter}
+\label{sec:shutter}
 
 \subsection{Electronic setup}
-\ref{subsec:shutter_electronic}
+\label{subsec:shutter_electronic}
 \todo{headline}
+\todo{cite andor manual somewhere}
 
 The Andor camera has a very sensitive chip, which needs to be protected. In order to not unnecessarily illuminate the chip between measurements, a shutter is built into the optical path, which can also be seen in \refFig{imaging_path}. The shutter has five fans, as seen in \todo{appendix image}, which are mechanically guided, such that they together perform a circular motion outwards. The circular motion is best achieved for narrow fans, therefore needing more in order to close the shutter properly.
 
