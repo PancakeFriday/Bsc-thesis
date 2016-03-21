@@ -57,6 +57,9 @@
 \usepackage[separate-uncertainty, binary-units = true]{siunitx}
 \DeclareSIUnit\px{px}
 
+% BraKets
+\usepackage{braket}
+
 % Tables
 \usepackage{array} % for math mode in tables
 \usepackage{booktabs} % for hline rules

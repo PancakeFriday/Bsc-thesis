@@ -1,31 +1,29 @@
 \chapter{Testing the camera: Superfluids}
-\begin{itemize}
-	\item Theory on superfluids
-	\item Spin population profile
-	\item Measurement
-\end{itemize}
 The purpose of the camera is to measure scientifically important data from dense atomic clouds consisting of Lithium and Caesium.
-The improvement of the resolution in the whole imaging setup now allows to find new attributes that could not be measured before and as an example, fermionic superfluids were chosen. The key signature of a superfluid transition can be found by creating a population imbalance, that then shows a unique structure in the centre of the cloud, differing them from the Thomas-Fermi distribution. \todo{check this}
+The improvement of the resolution in the whole imaging setup now allows to find new attributes that could not be measured before and as an example, fermionic superfluids were chosen. The key signature of a superfluid transition can be found by creating a population imbalance, that then shows a unique structure in the centre of the cloud, differing them from the Thomas-Fermi distribution that is apparent in Bose-Einstein condensates (BEC).
 
-\begin{itemize}
-	\item History on first measurements
-	\item macroscopic features
-	\item measurements of other groups
-	\item own measurements (maybe comparison)
-\end{itemize}
+\section{Previous observations in a polarized fermi gas}
 
-Superfluidity can be observed macroscopically for example in cooled Helium, where the fluid has no viscosity. It will also defy gravity, climbing walls and ignore surface tension. This is still mysterious in parts, therefore in order to understand this better, an ultracold quantum system can be used as a model.
+Superfluidity can be observed macroscopically for example in cooled Helium. As the fluid climbs walls and ignores its surface tension, it behaves in ways that are unintuitive at first. This is still mysterious in parts, therefore in order to understand superfluids better, an ultracold quantum system can be used as a model.
 
 % http://www.nature.com/nature/journal/v435/n7045/pdf/nature03858.pdf
-The first confident detection were carried out by Zwierlein et al in 2005 \todo{cite zwierlein see comment}. A Bose-Einstein condensate was prepared using evaporative cooling and a dipole trap. An additional laser beam, that is split using an acousto-optic deflector into two beams, that are separated by $3/4$th of the trap diameter will then be used to "stir" the Lithium spin mixture.
+The first confident detection was carried out by M. Zwierlein et al in 2005\todo{cite zwierlein see comment}. A Bose-Einstein condensate was prepared using evaporative cooling and a dipole trap. An additional laser beam, that is split using an acousto-optic deflector into two beams, that are separated by $3/4$th of the trap diameter will then be used to "stir" the Lithium spin mixture.
 
-This laser is merely used to prove, that a superfluid has been prepared. When the correct feshbach resonances are applied, the condensate will start to create vortex lattices, that are visible in the cloud as holes. In an optimal setup, the group was able to find up to 40 vortices in a single atomic cloud.
+This laser is merely used to prove, that a superfluid has been prepared. Upon rotation, when the correct feshbach resonances are applied, the condensate will start to create a vortex lattice, that is visible in the cloud as holes. In an optimal setup, the group was able to find up to 40 vortices in a single atomic cloud.
 
 This laid the ground stone for the detection of superfluids, as no other effect is known to cause these vortices.
 Since it was possible from then on to prepare superfluids confidently, future research concentrated on understanding this exotic aggregate state.
 
-The group of ... \todo{...} took a look at when the superfluid transition takes place, while also introducing another detection method. When a superfluid is prepared with a spin imbalance, for example 70\% majority and 30\% minority spin components (which could be either spin up or spin down), a center core forms, in which all the minority components are apparent, together with the same amount of majority spins. The wings on the outside of the core is then only populated by the remaining majority.
+\todo{cite partridge}
+The group of G. Partridge found an interesting effect when creating a spin imbalance rather than having 50\% of each spin in the Fermi gas. In order to do that, a BEC was prepared and feshbach resonances are applied. A polarization $P$ is introduced as $P=\left( N_1-N_2\right) / \left( N_1+N_2\right)$ where $N_i$ corresponds to either spin-up $\ket{1}$ or spin-down $\ket{2}$. For the polarization $P=0$, the cloud is still a BEC, although for higher polarizations, the atomic distribution is such that there is an inner unpolarized core which is surrounded by the majority component.
 
-At this point, one can look at the Bose-Einsten condensate (BEC) and Bardeen-Cooper-Schrieffer (BCS) side of the Feshbach resonance, which is characterized using the interaction parameter $\frac{1}{k_Fa} > 0$ and $\frac{1}{k_Fa} < 0$ for BEC and BCS respectively.
+This has been further observed in the BEC-BCS crossover by T. De Silva and E. Mueller \todo{cite}. They were also able to observe this structure consisting of an unpolarized inner core and the remaining majority components outside. They were also able to motivate this theoretically and found a formula for the distribution of the fermions.
 
-The superfluid core is apparent in both cases, but more visible in the BEC case.
+M. Zwierlein et al. and W. Ketterle \todo{cite} continued this research and found that superfluidity can be directly observed from density profiles, without the need to ramp the magnetic field, which had to be used before. Such an achievement makes the theoretical description easier, therefore this is a great success.
+They showed the density profiles for at the BEC and BCS side of the Feshbach resonance and directly on resonance. Furthermore, the polarization $P$ was probed in order to find an optimal setup, which seemed to be the case for $P \sim 70\%$.
+
+\section{Implementation in the setup}
+
+The preparation of a fermionic superfluid is well documented, for example in \todo{cite zwierlein nature 2006}, such that it should be possible to implement a sequence in our current setup in order to achieve this phase transition. In principle, the atoms are prepared at first in a MOT, then further cooled using D1 cooling \todo{D1?} and loaded into the dipole trap. In this optical trap, the spin imbalance is created. The dipole trap can then be further ramped to cool the remaining atoms evaporatively. For the detection of the superfluid, a time of flight method should be used. The trap depth is in the order of \SI{1}{\micro\kelvin}.
+
+---> now our own measurement.

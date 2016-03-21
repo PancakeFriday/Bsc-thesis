@@ -88,9 +88,9 @@ It originates from the nature of the pixels. Since they are made of semiconducto
 
 Luckily, the noise has a strong temperature dependece found from
 \begin{equation}
-I_{dark}(T) \propto T^{\frac{3}{2}} \mathrm{exp}(-E_g/2kT),
+I_{dark}(T) \propto T^{\frac{3}{2}} \mathrm{exp}(-E_g/2k_BT),
 \end{equation}
-while $E_g$ is the potential in the semiconductor, $T$ the temperature and the Boltzmann constant $k$.
+while $E_g$ is the potential in the semiconductor, $T$ the temperature and the Boltzmann constant $k_B$.
 Therefore in order to reduce dark current noise, the temperature of the chip can be reduced, therefore decreasing the thermal energy of the electrons.
 
 This has been measured and verified in \refFig{electrpp}, using the built-in peltier element in the Andor camera.
@@ -133,7 +133,7 @@ Now the quantum efficiency reads as
 \begin{equation}
 QE = \frac{h \nu N_{detected}}{P t_{exp}}.
 \end{equation}
-A measurement can therefore be carried out by plotting the accumulated counts against the exposure time, yielding the quantum efficiency, which was measured as \todo{make this sentence right} for \SI{852}{\nano\meter} and for \SI{10}{\nano\meter} light.
+A measurement can therefore be carried out by plotting the accumulated counts against the exposure time, yielding the quantum efficiency, which was measured as \todo{make this sentence right} for \SI{852}{\nano\meter} and for \SI{671}{\nano\meter} light.
 
 This camera was especially chosen from the quantum efficiency, since it is important in our case, to be able to detect most photons from Lithium and Caesium absorption.
 
