@@ -118,20 +118,24 @@ This is intuitive, since shifting charges means increasing and decreasing potent
 
 \newpage
 \subsection{Quantum efficiency}
-When selecting cameras for scientific imaging, one of the attributes to look out for is quantum efficiency. This is not noise per-se, but merely describes the fraction of photons that are converted into electrons. A quantum efficiency $QE$ of 100\% would mean, that every photon is detected on the chip. This can be put into equations as
+When selecting cameras for scientific imaging, one of the attributes to look out for is quantum efficiency. Not all incoming photons are converted into electrons, which adds an uncertainty into measurements. Therefore quantum efficiency is introduced, to describe the uncertainty mathematically, so that it is defined as the fraction of photons that are converted into electrons. A quantum efficiency $QE$ of 100\% would therefore mean, that every incident photon is detected on the chip. This can be put into equations as
 \begin{equation}
 QE = \frac{N_{detected}}{N_{total}}.
 \end{equation}
 
-The measurement of the quantum efficiency has been previously carried out by Carmen Renner in her diploma thesis. In order to do that, the detected photons can be rewritten according to \todo{murmann}:
+The measurement of the quantum efficiency has been previously carried out by Carmen Renner \todo{cite} in her diploma thesis. In order to do that, the detected photons can be rewritten according to \todo{murmann}:
 \begin{equation}
 N_{total} = \frac{E_{beam}}{E_\gamma} = \frac{P t_{exp}}{E_\gamma}
 \end{equation}
-using the energy of all photons reaching the camera $E_{beam}$ which was rewritten using the power $P$ and exposure time $t_{exp}$. The photon energy $E_\gamma$ can be simply calculated from $E_\gamma= h\nu$.
+using the energy of all photons reaching the camera $E_{beam}$ which is described as using the power $P$ and exposure time $t_{exp}$. The photon energy $E_\gamma$ is calculated from $E_\gamma= h\nu$.
 
-The counts will be plotted against the exposure time, yielding the quantum efficiency, which was measured as \todo{make this sentence right} for \SI{852}{\nano\meter} and for \SI{10}{\nano\meter} light.
+Now the quantum efficiency reads as
+\begin{equation}
+QE = \frac{h \nu N_{detected}}{P t_{exp}}.
+\end{equation}
+A measurement can therefore be carried out by plotting the accumulated counts against the exposure time, yielding the quantum efficiency, which was measured as \todo{make this sentence right} for \SI{852}{\nano\meter} and for \SI{10}{\nano\meter} light.
 
-This camera was especially chosen upon the quantum efficiency, since it is important for us to be able to detect most photons from lithium as well as caesium absorption.
+This camera was especially chosen from the quantum efficiency, since it is important in our case, to be able to detect most photons from Lithium and Caesium absorption.
 
 \subsection{Pixel correlations}
 \begin{itemize}
