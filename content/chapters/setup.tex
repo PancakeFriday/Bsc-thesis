@@ -324,7 +324,14 @@ with the dielectric constant $\epsilon_0$ and the speed of light $c$.
 
 To verify the theory, we set up a simple experiment with a collimated laser beam pointing at the CCD of the Andor camera, with a slit in between. Such behaviour was also observed in our measurements. \refFig{slit} shows the diffraction pattern that was recorded with the Andor camerea and a slit. A large, collimated beam was used to illuminate a slit in front of the CCD detector. Well resolved interference fringes can be observed by the slit.
 
-\plt{slit}{Diffraction measurement}{
+\pltCustom{
+	\begin{center}
+		\input{plots/slit.pgf}
+		\input{plots/diffractionImage.pgf}
+		%\includegraphics[width=0.4\textwidth,height=0.2\textheight]{plots/diffractionImage-img0.png}
+	\end{center}
+}
+{slit}{Measuring diffraction on a slit}{
 	In order to characterize the diffraction by the slit, the CCD detector was placed as close as possible. The parameters were measured using a ruler and yielded distance $d=\SI{10.9\pm0.5}{\milli\meter}$, opening $a=\SI{2.5\pm0.5}{\milli\meter}$. The wavelength was $\lambda =\SI{852}{\nano\meter}$ found from the laser specifications. The blue curve is the experimental data, while the red curve was fitted, leaving the distance and opening as free fitting parameters. They were found to be $d^\prime=\SI{11.0\pm0.3}{\milli\meter}$ and $a^\prime=\SI{2.470\pm0.013}{\milli\meter}$, which is in close agreement with the measured values.The residual deviation in the amplitude are caused by Gaussian intensity distribution of the laser beam used for illumination.
 }
 
