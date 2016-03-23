@@ -1,10 +1,10 @@
 \appendix
 \chapter{Acquisition sequence}
+\todo{I'm not sure if this chapter belongs in the appendix. It is kind of a technical thing and I'm not sure where I could fit it in}
 \label{ch:acqseq}
-In order to take the images, some bounds have to be considered. In detail, the acquisition is limited by the shift speeds.
-For the fast kinetics mode, eight triggers must be sent.
+During absorption image, the Andor camera will take eight images, which consist of two absorption, two division and four background images (or if the user specifies to only image one species, that then is one absorption and division image and six background images).
 % we are not using the macro as I do not need captions or labels and stuff and the image has to be exactly here
-\draft{acqseq}{Trigger signals}{The triggers are sent as a rectangular signal. The camera will interpret the rising edge of the signal as the starting point of the exposure. Here, $t_{vshift}$ is the time it takes to shift the illuminated pixels downwards, $t_{readout}$ is the time it takes the chip to read out the data and $t_{exposure}$ the exposure time.}
+
 As the camera is only interested in the rising edge of the signal, the trigger length is not really important. But the chip will be exposed for the duration of the exposure time, after which the laser should be turned off. The, in our case, 204 pixels are then shifted downwards, taking $t_{vshift}$, which can be calculated by multiplying the vertical shift speed with the pixel height. For the fastest shift speed, this would result in
 \begin{equation}
 t_{vshift} = \SI{2}{\micro\second\per\px} * \SI{204}{\px} = \SI{408}{\micro\second},
@@ -13,6 +13,8 @@ for the slowest speed we find
 \begin{equation}
 t_{vshift} = \SI{64}{\micro\second\per\px} * \SI{204}{\px} = \SI{13.1}{\milli\second}
 \end{equation}
+
+\draft{acqseq}{Trigger signals}{The triggers are sent as a rectangular signal. The camera will interpret the rising edge of the signal as the starting point of the exposure. Here, $t_{vshift}$ is the time it takes to shift the illuminated pixels downwards, $t_{readout}$ is the time it takes the chip to read out the data and $t_{exposure}$ the exposure time.}
 
 Therefore the four subsequent signals can be taken after
 \begin{equation}
