@@ -110,7 +110,7 @@
 
 
 % Bibliography
-\usepackage[style=numeric-comp,backend=biber,maxnames=10,maxcitenames=2]{biblatex}
+\usepackage{cite}
 %\nocite{*} % print all references, even those not used
 
 % Appendix

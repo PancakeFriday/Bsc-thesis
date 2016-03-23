@@ -782,7 +782,7 @@
 \end{pgfscope}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=0.882428in,y=1.739133in,left,base]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont \(\displaystyle Vss = 64\mu s\)}%
+\pgftext[x=0.882428in,y=1.739133in,left,base]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont \(\displaystyle v_{ss} = 64\mu s\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -823,7 +823,7 @@
 \end{pgfscope}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=0.882428in,y=1.576047in,left,base]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont \(\displaystyle Vss = 2\mu s\)}%
+\pgftext[x=0.882428in,y=1.576047in,left,base]{\rmfamily\fontsize{8.000000}{9.600000}\selectfont \(\displaystyle v_{ss} = 2\mu s\)}%
 \end{pgfscope}%
 \end{pgfpicture}%
 \makeatother%
