@@ -2,11 +2,15 @@
 
 \section{Experimental requirements}
 \subsection{Experimental setup}
-	In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower. The slower consists of a magnetic field with a constant gradient along the propagation direction of the atoms. A laser beam pointing towards the atoms will therefore act as a velocity dependant force, as their energy levels are shifted until they are resonant with the beam.
+	In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower. The slower consists of a decreasing magnetic field along the propagation direction of the atoms. A laser beam counter propagating the atoms will therefore act as a velocity dependant force, as their energy levels are shifted by the magnetic field until they are resonant with the beam.
 	
-	The atoms will move into the centre of the vacuum chamber, where they can be trapped and further slowed using a magneto-optical trap (MOT). Along the $x$, $y$ and $z$ axis, counter propagating laser beams are pointing at the centre of the trap, where the atoms will be confined. A magnetic field is implied, such that it is weak in the centre and strong on the outside. Therefore, fast or off-centre atoms become resonant with the laser light, pushing them inside.
+	The atoms will move into the centre of the vacuum chamber, where they can be trapped and further slowed using a magneto-optical trap (MOT). Along the $x$, $y$ and $z$ axis, counter propagating laser beams are pointing at the centre of the trap, where the atoms will be confined. Magnetic coils in anti-Helmholtz configuration imply a field, such that it is weak in the centre and strong on the outside. Therefore, fast or off-centre atoms become resonant with the laser light, pushing them inside.
 	
-	Inside the MOT, one can only reach temperatures around \SI{100}{\micro\kelvin}, so to further cool them down, the atoms are transferred into an optical dipole trap. The intensity of the dipole trap can be ramped, evaporatively cooling the atoms. Hereby, the faster atoms will leave the trap, so that the total temperature of the gas will be reduced up to a few \SI{}{\nano\kelvin}.
+	The temperature inside the MOT is limited by the doppler temperature
+	\begin{equation}
+		T_D=\frac{\hbar\gamma}{2k_B} = \SI{141}{\micro\kelvin}
+	\end{equation}
+	where the lifetime of the D2 line is $\gamma=\SI{37}{\mega\hertz}$. In order to further cool them down, the atoms are transferred into an optical dipole trap. The intensity of the dipole trap can be ramped, evaporatively cooling the atoms. Hereby, only the slow atoms are kept in the trap, so that the total temperature of the gas will be reduced up to a few \SI{}{\nano\kelvin}.
 	
 	\pltCustom{
 		\vspace{1em}
@@ -25,7 +29,9 @@
 	In order to image the atoms, an imaging beam is pointing along the $z$-axis according to \refFig{imaging_path}.
 	A bikonvex lens focuses the imaging beam onto the CCD camera, which is located on top of the vacuum chamber. To minimize the incident background light, the imaging path is covered in SM2 tubes, which can be directly connected to the camera.
 	
-	As the camera is also very sensitive to stray light, it has to be protected between measurements with a shutter, that covers the front end of the imaging path, such that no light will enter the camera, which is described in more detail in \refSec{shutter}
+	As the camera is also very sensitive to stray light, it has to be protected from stray light and between measurements. This is achieved by covering the beam path in SM2 tubes and a shutter, which will then cover the whole area, so no light should enter the chip.
+	
+	With this setup, molecular Bose-Einstein condensates can be set up and imaged even at low atom numbers ($n=1000$).
 
 \subsection{Basics of CCD cameras}
 \label{ch:ccd_basics}
@@ -84,17 +90,22 @@ This has been measured and verified in \refFig{electrpp}, using the built-in pel
 \begin{equation}
 I_{i} = \frac{C}{G t_{exp}}
 \end{equation}
-with the Gain $G$ of the camera, and the exposure time $t_{exp}$. The readout time of the pixels can be neglected, as they are significantly lower than the exposure time (see \refCh{fast_kin}).
-The data should then follow the theory in \refEq{darkcurrent}, although deviations are visible in the low temperature regime, which result from the fan not being able to divert the heat from the chip.
 
 \plt[true]{electrpp}{Dark noise accumulation on the chip}{
 	For a long exposure time of \SI{100}{\second}, the dark current was measured for several temperatures. Gain in this measurement was minimal ($0.215$\cite{Renner2014}). Equation \ref{eq:darkcurrent} was fitted, leaving the amplitude $A$ and band gap $E_g$ free, which resulted in $A=1.1*10^8\, \SI{}{\watt\per\meter\per\kelvin}$ and $E_g=\SI{0.96}{\electronvolt}$.
 }
 
+with the Gain $G$ of the camera, and the exposure time $t_{exp}$. The readout time of the pixels can be neglected, as they are significantly lower than the exposure time (see \refCh{fast_kin}).
+The data should then follow the theory in \refEq{darkcurrent}, although deviations are visible in the low temperature regime, which result from the fan not being able to divert the heat from the chip.
+
+As it is important to minimize the noise source, the chip is cooled as low as possible. This will reduce the possibility of thermal electrons creating counts in the detector, so that even at fewer atom numbers, they are still distinguishable from the noise.
+
 \subsection{Readout noise}
 As described in \refCh{ccd_basics}, pixels are shifted in order to be read out by the ADC. Moving charges from pixel to pixel causes noise that accumulates over each iteration. Together with the noise which the ADC introduces, this is then called the readout noise. The shifting noise together with the dark noise is visible as a gradient (\todo{figure with shift gradient}) since each shift adds new charges due to excitations in the semiconductors. In order to characterize this, one can take the variance of the image, which should be zero for no noise.
 
 In \refFig{hvspeed} it has been shown, that slow readout speeds reduces the noise, although the vertical shift speeds do not seem to influence the noise at all. The measurement was carried out by taking images at low exposure time and low temperature, so that the main noise source would be the readout and not the dark current. Therefore the variance in the plot shows the noise from readout which goes to zero as the horizontal speed is decreased.
+
+The actual readout of the chip can be done at slow speeds, so that the noise from horizontally shifting is low. As the vertical shifts do not add significant noise, it can safely be set to fast speeds, which is also favorable, as $^6$Li and $^{133}$Cs are imaged back to back as fast as possible, so that the cloud dynamics are still approximately the same.
 
 Shifting charges means increasing and decreasing potential wells, so that they can move from one into the other. If this is done fast enough (non-adiabatic), electrons in the pixel are more likely to get excited from the valence to the conduction band from the semiconductor, therefore adding noise. As a result from this, slower readout speeds are used in order to not add significantly more noise.
 
@@ -181,7 +192,7 @@ It was discussed before, in \refSubsec{shutter_electronic}, that more fans give 
 	\end{textblock}
 }{shutter_experiment}{Probing the shutter for dynamics}{The shutter is proped at several positions using a laser. The offset in y direction was varied to find opening and closing times as a function of their offset.}
 
-To find the actual dynamics of the shutter, an experiment was set up. The shutter was probed at several positions, using a laser, to find the opening time. An example of one of many measurements is shown in \refFig{shutterDiodeSignal}. The laser beam has a gaussian intensity distribution, which results in a error function on the photodiode.
+To find the actual dynamics of the shutter, an experiment was set up. The shutter was probed at several positions, using a laser, to find the opening time. An example of one of many measurements is shown in \refFig{shutterDiodeSignal}. The laser beam has a gaussian intensity distribution, which results in a error function on the photodiode as only partial intensiy is received from the diode, when the shutter is still blocking parts of the beam.
 
 The points have been found by pointing a laser beam at a photodiode, which was blocked by the shutter. Since the laser has a finite radius, there is a transition in the signal from the minimum to the maximum, which is due to the approximately linear opening velocity of the shutter and the gaussian intensity distribution of the laser beam.
 
