@@ -2,7 +2,11 @@
 
 \section{Experimental requirements}
 \subsection{Experimental setup}
-	In the experiment, atoms are trapped and cooled inside a vacuum chamber. The setup\cite{Repp2013a} consists of a double species mixture, Lithium and Caesium, which are focused into the centre of the chamber, where they can be confined using at first a magneto-optical trap (MOT). The atoms are cooled using doppler cooling, where six laser beams are set up to cross each other in the centre. They act as a net force on atoms moving against the propagation direction of the beam, so that fast atoms are slowed down, but slow atoms are not sped up. Atoms are trapped at the same time, using magnetic coils in anti-helmholtz configuration. The magnetic field will therefore be strong on the bounds of the trap and zero in the center, so that atoms that are off-center receive a higher force.
+	In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower. The slower consists of a magnetic field with a constant gradient along the propagation direction of the atoms. A laser beam pointing towards the atoms will therefore act as a velocity dependant force, as their energy levels are shifted until they are resonant with the beam.
+	
+	The atoms will move into the centre of the vacuum chamber, where they can be trapped and further slowed using a magneto-optical trap (MOT). Along the $x$, $y$ and $z$ axis, counter propagating laser beams are pointing at the centre of the trap, where the atoms will be confined. A magnetic field is implied, such that it is weak in the centre and strong on the outside. Therefore, fast or off-centre atoms become resonant with the laser light, pushing them inside.
+	
+	Inside the MOT, one can only reach temperatures around \SI{100}{\micro\kelvin}, so to further cool them down, the atoms are transferred into an optical dipole trap. The intensity of the dipole trap can be ramped, evaporatively cooling the atoms. Hereby, the faster atoms will leave the trap, so that the total temperature of the gas will be reduced up to a few \SI{}{\nano\kelvin}.
 	
 	\pltCustom{
 		\vspace{1em}
@@ -18,7 +22,7 @@
 		\end{textblock}
 	}{imaging_path}{Imaging path}{The camera is mounted above the vacuum chamber as visible in \textbf{a.} (gravity would be in negative $z$ direction). The image of the atoms is collimated with the first lens and passing the optics in \textbf{b.}, until it is refocused in the chip on the camera.}
 	
-	In a next step, the atoms are transferred into an optical dipole trap, where they are further cooled evaporatively by only selecting the slowest atoms.
+	In order to image the atoms, an imaging beam is pointing along the $z$-axis according to \refFig{imaging_path}.
 	A bikonvex lens focuses the imaging beam onto the CCD camera, which is located on top of the vacuum chamber. To minimize the incident background light, the imaging path is covered in SM2 tubes, which can be directly connected to the camera.
 	
 	As the camera is also very sensitive to stray light, it has to be protected between measurements with a shutter, that covers the front end of the imaging path, such that no light will enter the camera, which is described in more detail in \refSec{shutter}
