@@ -1,73 +1,69 @@
 \chapter{Setup for high resolution imaging}
 
-\section{Experimental requirements}
-\subsection{Experimental setup}
-	In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower. The slower consists of a decreasing magnetic field along the propagation direction of the atoms. A laser beam counter propagating the atoms will therefore act as a velocity dependant force, as their energy levels are shifted by the magnetic field until they are resonant with the beam.
-	
-	The atoms will move into the centre of the vacuum chamber, where they can be trapped and further slowed using a magneto-optical trap (MOT). Along the $x$, $y$ and $z$ axis, counter propagating laser beams are pointing at the centre of the trap, where the atoms will be confined. Magnetic coils in anti-Helmholtz configuration imply a field, such that it is weak in the centre and strong on the outside. Therefore, fast or off-centre atoms become resonant with the laser light, pushing them inside.
-	
-	The temperature inside the MOT is limited by the doppler temperature
-	\begin{equation}
-		T_D=\frac{\hbar\gamma}{2k_B} = \SI{141}{\micro\kelvin}
-	\end{equation}
-	where the lifetime of the D2 line is $\gamma=\SI{37}{\mega\hertz}$. In order to further cool them down, the atoms are transferred into an optical dipole trap. The intensity of the dipole trap can be ramped, evaporatively cooling the atoms. Hereby, only the slow atoms are kept in the trap, so that the total temperature of the gas will be reduced up to a few \SI{}{\nano\kelvin}.
-	
-	\pltCustom{
-		\vspace{1em}
-		\begin{center}
-			\includegraphics[width=1\textwidth]{drafts/imaging_path.pdf}
-		\end{center}
-		
-		\begin{textblock}{2}(0.2,-2.65)
-			\textbf{a.}
-		\end{textblock}
-		\begin{textblock}{2}(5.7,-2.65)
-			\textbf{b.}
-		\end{textblock}
-	}{imaging_path}{Imaging path}{The camera is mounted above the vacuum chamber as visible in \textbf{a.} (gravity would be in negative $z$ direction). The image of the atoms is collimated with the first lens and passing the optics in \textbf{b.}, until it is refocused in the chip on the camera.}
-	
-	In order to image the atoms, an imaging beam is pointing along the $z$-axis according to \refFig{imaging_path}.
-	A bikonvex lens focuses the imaging beam onto the CCD camera, which is located on top of the vacuum chamber. To minimize the incident background light, the imaging path is covered in SM2 tubes, which can be directly connected to the camera.
-	
-	As the camera is also very sensitive to stray light, it has to be protected from stray light and between measurements. This is achieved by covering the beam path in SM2 tubes and a shutter, which will then cover the whole area, so no light should enter the chip.
-	
-	With this setup, molecular Bose-Einstein condensates can be set up and imaged even at low atom numbers ($n=1000$).
+In order to understand the nature of atoms in more detail, experiments are conducted where they are trapped and cooled. Under these circumstances, interactions between atoms can be tuned using Feshbach resonances. This allows to build up for example Bose-Einstein condensates (BEC) or Cooper pairs. The complete setup has been explained in more detail before \cite{Repp2013}. The following sections will focus on the imaging in order to extract these attributes and the measures it takes to reduce noise sources on the camera.
 
-\subsection{Basics of CCD cameras}
-\label{ch:ccd_basics}
+\section{Experimental requirements}
+In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower, which transfers them into a magneto-optical trap. The MOT will further cool the atoms up to the doppler limit (~\SI{140}{\micro\kelvin}). To reach lower temperatures, the atoms will be trapped inside an optical dipole trap. Forced evaporative cooling will release the fastest atoms, until temperatures of a few nano Kelvin are reached.
+
+\pltCustom{
+	\vspace{1em}
+	\begin{center}
+		\includegraphics[width=1\textwidth]{drafts/imaging_path.pdf}
+	\end{center}
 	
-	A camera operates by means of converting photons first into electrons then into voltage, which is finally read out as data\cite{ccdoperationUrl}\cite{guppy38Bsheet}. Each conversion process can add noise to the final image, which needs to be minimized in order to acquire accurate data. The most common noise sources are covered in \refCh{camera}.
-	
-	The photons are collected on an array of semiconductor photo diodes, called the pixels, where ideally the spacing between the pixels is zero to gain maximum accuracy. The resolution is then dependent on the pixel size, which is for scientific cameras usually between \SI{10}{\micro\meter} and \SI{20}{\micro\meter} per pixel. Bigger pixels means higher photon sensitivity but usually lower resolution.
-	
-	\draft{ccd_shifts}{Schematic design of a CCD array and its readout}{
-		The pixels are arranged in the pixel array. During readout they are shifted into the readout register and then to the side into the analog to digital converter
-	}
-	
-	To create a digital image, the charge from the pixels have to be shifted one-by-one into the analog digital converter (ADC). This is done, by vertically shifting them into the readout register and then horizontal into the ADC, where the charges are multiplied and converted to digital data.
-	
-	The shifting is done by storing the charges after collecting them, where each storage can be seen as an electronic potential well. In order to shift the charges and prevent overlapping, three spatially separated regions with potentials $U_1$, $U_2$ and $U_3$ are required. \refFig{charge_shift} indicates the systematics behind the shifting.
-	
-	\draft{charge_shift}{Shifting charges in a CCD detector}{
-		To shift charges from Pixel A to Pixel B, the three potentials at the regions $U_1$, $U_2$ and $U_3$ in each pixel have to be set accordingly to allow the charge flow without overlapping each other. Each row represents a single step.
-	}
-	
-	Moving electrons to the next region is a three-step process. The charges are first only present in the region $U_2$, while the potentials $U_1$ and $U_3$ are kept high. They are then distributed across $U_2$ and $U_3$ by setting them both low. At last $U_2$ will be set high such that the charge is now fully in $U_3$. This is repeated until the charge has been finally shifted from pixel A to B, which in total takes seven steps.
+	\begin{textblock}{2}(0.2,-2.65)
+		\textbf{a.}
+	\end{textblock}
+	\begin{textblock}{2}(5.7,-2.65)
+		\textbf{b.}
+	\end{textblock}
+}{imaging_path}{Imaging path}{The camera is mounted above the vacuum chamber as visible in \textbf{a.} (gravity would be in negative $z$ direction). The image of the atoms is collimated with the first lens and passing the optics in \textbf{b.}, until it is refocused in the chip on the camera.}
+
+In order to image the atoms, an imaging beam is pointing along the $z$-axis according to \refFig{imaging_path}.
+An achromatic doublett \todo{get back to stephan. is this correct?} lens focuses the imaging beam onto the CCD camera, which is located on top of the vacuum chamber.
+
+In order to measure even at low atom numbers ($n=1000$), the setup was refined allowing for high resolutions. The first lens, which collimates the image of the atoms has a low focal length (f=\todo{focal length}).
+The image is refocused into the camera by the second lens. Since the imaging uses two separate frequencies to image both Lithium and Caesium, the chromatic shift introduced by the lenses will result in two different focal points for the images. This can be compensated by a high focal length, which therefore allows to have the camera in the Rayleigh range of both laser beams.
+
+This setup then allows to image for example Bose-Einstein gases, polarized Fermi gases or superfluids with high accuracy.
+
 
 \section{Camera for double species imaging}
 \label{ch:camera}
+The camera used in order to find atoms, the Andor iKon M, is a charge-coupled device (CCD), which offers an improvement to the old setup. Using this camera, noise sources such as Readout noise and Dark noise can be reduced, which are explained in the following sections.
+
+\subsection{Basics of CCD cameras}
+\label{ch:ccd_basics}
+
+A camera operates by means of converting photons first into electrons then into voltage, which is finally read out as data\cite{ccdoperationUrl}\cite{guppy38Bsheet}. Each conversion process can add noise to the final image, which needs to be minimized in order to acquire accurate data. The most common noise sources are covered in \refCh{camera}.
+
+The photons are collected on an array of semiconductor photo diodes, called the pixels, where ideally the spacing between the pixels is zero to gain maximum accuracy. The resolution is then dependent on the pixel size, which is for scientific cameras usually between \SI{10}{\micro\meter} and \SI{20}{\micro\meter} per pixel. Bigger pixels means higher photon sensitivity but usually lower resolution.
+
+\draft{ccd_shifts}{Schematic design of a CCD array and its readout}{
+	The pixels are arranged in the pixel array. During readout they are shifted into the readout register and then to the side into the analog to digital converter
+}
+
+To create a digital image, the charge from the pixels have to be shifted one-by-one into the analog digital converter (ADC). This is done, by vertically shifting them into the readout register and then horizontal into the ADC, where the charges are multiplied and converted to digital data.
+
+The shifting is done by storing the charges after collecting them, where each storage can be seen as an electronic potential well. In order to shift the charges and prevent overlapping, three spatially separated regions with potentials $U_1$, $U_2$ and $U_3$ are required. \refFig{charge_shift} indicates the systematics behind the shifting.
+
+\draft{charge_shift}{Shifting charges in a CCD detector}{
+	To shift charges from Pixel A to Pixel B, the three potentials at the regions $U_1$, $U_2$ and $U_3$ in each pixel have to be set accordingly to allow the charge flow without overlapping each other. Each row represents a single step.
+}
+
+Moving electrons to the next region is a three-step process. The charges are first only present in the region $U_2$, while the potentials $U_1$ and $U_3$ are kept high. They are then distributed across $U_2$ and $U_3$ by setting them both low. At last $U_2$ will be set high such that the charge is now fully in $U_3$. This is repeated until the charge has been finally shifted from pixel A to B, which in total takes seven steps.
+
 
 \subsection{Comparison with the present setup}
+\label{sec:comparison}
 For the imaging of small atomic clouds, it is very important to have cameras with optimal noise and maximal readout speed. The new setup improves on both attributes. The dark noise can be significantly reduced by cooling the chip down to more than \SI{70}{\degreeCelsius}. A new readout mode, called fast kinetics, makes it possible to acquire all images before reading out. This significantly improves the speed at which images can be taken.
 
 The readout speed is highly important in our setup. Since absorption imaging is the technique of choice to measure atom attributes, three images need to be taken each sequence, being the absorption, division and background image.
 The old setup used a Guppy-38B \cite{Repp2013} camera, which has a frame rate of 30fps. This meant the acquisition was finished after \SI{100}{\milli\second}. The Andor camera, on the other hand, can take images quickly without the need to read out in-between. At the fastest shift speed, the acquisition is finished after \SI{1.632}{\milli\second}, improving the speed by a factor of more than $60$.
 
-The quantum efficiency is explained in \refCh{quantumeff} and is also highly important, as it describes how many photons are detected on a camera and is directly connected to the sensitivity. A higher quantum efficiency therefore means better results. \todo{QE of guppy?}
-\todo{look up qe of andor}
+The quantum efficiency is explained in \refCh{quantumeff} and is also highly important, as it describes how many photons are detected on a camera and is directly connected to the sensitivity. A higher quantum efficiency therefore means better results. They compare as $QE_{Li} = 79\%, QE_{Cs} = 77.3\%$ for the Andor and $QE_{Li} = 35\%, QE_{Cs} = 10\%$ for the Guppy camera, therefore the sensitivity of the new camera is significantly higher.
 
 When comparing the resolution, the chip size also has to be considered. Since higher resolutions seem to be preferable at first, it also means that for the same pixel sizes, the photon sensitivities will decrease. The pixel sizes compare to \SI{8.4}{\micro\meter} $*$ \SI{9.8}{\micro\meter} to \SI{13}{\micro\meter} * \SI{13}{\micro\meter} from the old versus the new setup respectively, while the resolutions are \SI{768x492}{} and \SI{1024x1024}{} making a larger magnification now possible.
-\todo{would be great to have maybe an image of the atoms with the old and new setup (maybe same cooling steps etc.)}
 
 The Guppy camera is a lot smaller than the Andor iKon M (\SI{48.2x30x30}{\milli\meter} vs \SI{204.2x105x107}{\milli\meter}), therefore making an implementation on a full experimental table easier. To implement such a complicated camera system that the Andor is, a lot of preparation was made in the thesis of Carmen Renner \cite{Renner2014}.
 
@@ -76,7 +72,7 @@ Nevertheless, despite its size, the new camera offers the ability to image both 
 \subsection{Dark current}
 %http://www.kip.uni-heidelberg.de/matterwaveoptics/publications/theses/diplom_ottenstein.pdf
 %http://www.mpia.de/AO/INSTRUMENTS/FPRAKT/4_F36_CCDscript2011.pdf
-A common noise source that is apparent in all CCD cameras, is the so-called dark current \cite{Ottenstein2006} \cite{FP362011}. It originates from the thermal excitation of electrons in individual pixels. Since they are made of semiconductors, once in a while, an electron can pass the potential between valence and conduction band simply due to their thermal energy. Thus, excess electrons accumulate, that contributes to the background signal and introduces additional noise.
+A common noise source that is apparent in all CCD cameras, is the so-called dark current \cite{Ottenstein2006} . It originates from the thermal excitation of electrons in individual pixels. Since they are made of semiconductors, once in a while, an electron can pass the potential between valence and conduction band simply due to their thermal energy. Thus, excess electrons accumulate, that contribute to the background signal and introduce additional noise\cite{FP362011}.
 
 The dark current has a strong temperature dependence
 \begin{equation}
@@ -137,14 +133,10 @@ In order to find the QE, one would now measure the accumulated counts for severa
 
 This camera was especially chosen from the quantum efficiency, since it is important in our case, to be able to detect most photons from Lithium and Caesium absorption.
 
-\subsection{Pixel correlations}
-\begin{itemize}
-	\item Mainly the measurement (TBD)
-	\item Some example images here maybe?
-\end{itemize}
-
 \section{Mechanical shutter}
 \label{sec:shutter}
+
+Due to the high quantum efficiency, the camera is very sensitive to stray light. Therefore it is necessary to cover the chip from stray light. A mechanical shutter which can be electronically controlled is therefore built in front of the light path, which prevents the camera from damage between measurements. The electronics were set up and the shutter characterized in order to find perfect timings, so that light only enters the chip, when a measurement is running.
 
 \subsection{Electronic and mechanical setup}
 \label{subsec:shutter_electronic}
@@ -171,7 +163,6 @@ The first element in the circuit is the optocoupler which is used to decouple pa
 The remaining parts can be skipped, by setting the jumpers. The inverter will flip the sign on the voltage. The MOSFET driver is used in order to serve the correct voltage at the transistor's gate and to help during discharge, such that the MOSFET will not overheat. The transistor will finally serve a high current of \SI{2.5}{\ampere}, that is throughput to the shutter.
 The jumpers in this figure are set as they are used in the experiment. The complete circuit can be found in \refAp{shutter_circuit}.
 }
-\todo{verify current 678}
 
 \newpage
 \subsection{Dynamical properties}
@@ -197,13 +188,13 @@ To find the actual dynamics of the shutter, an experiment was set up. The shutte
 The points have been found by pointing a laser beam at a photodiode, which was blocked by the shutter. Since the laser has a finite radius, there is a transition in the signal from the minimum to the maximum, which is due to the approximately linear opening velocity of the shutter and the gaussian intensity distribution of the laser beam.
 
 \plt{shutterDiodeSignal}{
-	Shutter characterization}{The dynamics of the shutter were measured using a laser with a variable horizontal offset, which is fixed in this plot, and a photo diode measuring the laser intensity. In this figure, the offset is \SI{9.3}{\milli\meter} from the center. An error function was fitted yielding the time until the shutter opens. The opening time was hereby defined, where the error function has its mean value, in this example being \SI{5.2}{\second}.
+	Shutter characterization}{The dynamics of the shutter were measured using a laser beam with a variable horizontal offset, which is fixed in this plot, and a photo diode measuring the laser intensity. In this figure, the offset is \SI{9.3}{\milli\meter} from the center. An error function was fitted yielding the time until the shutter opens. The opening time was hereby defined, where the error function has its mean value, in this example being \SI{5.2}{\volt}.
 }
 
-In order to find the opening and closing times of the shutter as seen in \refFig{shutterOpen}a., the offset from the center of the laser to the shutter centre was varied. For larger offsets, the time from the initial trigger until a signal in the photodiode was received takes longer when the shutter is opening, while it takes shorter when it is closing.
+In order to find the opening and closing times of the shutter as seen in \refFig{shutterOpen}a., the offset from the centre of the shutter was varied. For larger offsets, the time from the initial trigger until a signal in the photodiode was received takes longer when the shutter is opening, while it takes shorter when it is closing.
 In \refFig{shutterOpen}b. the speed is not perfectly linear. The deviations close to the centre originate from the shape of the fans. As there are five fans, there is no mirror symmetry, so that opening to the left and right is different in the end.
 
-These measurements will later be used to time the triggers in the measurement, so that the shutter can stay closed as long as possible. But in order to optimize it, there were two shutters at hand, and several springs to choose from, the combination of which were all tested until the timings for opening $t_{open}=0.12$ and for closing $t_{closing}=0.14$ were found.
+These measurements will later be used to time the triggers in the measurement, so that the shutter can stay closed as long as possible. But in order to optimize it, there were two shutters at hand, and several springs to choose from, the combination of which were all tested until the timings for opening $t_{open}=\SI{0.12}{\second}$ and for closing $t_{closing}=\SI{0.14}{\second}$ were found.
 
 \pltCustom{
 	\begin{center}
@@ -224,13 +215,16 @@ It has been found that the opening time consists of actually three timings. The 
 
 \newpage
 \section{Mask for the CCD sensor}
+One of the key features of the Andor iKon M is the fast kinetics readout mode. This allows for fast acquisition, which is important when imaging multiple species. Using this acquisition mode, we are able to take images \SI{500}{\micro\second} apart from each other, so that it is possible to take consecutive images from the same cloud before it is too dilute.
+The acquisition mode is explained in these sections as well as the diffractions introduced by a slit, which is needed to mask parts of the chip.
+
 \subsection{Fast kinetics mode}
 \label{ch:fast_kin}
-The fast kinetics mode allows the image acquisition to be only dependant on the vertical shift speed, reducing the acquisition time significantly. In this mode, only a portion of the CCD is illuminated, while the dark parts of the chip will be used as a storage. This means, that as soon as an image is taken, the illuminated pixels are shifted vertically behind a mask, such that no photons can reach them any more. When the chip is full or the user has finished their acquisition, the readout process is started.
+The fast kinetics mode allows the image acquisition timings to be only dependent on the vertical shift speed, reducing the acquisition time significantly. In this mode, only a portion of the CCD is illuminated, while the dark parts of the chip will be used as a storage. This means, that as soon as an image is taken, the illuminated pixels are shifted vertically behind a mask, such that no photons can reach them any more. When the chip is full or the user has finished their acquisition, the readout process is started.
 
 As explained earlier in \refCh{ccd_basics}, the readout consists of first shifting a row into the readout register and then horizontally shifting them into the ADC. This is a very time consuming process, since the total readout time is described by
 \begin{equation}
-t_{ij} = i*v_{ss} + (i-1)*j_{max}*h_{ss}+j*h_{ss},
+t_{ij} = i v_{ss} + (i-1) j_{max} h_{ss}+j h_{ss},
 \end{equation}
 where $v_{ss}$ and $h_{ss}$ indicate the vertical and horizontal shift speed respectively.
 With this equation, the readout time until a pixel with the coordinates $i$ and $j$ is shifted into the readout register can be calculated. The readout of all pixels beforehand is also taken into account by $j_{max}$ which is the width of the chip in pixels (1024 for the iKon M camera).
@@ -273,22 +267,22 @@ and
 \begin{equation}
 \mathbf{Series\,length}*\mathbf{Exposed\,rows} \leq \mathbf{Offset\,from\,bottom}.
 \end{equation}
-Therefore, in our application, we chose to exposure \SI{204}{\px} with an offset of \SI{820}{\px}, which gives a series length of $4$.
-The pixels that are used as temporary storage of accumulated charge until the readout process begins need to be shielded from light. This is achieved with a slit in the front of the camera that blocks part of the light beam imaging the CCD detector.
+Therefore, in our application, we chose to expose \SI{204}{\px} with an offset of \SI{820}{\px}, which gives a series length of $4$.
+The pixels that are used as temporary storage of accumulated charge until the readout process begins need to be shielded from light. This is achieved with a slit in front of the camera that blocks part of the light beam implying on the CCD detector.
 
-Since we will be imaging two species, an absorption image for each species will be followed by two division images.
+Since we will be imaging two atomic species, an absorption image for each species will be followed by two division images, as well as background images to subtract the noise.
 
 \subsection{Frequency response of a slit}
 \label{subsec:slit}
 
-The slit is an optical element in the path, which will introduce diffraction on the chip --- an effect due to the wave nature of light.
-\refFig{slit_sketch} sketches the systematics behind a laser wave approaching a slit.
+The slit is an optical element in the path, which will introduce diffraction --- an effect due to the wave nature of light.
+\refFig{slit_sketch} sketches the systematics behind a plane wave approaching a slit.
 
 \draft{slit_sketch}{Diffraction on a single slit}{A planar wave with the wavelength $\lambda$ approaches a slit with a width $a$, where the maxima of the wave are drawn as dashed lines. After the slit, Huygens principle is sketched as spherical waves, (purple and green), interfering with each other. The new wavefront is created where the waves cross each other and is as such visible on the screen to the right.}
 
 The incoming planar wave can be described by the formula:
 \begin{equation}
-E(x,z) = E_0 e^{-ikz},
+E(z) = E_0 e^{-ikz},
 \end{equation}
 where the wave is propagating in the $z$-direction with the wave number $k$ and an amplitude $E_0$.
 
@@ -337,7 +331,7 @@ I(x,z) = \frac{2 \lvert E(x,z) \rvert ^2}{\epsilon_0 c} ,
 \end{equation}
 with the dielectric constant $\epsilon_0$ and the speed of light $c$.
 
-To verify the theory, we set up a simple experiment with a collimated laser beam pointing at the CCD of the Andor camera, with a slit in between. Such behaviour was also observed in our measurements. \refFig{slit} shows the diffraction pattern that was recorded with the Andor camerea and a slit. A large, collimated beam was used to illuminate a slit in front of the CCD detector. Well resolved interference fringes can be observed by the slit.
+To verify the theory, we set up a simple experiment with a collimated laser beam pointing at the CCD of the Andor camera, with a slit in between. Such behaviour was also observed in our measurements. \refFig{slit} shows the diffraction pattern that was recorded with the Andor camerea and a slit. A large, collimated beam was used to illuminate a slit in front of the CCD detector. Well resolved interference fringes can be observed behind the slit.
 
 \pltCustom{
 	\begin{center}
@@ -353,15 +347,15 @@ To verify the theory, we set up a simple experiment with a collimated laser beam
 The experimental diffraction pattern matches the theory very well, since the deviations are in the expected regimes.
 The function washes out as it approaches the centre of the chip. This is due to the nature of the pixels, which only have a finite size and the fact, that the frequencies of the oscillations are lower on the outer ends. All oscillations that fit into one pixel are averaged, therefore diffraction is not visible.
 
-\todo{Why slit not in focus in 1:1?}
-\newpage
+This result helps to minimize the diffraction on the chip and serves as a starting point in order to optimize this effect.
+
 \subsection{Optimization of the masking setup}
 \label{subsec:slit_optim}
 
-An important issue in the optimal placement of the slit is he distance from the CCD detector at which it is going to be placed. The frequency of the diffraction patter depends on the distance $d$; it is larger for smaller $d$, and smaller for larger $d$. In the limit $\frac{a^2}{d\lambda} \ll 1$ the diffraction pattern of a point source is recovered (Fraunhofer diffraction in the far field).
+An important issue in the optimal placement of the slit is the distance from the CCD detector at which it is going to be placed. The frequency of the diffraction patter depends on the distance $d$; it is larger for smaller $d$, and smaller for larger $d$. In the limit $\frac{a^2}{d\lambda} \ll 1$ the diffraction pattern of a point source is recovered (Fraunhofer diffraction in the far field).
 
 This dependence on the distance was also tested experimentally and the results are shown in \refFig{slit_scheme}.
-The optimal slit position is therefore close to the chip, since at this position the frequencies are maximal, therefore more oscillations fit into one pixel.
+The signal in one pixel is the average over all oscillations, that fit into the width of the pixel. Therefore the optimal slit position is close to the chip, since then the frequencies are maximal.
 
 \pltCustom{
 	\begin{overpic}[width=0.5\textwidth]{drafts/slit_scheme.pdf}

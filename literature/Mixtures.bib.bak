@@ -12954,7 +12954,8 @@
 @Electronic{guppy38Bsheet,
   author =       {Allied Vision},
   title =        {Guppy F-038 datasheet},
-  organization = {Allied Vision}
+  organization = {Allied Vision},
+  url =          {https://www.alliedvision.com/de/support/technische-dokumentation/guppy-dokumentation.html}
 }
 
 @Article{Gupta1976,
@@ -14101,6 +14102,12 @@ physics”, Trento, June 23-27,},
   Publisher                = {American Physical Society},
   Timestamp                = {2014.03.28},
   Url                      = {http://link.aps.org/doi/10.1103/PhysRevA.81.022711}
+}
+
+@Misc{hdaplates,
+  author =       {University of Heidelberg},
+  howpublished = {\url{http://dc.zah.uni-heidelberg.de/lswscans/res/positions/q/form}},
+  note =         {Accessed: 28.03.2016}
 }
 
 @MastersThesis{Heck2012,

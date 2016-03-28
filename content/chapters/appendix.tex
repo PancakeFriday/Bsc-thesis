@@ -2,7 +2,7 @@
 \chapter{Acquisition sequence}
 \todo{I'm not sure if this chapter belongs in the appendix. It is kind of a technical thing and I'm not sure where I could fit it in}
 \label{ch:acqseq}
-During absorption image, the Andor camera will take eight images, which consist of two absorption, two division and four background images (or if the user specifies to only image one species, that then is one absorption and division image and six background images).
+During absorption imaging, the Andor camera will take eight images, which consist of two absorption, two division and four background images (or if the user specifies to only image one species, then there is one absorption and division image and six background images).
 % we are not using the macro as I do not need captions or labels and stuff and the image has to be exactly here
 
 As the camera is only interested in the rising edge of the signal, the trigger length is not really important. But the chip will be exposed for the duration of the exposure time, after which the laser should be turned off. The, in our case, 204 pixels are then shifted downwards, taking $t_{vshift}$, which can be calculated by multiplying the vertical shift speed with the pixel height. For the fastest shift speed, this would result in
@@ -57,6 +57,8 @@ The circuit given on the next page is the complete circuit as opposed to \refFig
 
 The breadboard on the bottom are built into the circuit, so that custom additions can be made, although this is not used in our case.
 
+\todo{Reference Gerhard}
+
 \begin{figure}[htb]
 	\begin{center}
 		\includegraphics[width=\textwidth]{drafts/shutter_circuit.pdf}
@@ -67,12 +69,12 @@ The breadboard on the bottom are built into the circuit, so that custom addition
 
 \draft{camera}{Drawing of the camera}{As can be seen in this drawing, the CCD chip is first hidden behind a cover, that also includes an internal shutter and then offset by an additional \SI{5}{\milli\meter}.}
 
-The cover, which can be seen in \refFig{cam_drawing} has a width of \SI{12.5}{\milli\meter}, which adds additional space before the chip. The cover is mainly for a manual cap to cover the chip, when the camera is not used, and an internal shutter. Since we knew, that the internal shutter was not needed, we were able to remove the cover bringing us closer to the chip. Images of under the cover can be found in Appendix \todo{A/B/C? Image?}.
+The cover, which can be seen in \refFig{camera} has a width of \SI{12.5}{\milli\meter}, which adds additional space before the chip. The cover is mainly for a manual cap to cover the chip, when the camera is not used, and an internal shutter. Since we knew, that the internal shutter was not needed, we were able to remove the cover bringing the slit closer to the chip. Images of under the cover can be found in Appendix \todo{A/B/C? Image?}.
 
 The holes for M4 screws were already there, so a custom plate was built on which the slit could be mounted on.
 In the technical drawing in \refFig{cam_drawing}, the centre-most holes are reserved for the slit, which can be moved up and down to select the appropriate height needed for the imaging.
 The plate also gives the opportunity to move the whole set with the long holes in the outer-most edges.
 
-It is also important to note, that the camera is very sensitive to stray light. The necessity to cover the laser path is unavoidable, but fortunately a simple solution. The plate offers another set of screw holes, which will hold a SM2-mount, therefore eliminating any gap that could allow photons to reach the camera externally.
+It is also important to note, that the camera is very sensitive to stray light due to the high quantum efficiency. Therefore it is necessary to cover the laser path. The plate offers another set of screw holes, which will hold a SM2-mount, therefore eliminating any gap that could allow photons to reach the camera externally.
 
 The long path of SM2 tubes then only allows the smallest amount of stray light to enter the camera, which will have significantly lower intensity than the actual absorption image.

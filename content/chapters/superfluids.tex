@@ -1,16 +1,14 @@
 \chapter{Thermometry of an ultracold ideal fermi gas}
-\iffalse
 The purpose of the camera is to measure scientifically important data from dense atomic clouds consisting of Lithium and Caesium.
-The improvement of the resolution in the whole imaging setup now allows to find new attributes that could not be measured before and as an example, fermionic superfluids were chosen. The key signature of a superfluid transition can be found by creating a population imbalance, that then shows a unique structure in the centre of the cloud, differing them from the Thomas-Fermi distribution that is apparent in Bose-Einstein condensates (BEC).
-\fi
+The improvement of the resolution in the whole imaging setup now allows to explore new attributes that could not be measured before and as an example, ultracold ideal fermi gases were chosen. They are apparent at very low temperatures, where only few atoms due to evaporative cooling are present. Their density distribution differs slightly from a gaussian form and from that one can extract temperatures and atom numbers.
+
+In order to image the atoms, a technique called absorption imaging is used which is explained in the next section, before the introduction to ideal fermi gases.
 
 \section{Absorption imaging}
-\todo{cite stephan helmrich}
-\todo{cite simon murmann}
-In order to find microscopic attributes of atoms, or systems of atoms, it is necessary to look at the atoms themselves. This is commonly accomplished using either fluorescence or absorption imaging. In both cases, a laser beam is pointed at an atomic cloud, that is cooled and confined in a trap. In fluorescence imaging, the scattered light is collected, typically in a direction that is different than the illuminating beam.
+In order to find microscopic attributes of atoms, or systems of atoms, it is necessary to look at the atoms themselves. This is commonly accomplished using either fluorescence or absorption imaging\cite{Murmann2011}. In both cases, a laser beam is pointed at an atomic cloud, that is cooled and confined in a trap. In fluorescence imaging, the scattered light is collected, typically in a direction that is different than the illuminating beam.
 The intensity from the light through this method is not very high, since it is radiated in all directions. Therefore, long exposure times are required during which atoms can move and the information about the initial density and energy distribution is lost. Nevertheless, it is useful for single- and few-atom detection. \todo{cite phd thesis of Serwane, Selim, Science 332, 336 (2011)}
 
-In contrast, in absorption imaging, the transmitted intensity of the imaging beam is recorded. Without atoms, one would see a beam profile of the laser. With atoms, a shadow is visible due to the atoms blocking the light. This is accomplished, by correctly tuning the laser to a resonance frequency of the atoms, which enables them to absorb the light, exciting them to a higher state. Through spontaneous emission, the atoms will decay, making it possible to excite them once again. This method works well, when the signal from the absorbed light is significantly larger compared to the noise sources. \todo{still not sure about this...}
+In contrast, in absorption imaging\cite{helmrich2013}, the transmitted intensity of the imaging beam is recorded. Without atoms, one would see a beam profile of the laser beam. With atoms, a shadow is visible due to the atoms "blocking" the light. This is accomplished, by correctly tuning the laser to a resonance frequency of the atoms, which enables them to absorb the light, exciting them to a higher state. Through spontaneous emission, the atoms will decay, making it possible to excite them once again. This method works well, when the "signal" from the absorbed light is significantly larger compared to the noise sources.
 
 \todo{example two level atom excitation image}
 
@@ -34,30 +32,63 @@ The laser intensity $I_0$ is measured in a separate frame, containing the laser 
 
 From the resulting optical density, one can now conclude, for example, atom density distributions, atom numbers or excitation rates.
 
-\iffalse
-\section{Previous observations in a polarized fermi gas}
+\section{Density distributions of ideal Fermi gases}
 
-Superfluidity can be observed macroscopically for example in cooled Helium. As the fluid climbs walls and ignores its surface tension, it behaves in ways that are unintuitive at first. This is still mysterious in parts, therefore in order to understand superfluids better, an ultracold quantum system can be used as a model.
+Ideal Fermi gases offer a new aggregate, that is complementary to Bose-Einstein condensate. They are found on the Bardeen-Cooper-Schrieffer side of the Feshbach resonances as a polarized species with only one spin component. At very cold temperatures, they start to differ from a gaussian distribution which is further investigated in this chapter.
 
-% http://www.nature.com/nature/journal/v435/n7045/pdf/nature03858.pdf
-The first confident detection was carried out by M. Zwierlein et al in 2005\todo{cite zwierlein see comment}. A Bose-Einstein condensate was prepared using evaporative cooling and a dipole trap. An additional laser beam, that is split using an acousto-optic deflector into two beams, that are separated by $3/4$th of the trap diameter will then be used to "stir" the Lithium spin mixture.
+The distribution of the atoms depends on the fraction of their temperature to the Fermi temperature\cite{Ketterle2008} $T_F$. For $T/T_F \gg 1$, the atoms will follow a gaussian distribution, which can be identified using the gaussian radius:
+\begin{equation}
+\sigma _i = \sqrt{\frac{2k_BT}{mw_i^2}},
+\end{equation}
+with the mass of Lithium $m$ and the trapping frequency $w_i$ in the direction of the radius. Due to the alignment of the dipole trap, the cloud will not have a spherical shape and will therefore have different radii.
 
-This laser is merely used to prove, that a superfluid has been prepared. Upon rotation, when the correct feshbach resonances are applied, the condensate will start to create a vortex lattice, that is visible in the cloud as holes. In an optimal setup, the group was able to find up to 40 vortices in a single atomic cloud.
+In the degenerate regime however, for $T/TF \ll 1$, the radius is described by the Fermi radius
+\begin{equation}
+R_{Fi} = \sqrt{\frac{2E_F}{mw_i^2}},
+\end{equation}
+using the Fermi energy $E_F$.
 
-This laid the ground stone for the detection of superfluids, as no other effect is known to cause these vortices.
-Since it was possible from then on to prepare superfluids confidently, future research concentrated on understanding this exotic aggregate state.
+It is therefore suggested to use a unified radius, as the temperatures are not known a priori:
+\begin{equation}
+R_i^2 = \frac{2k_BT}{mw_i^2}f( e^{\frac{\mu}{k_BT}}).
+\end{equation}
+The interpolation function $f(x)$ is hereby:
+\begin{equation}
+f(x) = \frac{Li_1(-x)}{Li_0(-x)}
+\end{equation}
+where $Li_n$ is polylogarithm and can be defined as
+\begin{equation}
+Li_s(z) = \sum_{k=1}^{\inf} \frac{z^k}{k^s}.
+\end{equation}
 
-\todo{cite partridge}
-The group of G. Partridge found an interesting effect when creating a spin imbalance rather than having 50\% of each spin in the Fermi gas. In order to do that, a BEC was prepared and feshbach resonances are applied. A polarization $P$ is introduced as $P=\left( N_1-N_2\right) / \left( N_1+N_2\right)$ where $N_i$ corresponds to either spin-up $\ket{1}$ or spin-down $\ket{2}$. For the polarization $P=0$, the cloud is still a BEC, although for higher polarizations, the atomic distribution is such that there is an inner unpolarized core which is surrounded by the majority component.
+In our case, we integrate over all but one axes, and therefore find the fitting function for the atom numbers:
+\begin{equation}
+\label{eq:n1d}
+n_{1D}(x) = n_{1D,0}\frac{Li_{5/2}\left( \pm \mathrm{exp}\left[ q-\frac{x^2}{R_x^2}f(e^q)\right] \right)}{Li_{5/2}(\pm e^q)}.
+\end{equation}
+The derivation can be found in \cite{Ketterle2008}. The parameter $q=\frac{\mu}{k_BT}$ can be extracted, which contains information about the chemical potential $\mu$ and the temperature $T$.
 
-This has been further observed in the BEC-BCS crossover by T. De Silva and E. Mueller \todo{cite}. They were also able to observe this structure consisting of an unpolarized inner core and the remaining majority components outside. They were also able to motivate this theoretically and found a formula for the distribution of the fermions.
+This parameter can then be used to calculate the degeneracy parameter:
+\begin{equation}
+\frac{T}{T_F} = \left[ -6 Li_3(-e^q) \right]^{-1/3}.
+\end{equation}
 
-M. Zwierlein et al. and W. Ketterle \todo{cite} continued this research and found that superfluidity can be directly observed from density profiles, without the need to ramp the magnetic field, which had to be used before. Such an achievement makes the theoretical description easier, therefore this is a great success.
-They showed the density profiles for at the BEC and BCS side of the Feshbach resonance and directly on resonance. Furthermore, the polarization $P$ was probed in order to find an optimal setup, which seemed to be the case for $P \sim 70\%$.
+To compensate for the finite resolution of the chip on the camera, the cloud can be imaged after a short time of flight $t$. The temperature can then be calculated from the dynamics as
+\begin{equation}
+k_BT = \frac{1}{2} mw_i^2 \frac{R_i^2}{1+w_i^2t^2}\frac{1}{f(e^q)}.
+\end{equation}
 
-\section{Implementation in the setup}
 
-The preparation of a fermionic superfluid is well documented, for example in \todo{cite zwierlein nature 2006}, such that it should be possible to implement a sequence in our current setup in order to achieve this phase transition. In principle, the atoms are prepared at first in a MOT, then further cooled using D1 cooling \todo{D1?} and loaded into the dipole trap. In this optical trap, the spin imbalance is created. The dipole trap can then be further ramped to cool the remaining atoms evaporatively. For the detection of the superfluid, a time of flight method should be used. The trap depth is in the order of \SI{1}{\micro\kelvin}.
+	
+\section{Finding properties of the Fermi gas}
 
----> now our own measurement.
-\fi
+As seen before, from an ideal Fermi gas, one can deduce the temperature and Fermi temperature of a gas.
+In order to implement ideal Fermi gases, Lithium was prepared in an optical dipole trap. The power was ramped down several times at the Feshbach resonance $B=\SI{896}{\gauss}$, until only a fraction of the atoms remained. The spin-down atoms received a short laser pulse, so that the cloud only consisted of spin-up $^6$Li.
+
+To compare the properties of the gas, the dipole trap was ramped down to three different powers, and everything I would write from here on is probably not correct, so I will be discussing this in person tomorrow as my results are super weird.
+
+\pltCustom{
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{drafts/fermi_fit.pdf}
+	\end{center}
+}{fermi_fit}{saywhat}{plt pls.}
