@@ -793,6 +793,11 @@
   Url                      = {http://link.aps.org/doi/10.1103/PhysRevA.63.023404}
 }
 
+@Manual{andorManual,
+  title =        {Andor iKon M manual},
+  organization = {Andor}
+}
+
 @Article{Andre2006,
   Title                    = {A coherent all-electrical interface between polar molecules and mesoscopic superconducting resonators},
   Author                   = {Andre, A. and DeMille, D. and Doyle, J. M. and Lukin, M. D. and Maxwell, S. E. and Rabl, P. and Schoelkopf, R. J. and Zoller, P.},
@@ -14295,6 +14300,12 @@ physics”, Trento, June 23-27,},
 
   File                     = {Helfrich2011b.pdf:.\\ArticlePDFs\\Helfrich2011b.pdf:PDF;Helfrich2011b.pdf:ArticlePDFs\\Helfrich2011b.pdf:PDF},
   Timestamp                = {2015.02.06}
+}
+
+@MastersThesis{helmrich2013,
+  author = {Stephan Helmrich},
+  title =  {Improving optical resolution by noise correlation analysis},
+  year =   {2013}
 }
 
 @Article{Henkel2010,
@@ -37399,6 +37410,12 @@ physics”, Trento, June 23-27,},
   Publisher                = {Nature Publishing Group},
   Timestamp                = {2016.02.17},
   Url                      = {http://dx.doi.org/10.1038/nature04936}
+}
+
+@PhdThesis{,
+  author = {Stephan Helmrich},
+  title =  {Improving optical resolution by noise correlation analysis},
+  year =   {2013}
 }
 
 @comment{jabref-meta: fileDirectory:./ArticlePDFs;}
