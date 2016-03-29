@@ -4,7 +4,7 @@ In order to understand the nature of atoms in more detail, experiments are condu
 
 \section{Experimental requirements}
 \label{ch:expreq}
-In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower, which transfers them into a magneto-optical trap. The MOT will further cool the atoms up to the doppler limit (around \SI{140}{\micro\kelvin}). To reach lower temperatures, the atoms will be trapped inside an optical dipole trap. Forced evaporative cooling will release the fastest atoms, until temperatures of a few nano Kelvin are reached.
+In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower, which transfers them into a magneto-optical trap. The MOT will further cool the atoms up to the Doppler limit (around \SI{140}{\micro\kelvin}). To reach lower temperatures, the atoms will be trapped inside an optical dipole trap. Forced evaporative cooling will release the fastest atoms, until temperatures of a few nano Kelvin are reached.
 
 \pltCustom{
 	\vspace{1em}
@@ -21,7 +21,7 @@ In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are t
 }{imaging_path}{Imaging path}{The camera is mounted above the vacuum chamber as visible in \textbf{a.} (gravity would be in negative $z$ direction). The image of the atoms is collimated with the first lens and passing the optics in \textbf{b.}, until it is refocused in the chip on the camera.}
 
 In order to image the atoms, an imaging beam is pointing along the $z$-axis according to \refFig{imaging_path}.
-An achromatic doublett lens focuses the imaging beam onto the CCD camera, which is located on top of the vacuum chamber.
+An achromatic doublet lens focuses the imaging beam onto the CCD camera, which is located on top of the vacuum chamber.
 
 In order to measure even at low atom numbers ($n=1000$), the setup was refined allowing for high resolutions. The first lens, which collimates the image of the atoms has a low focal length (f=\SI{100}{\milli\meter}).
 The image is refocused into the camera by the second lens. Since the imaging uses two separate frequencies to image both Lithium and Caesium, the chromatic shift introduced by the lenses will result in two different focal points for the images. This can be compensated by a high focal length, which therefore allows to have the camera in the Rayleigh range of both laser beams, when they are assumed to be gaussian.
@@ -106,7 +106,7 @@ As described in \refCh{ccd_basics}, pixels are shifted in order to be read out b
 
 In \refFig{hvspeed}, the readout speeds were probed for their noise. The measurement was carried out by taking images at low exposure time and low temperature, so that the main noise source would be the readout and not the dark current. The variance of an image then indicates the noise accumulation on the chip and it has been shown, that slower readout speeds accumulate less noise, although it is only dependent on the horizontal, not on the vertical shift speed.
 
-The actual readout of the chip can be done at slow speeds, so that the noise from horizontal shifting is low. As the vertical shifts do not add significant noise, it can safely be set to fast speeds, which is also favorable, as $^6$Li and $^{133}$Cs are imaged back to back as fast as possible, so that the cloud dynamics are still approximately the same.
+The actual readout of the chip can be done at slow speeds, so that the noise from horizontal shifting is low. As the vertical shifts do not add significant noise, it can safely be set to fast speeds, which is also favourable, as $^6$Li and $^{133}$Cs are imaged back to back as fast as possible, so that the cloud dynamics are still approximately the same.
 
 Shifting charges means increasing and decreasing potential wells, so that they can move from one into the other. If this is done fast enough (non-adiabatic), electrons in the pixel are more likely to get excited from the valence to the conduction band from the semiconductor, therefore adding noise. As a consequence of these results, slower readout speeds are used in order to not add significantly more noise.
 
@@ -154,7 +154,7 @@ The guides are connected to each other and can be pulled outwards with a mechani
 
 Although the coil can pull the magnet in, it cannot be pushed away. This is compensated using a spring, which is connected to the switch. This also means, that the current driving the coil needs to be high enough to also work against the spring.
 
-The optimal case would be now to have fast opening and closing times, since we want to prevent illumation between measurements. This can be achieved by testing several springs and to make the pull from the magnetic coils as fast as possible, which means increasing the current to drive it.
+The optimal case would be now to have fast opening and closing times, since we want to prevent illumination between measurements. This can be achieved by testing several springs and to make the pull from the magnetic coils as fast as possible, which means increasing the current to drive it.
 
 A custom circuit as shown in \refFig{shutter_circuit_simplified} is used. In order to obtain a high current to increase the pull from the magnetic coil on the magnet, a transistor is used, which is controlled by a MOSFET driver. The complete circuit also contains a voltage regulator, so that the user does not need to know the input of the driver and can simply use a high voltage to open the shutter ($V\in\left[2,8\right]\mathrm{V}$) and a low voltage ($V=\SI{0}{\volt}$) to close it.
 
@@ -168,7 +168,6 @@ The remaining parts can be skipped, by setting the jumpers. The inverter will fl
 The jumpers in this figure are set as they are used in the experiment. The complete circuit can be found in \refAp{shutter_circuit}.
 }
 
-\newpage
 \subsection{Dynamical properties}
 The shutter operates by controlling a magnetic coil, which pulls a magnet. The magnet is reverted into its original position by a spring, closing the shutter. 
 It was discussed before, in \refSubsec{shutter_electronic}, that more fans give a better approximation to a circular motion. Optimally, we would expect the shutter to open perfectly circular with linear velocity. Therefore, to optimize on this, one would look at opening and closing speeds, which should be minimal.
@@ -187,12 +186,12 @@ It was discussed before, in \refSubsec{shutter_electronic}, that more fans give 
 	\end{textblock}
 }{shutter_experiment}{Probing the shutter for dynamics}{The shutter is proped at several positions using a laser. The offset in y direction was varied to find opening and closing times as a function of their offset.}
 
-To find the actual dynamics of the shutter, an experiment was set up. The shutter was probed at several positions, using a laser, to find the opening time. An example of one of many measurements is shown in \refFig{shutterDiodeSignal}. The laser beam has a gaussian intensity distribution, which results in a error function on the photodiode as only partial intensiy is received from the diode, when the shutter is still blocking parts of the beam.
+To find the actual dynamics of the shutter, an experiment was set up. The shutter was probed at several positions, using a laser, to find the opening time. An example of one of many measurements is shown in \refFig{shutterDiodeSignal}. The laser beam has a gaussian intensity distribution, which results in a error function on the photodiode as only partial intensity is received from the diode, when the shutter is still blocking parts of the beam.
 
 The points have been found by pointing a laser beam at a photodiode, which was blocked by the shutter. Since the laser has a finite radius, there is a transition in the signal from the minimum to the maximum, which is due to the approximately linear opening velocity of the shutter and the gaussian intensity distribution of the laser beam.
 
 \plt{shutterDiodeSignal}{
-	Shutter characterization}{The dynamics of the shutter were measured using a laser beam with a variable horizontal offset, which is fixed in this plot, and a photo diode measuring the laser intensity. In this figure, the offset is \SI{9.3}{\milli\meter} from the center. An error function was fitted yielding the time until the shutter opens. The opening time is defined here as the mean value of the error function, and was found to be \SI{41.35}{\milli\second} in this case.
+	Shutter characterization}{The dynamics of the shutter were measured using a laser beam with a variable horizontal offset, which is fixed in this plot, and a photo diode measuring the laser intensity. In this figure, the offset is \SI{9.3}{\milli\meter} from the centre. An error function was fitted yielding the time until the shutter opens. The opening time is defined here as the mean value of the error function, and was found to be \SI{41.35}{\milli\second} in this case.
 }
 
 In order to find the opening and closing times of the shutter as seen in \refFig{shutterOpen}a., the offset from the centre of the shutter was varied. For larger offsets, the time from the initial trigger until a signal in the photodiode was received is longer when the shutter is opening, while it is shorter when it is closing.
@@ -217,12 +216,13 @@ It has been found that the opening time actually consists of three timings. The 
 \draft{shutterSignals}{Shutter opening timings}{In the figure, the four signals show the timings until the shutter is open. The blue signal is the trigger that is sent from the user to start the opening sequence. The electronics add some minor delay, which is about a few nanoseconds until they send out the green trigger. After a certain delay time, which is most likely due to the coil needing to accumulate charge first, the red signal indicates when the shutter starts to open at the centre. The opening sequence is finished, when the shutter is fully open, which is shown by the turquoise line.}
 
 \section{Mask for the CCD sensor}
+\label{sec:maskccd}
 One of the key features of the Andor iKon M is the fast kinetics readout mode. This allows for fast acquisition, which is important when imaging multiple species. Using this acquisition mode, we are able to take images \SI{500}{\micro\second} apart from each other, so that it is possible to take consecutive images from the same cloud before it is too dilute.
 The acquisition mode is explained in these sections as well as the diffractions introduced by a slit, which is needed to mask parts of the chip.
 
 \subsection{Fast kinetics mode}
 \label{ch:fast_kin}
-The fast kinetics mode allows the image acquisition timings to be only dependent on the vertical shift speed, reducing the acquisition time significantly. In this mode, only a portion of the CCD is illuminated, while the dark parts of the chip will be used as a storage. This means, that as soon as an image is taken, the illuminated pixels are shifted vertically behind a mask, such that no photons can reach them anymore. When the chip is full or the user has finished their acquisition, the readout process is started.
+The fast kinetics mode allows the image acquisition timings to be only dependent on the vertical shift speed, reducing the acquisition time significantly. In this mode, only a portion of the CCD is illuminated, while the dark parts of the chip will be used as a storage. This means, that as soon as an image is taken, the illuminated pixels are shifted vertically behind a mask, such that no photons can reach them any more. When the chip is full or the user has finished their acquisition, the readout process is started.
 
 As explained earlier in \refCh{ccd_basics}, the readout consists of first shifting a row into the readout register and then horizontally shifting them into the ADC. This is a very time consuming process, since the total readout time is described by
 \begin{equation}
@@ -230,7 +230,7 @@ t_{ij} = i v_{ss} + (i-1) j_{max} h_{ss}+j h_{ss},
 \end{equation}
 where $v_{ss}$ and $h_{ss}$ indicate the vertical and horizontal shift speed respectively.
 With this equation, the readout time until a pixel with the coordinates $i$ and $j$ is shifted into the readout register can be calculated. The readout of all pixels beforehand is also taken into account by $j_{max}$ which is the width of the chip in pixels (1024 for the iKon M camera).
-As can be seen, in terms of the horizontal speed, the position of the last pixel in a row has a quadratic dependency. This is the dominant contribution to the readout time which is necessary to shift the pixels into the ADC. At this point, the speed should not matter too much anymore, because the experiment is already finished and the pixels are not illuminated anymore.
+As can be seen, in terms of the horizontal speed, the position of the last pixel in a row has a quadratic dependency. This is the dominant contribution to the readout time which is necessary to shift the pixels into the ADC. At this point, the speed should not matter too much any more, because the experiment is already finished and the pixels are not illuminated any more.
 
 \pltCustom{
 	\begin{center}
@@ -299,7 +299,7 @@ Taylor expansion of the radius for large $z$ allows us, to substitute $r^2$ with
 E(x,z) = E_0 e^{-ikz}\sqrt{\frac{ik}{2\pi z}}\int_{Slit} \mathrm{exp}\left( -\frac{ik}{2z}(x-x')^2\right) \mathrm{d}x'.
 \end{equation}
 The normalization was derived from the gaussian normal distribution $\mathrm{exp}( -\frac{ik}{2z}(x-x')^2)$. The integral will run over the slit size, with the origin in its middle and width $a$.
-We want to also write the exponential as a function of $-\frac{i\pi t^2}{2}$, due to the definition of fresnel integrals. The substitution follows:
+We want to also write the exponential as a function of $-\frac{i\pi t^2}{2}$, due to the definition of Fresnel integrals. The substitution follows:
 \begin{equation}
 \frac{k}{2z}(x-x')^2 = \frac{\pi t^2}{2},
 \end{equation}
@@ -313,7 +313,7 @@ such that the field becomes
 \begin{equation}
 E(x,z) = -E_0 e^{-ikz}\sqrt{\frac{i}{2}}\int_{t(-a/2)}^{t(a/2)} \mathrm{exp}\left( -\frac{i\pi t^2}{2}\right) \mathrm{d}t.
 \end{equation}
-The fresnel integrals are defined by
+The Fresnel integrals are defined by
 \begin{equation}
 C(x) = \int_0^x \mathrm{cos}\left(\frac{\pi t^2}{2}\right)\mathrm{d}t,
 \end{equation}
@@ -332,7 +332,7 @@ I(x,z) = \frac{2 \lvert E(x,z) \rvert ^2}{\epsilon_0 c} ,
 \end{equation}
 with the dielectric constant $\epsilon_0$ and the speed of light $c$.
 
-To verify the theory, we set up a simple experiment with a collimated laser beam pointing at the CCD of the Andor camera, with a slit in between. The predicted interference fringes were observed in our experiment. \refFig{slit} shows the diffraction pattern that was recorded with the Andor camerea and a slit. A large, collimated beam was used to illuminate a slit in front of the CCD detector, which casted the diffraction pattern on the chip. Using the theoretical description, we were able to extract the slit width $a=\SI{2.470\pm0.013}{\milli\meter}$ and the distance to the chip $d=\SI{11.0\pm0.3}{\milli\meter}$.
+To verify the theory, we set up a simple experiment with a collimated laser beam pointing at the CCD of the Andor camera, with a slit in between. The predicted interference fringes were observed in our experiment. \refFig{slit} shows the diffraction pattern that was recorded with the Andor camera and a slit. A large, collimated beam was used to illuminate a slit in front of the CCD detector, which casted the diffraction pattern on the chip. Using the theoretical description, we were able to extract the slit width $a=\SI{2.470\pm0.013}{\milli\meter}$ and the distance to the chip $d=\SI{11.0\pm0.3}{\milli\meter}$.
 
 \pltCustom{
 	\begin{center}

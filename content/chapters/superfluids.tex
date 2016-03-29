@@ -7,7 +7,7 @@ In order to image the atoms, a technique called absorption imaging is used which
 
 \section{Absorption imaging}
 In order to find microscopic attributes of atoms, or systems of atoms, it is necessary to look at the atoms themselves. This is commonly accomplished using either fluorescence or absorption imaging\cite{Murmann2011}. In both cases, a laser beam is pointed at an atomic cloud, that is cooled and confined in a trap. In fluorescence imaging, the scattered light is collected, typically in a direction that is different than the illuminating beam.
-The intensity from the light through this method is not very high, since it is radiated in all directions. Therefore, long exposure times are required during which atoms can move and the information about the initial density and energy distribution is lost. Nevertheless, it is useful for single- and few-atom detection. \todo{cite phd thesis of Serwane, Selim, Science 332, 336 (2011)}
+The intensity from the light through this method is not very high, since it is radiated in all directions. Therefore, long exposure times are required during which atoms can move and the information about the initial density and energy distribution is lost. Nevertheless, it is useful for single- and few-atom detection.
 
 In contrast, in absorption imaging\cite{helmrich2013}, the transmitted intensity of the imaging beam is recorded. Without atoms, one would see a beam profile of the laser beam. With atoms, a shadow is visible due to the atoms "blocking" the light. This is accomplished, by correctly tuning the laser to a resonance frequency of the atoms, which enables them to absorb the light, exciting them to a higher state. Through spontaneous emission, the atoms will decay, making it possible to excite them once again. This method works well, when the "signal" from the absorbed light is significantly larger compared to the noise sources.
 
@@ -25,11 +25,11 @@ The laser intensity $I_0$ is measured in a separate frame, containing the laser 
 \begin{equation}
 \frac{I_{CCD} - I_{back}}{I_0' - I_{back}} = e^{-OD}.
 \end{equation}
-\todo{three images as example}
 
 From the resulting optical density, one can now conclude, for example, atom density distributions, atom numbers or excitation rates.
 
 \section{Density distributions of ideal Fermi gases}
+\label{sec:densdistrfermi}
 
 Ideal Fermi gases offer a new aggregate, that is complementary to Bose-Einstein condensate. They are found on the Bardeen-Cooper-Schrieffer side of the Feshbach resonances as a polarized species with only one spin component. At very cold temperatures, they start to differ from a gaussian distribution which is further investigated in this chapter.
 
@@ -67,11 +67,13 @@ The derivation can be found in \cite{Ketterle2008}. The parameter $q=\frac{\mu}{
 
 This parameter can then be used to calculate the degeneracy parameter:
 \begin{equation}
+\label{eq:tovertf}
 \frac{T}{T_F} = \left[ -6 Li_3(-e^q) \right]^{-1/3}.
 \end{equation}
 
 To compensate for the finite resolution of the chip on the camera, the cloud can be imaged after a short time of flight $t$. The temperature can then be calculated from the dynamics as
 \begin{equation}
+\label{eq:temp}
 k_BT = \frac{1}{2} mw_i^2 \frac{R_i^2}{1+w_i^2t^2}\frac{1}{f(e^q)}.
 \end{equation}
 
@@ -84,21 +86,48 @@ In order to implement ideal Fermi gases, Lithium was prepared in an optical dipo
 
 \pltCustom{
 	\begin{center}
-		\input{plots/fermi_fit.pgf}
+		\includegraphics[width=1\textwidth]{drafts/fermi_fit.pdf}
 	\end{center}
-	\begin{textblock}{2}(2.5,-4.85)
+	\begin{textblock}{2}(0.75,-4.7)
 		\textbf{a.}
 	\end{textblock}
-	\begin{textblock}{2}(2.5,-3.4)
+	\begin{textblock}{2}(4.55,-4.7)
 		\textbf{b.}
 	\end{textblock}
-	\begin{textblock}{2}(2.5,-1.85)
+	\begin{textblock}{2}(8.35,-4.7)
 		\textbf{c.}
 	\end{textblock}
-}{fermi_fit}{Fitting the fermi distribution to an ideal Fermi gas}{The cloud of the ideal Fermi gas can be seen in \textbf{a.}, with a maximal optical density $OD_{max} = 0.36$ and a minimal optical density of $OD_{min} = -0.02$. The data was integrated over one axis, leaving one axis free for fitting. Figure \textbf{b.} and \textbf{c.} therefore represent the y- and x-axis respectively. As the camera is not perfectly aligned as of the writing of this thesis, the x-axis does not seem to represent the theory well. For the y-axis, \refEq{n1d} was fitted, yielding the results in [table].}\todo{reftab}
+}{fermi_fit}{Fitting the fermi distribution to an ideal Fermi gas}{In order to find the physical properties of a fermionic cloud, they were imaged at three different trap depths which correspond to the $\bar{\omega} = (\omega_x \omega_y \omega_z)^{1/3}$, where $w_i$ is the trap frequency in the corresponding axis. As of the writing of this thesis, the imaging system was not yet well aligned in the x-Direction, therefore the data does not represent the theory well. The results of the fits are given in Table \ref{tab:fermi_fit}.}
 
-The measurement was executed for three different powers of the laser beam. The atoms were imaged in situ (in the trap) and after a short time of flight of \SI{1}{\milli\second}. In order to fit the function \refEq{n1d}, the absorption image yielding the optical density as seen in \refFig{fermi_fit} was integrated over one axis, giving a one dimensional distribution for the atoms.
+The measurement was executed for three different powers of the laser beam. The atoms were imaged after a short time of flight of \SI{1}{\milli\second}. In order to fit the function \refEq{n1d}, the absorption image yielding the optical density as seen in \refFig{fermi_fit} was integrated over one axis, giving a one dimensional distribution for the atoms.
 
 As the imaging is not properly optimized at this point, the distribution in the horizontal (x-axis) direction does not represent the theory well, even after averaging over several acquisitions. This problem could not be resolved due to timing constrictions, therefore the fit parameters were extracted solely from the vertical direction.
 
-On the vertical axis, a common systematic error was a small peak for high values, which did not correspond to the atoms and is probably due to the lenses, which are not properly aligned. This was excluded from the fit. The results are found in [reftable]\todo{reftable}.
+On the vertical axis, a common systematic error was a small peak for high values, which did not correspond to the atoms and is probably due to the lenses, which are not properly aligned. This was excluded from the fit. Due to the alignment in the x-Direction, the measurement could not be included, as the fragments disturbed the data too much.
+\begin{table}
+	\begin{center}
+		\begin{tabular}{|l||l|l|l|}
+			\hline
+			& $\bar{\omega}=\SI{53.8}{\hertz}$ & $\bar{\omega}=\SI{67.8}{\hertz}$ & $\bar{\omega}=\SI{119.8}{\hertz}$ \\ 
+			\hline
+			\hline
+			$n_{1D}$ & $25.6\pm0.1$ & $34.07\pm0.13$ & $44.98\pm0.24$ \\ 
+			\hline
+			$q$ & $1.87\pm0.35$ & $1.08\pm0.34$ & $-2.0\pm1.85$ \\
+			\hline
+			$R_y$ & $23.9\pm0.72$ & $23.80\pm0.75$ & $26.79\pm1.06$ \\
+			\hline
+			\hline
+			$T$ & $(5.92\pm0.55)*10^{-8}$ & $(7.43\pm0.14)*10^{-7}$ & $(1.23\pm0.25)*10^{-6}$ \\
+			\hline
+			$T/T_F$ & $0.34$ & $0.42$ & $1.01$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\setCaption{Fit parameters for various trap depths.}{The Fermions were fitted using \refEq{n1d}, where the parameter $n_{1D}$ describes the amplitude of the peak. $q$ is a shape parameter, which is negative if the cloud is thermal or positive if the cloud is degenerate. $R_y$ is then the clouds radius similar as the radius can be described in a gaussian distribution which is in units of pixels and can be calculated in natural units using the pixel size (\SI{13}{\micro\meter}) and the magnification ($7.5$).}
+	\label{tab:fermi_fit}
+\end{table}
+
+In order to properly fit \refEq{n1d}, a linear function had to be added, as there was a constrant gradient on the chip, most likely due to the readout of the image. From the fit parameters in Table \ref{tab:fermi_fit}, it was possible to calculate the temperature and the degeneracy parameter from \ref{eq:temp} and \ref{eq:tovertf} respectively. From the results of $T/T_F$ it can be seen, that the gas is becoming more degenerate, as the trapping frequencies become lower. Additionally, the temperature of the gas is becoming cooler, as more atoms leave the trap, which is expected from evaporative cooling as well.
+
+This experiment already shows the operation of the camera as a scientific instrument. As predicted from theory \cite{Ketterle2008}, the gas follows a Fermi distribution as the cloud becomes colder.
