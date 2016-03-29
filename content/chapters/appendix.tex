@@ -1,6 +1,5 @@
 \appendix
 \chapter{Acquisition sequence}
-\todo{I'm not sure if this chapter belongs in the appendix. It is kind of a technical thing and I'm not sure where I could fit it in}
 \label{ch:acqseq}
 During absorption imaging, the Andor camera will take eight images, which consist of two absorption, two division and four background images (or if the user specifies to only image one species, then there is one absorption and division image and six background images).
 % we are not using the macro as I do not need captions or labels and stuff and the image has to be exactly here
@@ -51,11 +50,24 @@ The trigger signals can finally be calculated via \refTab{trigg_timing}.
 \end{center}
 \end{table}
 
+\chapter{Design of the shutter}
+\label{ch:shutter_design}
+\pltCustom{
+\begin{center}
+	\includegraphics[width=0.3\textwidth]{img/shutter_front.jpg}
+\end{center}
+}{shutter_front}{Front view of the shutter}{Five fans are visible on the shutter as well as the mechanical guides, used to pull the fans outwards.}
+\pltCustom{
+	\begin{center}
+		\includegraphics[width=0.3\textwidth]{img/shutter_back.jpg}
+	\end{center}
+}{shutter_back}{Back view of the shutter}{The magnet is connected to the lever, which pulls the fans outwards.}
+
 \chapter{Shutter circuit}
 \label{ch:shutter_circuit}
 The circuit given on the next page is the complete circuit as opposed to \refFig{shutter_circuit_simplified}. The key difference here, is that the actual board contains two input/output ports and there are also converters (visible in the top-left corner), that keep the voltage at \SI{24}{\volt}, which is necessary in order to use the MOSFET driver.
 
-The breadboard on the bottom are built into the circuit, so that custom additions can be made, although this is not used in our case.
+The breadboard on the bottom are built into the circuit, so that custom additions can be made, although this is not used in our case. This circuit is commonly used in various labs in the institute, if high currents are required and was designed by Gerhard Zuern.
 
 \todo{Reference Gerhard}
 
@@ -69,7 +81,7 @@ The breadboard on the bottom are built into the circuit, so that custom addition
 
 \draft{camera}{Drawing of the camera}{As can be seen in this drawing, the CCD chip is first hidden behind a cover, that also includes an internal shutter and then offset by an additional \SI{5}{\milli\meter}.}
 
-The cover, which can be seen in \refFig{camera} has a width of \SI{12.5}{\milli\meter}, which adds additional space before the chip. The cover is mainly for a manual cap to cover the chip, when the camera is not used, and an internal shutter. Since we knew, that the internal shutter was not needed, we were able to remove the cover bringing the slit closer to the chip. Images of under the cover can be found in Appendix \todo{A/B/C? Image?}.
+The cover, which can be seen in \refFig{camera} has a width of \SI{12.5}{\milli\meter}, which adds additional space before the chip. The cover is mainly for a manual cap to cover the chip, when the camera is not used, and an internal shutter. Since we knew, that the internal shutter was not needed, we were able to remove the cover bringing the slit closer to the chip.
 
 The holes for M4 screws were already there, so a custom plate was built on which the slit could be mounted on.
 In the technical drawing in \refFig{cam_drawing}, the centre-most holes are reserved for the slit, which can be moved up and down to select the appropriate height needed for the imaging.

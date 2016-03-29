@@ -3,6 +3,7 @@
 In order to understand the nature of atoms in more detail, experiments are conducted where they are trapped and cooled. Under these circumstances, interactions between atoms can be tuned using Feshbach resonances. This allows to build up for example Bose-Einstein condensates (BEC) or Cooper pairs. The complete setup has been explained in more detail before \cite{Repp2013a}. The following sections will focus on the imaging in order to extract these attributes and the measures it takes to reduce noise sources on the camera.
 
 \section{Experimental requirements}
+\label{ch:expreq}
 In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower, which transfers them into a magneto-optical trap. The MOT will further cool the atoms up to the doppler limit (around \SI{140}{\micro\kelvin}). To reach lower temperatures, the atoms will be trapped inside an optical dipole trap. Forced evaporative cooling will release the fastest atoms, until temperatures of a few nano Kelvin are reached.
 
 \pltCustom{
@@ -20,9 +21,9 @@ In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are t
 }{imaging_path}{Imaging path}{The camera is mounted above the vacuum chamber as visible in \textbf{a.} (gravity would be in negative $z$ direction). The image of the atoms is collimated with the first lens and passing the optics in \textbf{b.}, until it is refocused in the chip on the camera.}
 
 In order to image the atoms, an imaging beam is pointing along the $z$-axis according to \refFig{imaging_path}.
-An achromatic doublett \todo{get back to stephan. is this correct?} lens focuses the imaging beam onto the CCD camera, which is located on top of the vacuum chamber.
+An achromatic doublett lens focuses the imaging beam onto the CCD camera, which is located on top of the vacuum chamber.
 
-In order to measure even at low atom numbers ($n=1000$), the setup was refined allowing for high resolutions. The first lens, which collimates the image of the atoms has a low focal length (f=\todo{focal length}).
+In order to measure even at low atom numbers ($n=1000$), the setup was refined allowing for high resolutions. The first lens, which collimates the image of the atoms has a low focal length (f=\SI{100}{\milli\meter}).
 The image is refocused into the camera by the second lens. Since the imaging uses two separate frequencies to image both Lithium and Caesium, the chromatic shift introduced by the lenses will result in two different focal points for the images. This can be compensated by a high focal length, which therefore allows to have the camera in the Rayleigh range of both laser beams, when they are assumed to be gaussian.
 
 Having the first lens as close as possible to the atoms then allows for the highest resolution. With the high resolution of the camera it is then possible to take detailed images of atomic clouds.
@@ -70,6 +71,7 @@ The Guppy camera is a lot smaller than the Andor (\SI{48.2x30x30}{\milli\meter} 
 In spite of its large size, the new camera offers the ability to image both Lithium and Caesium species at once, while two Guppy cameras were needed beforehand, which also meant placing them on different imaging axes.
 
 \subsection{Dark current}
+\label{subsec:darkcurrent}
 %http://www.kip.uni-heidelberg.de/matterwaveoptics/publications/theses/diplom_ottenstein.pdf
 %http://www.mpia.de/AO/INSTRUMENTS/FPRAKT/4_F36_CCDscript2011.pdf
 A common noise source that is apparent in all CCD cameras, is the so-called dark current. It originates from the thermal excitation of electrons in individual pixels. Since they are made of semiconductors, once in a while, an electron can pass the potential between valence and conduction band simply due to their thermal energy. Thus, excess electrons accumulate, which contribute to the background signal and introduce additional noise\cite{FP362011}.
@@ -97,7 +99,10 @@ The data should then follow the theory in \refEq{darkcurrent}, although deviatio
 As it is important to minimize the noise source, the chip is cooled to the lowest possible temperature. This reduces the possibility of thermal electrons creating counts in the detector, so that even at small atom numbers, they are still distinguishable from the noise.
 
 \subsection{Readout noise}
-As described in \refCh{ccd_basics}, pixels are shifted in order to be read out by the ADC. Moving charges from pixel to pixel causes noise that accumulates over each iteration. Together with the noise which the ADC introduces, this is then called the readout noise. The shifting noise together with the dark noise is visible as a gradient (\todo{figure with shift gradient}) since each shift adds new charges due to excitations in the semiconductors. In order to characterize this, one can take the variance of the image, which should be zero for no noise.
+\label{subsec:readoutnoise}
+As described in \refCh{ccd_basics}, pixels are shifted in order to be read out by the ADC. Moving charges from pixel to pixel causes noise that accumulates over each iteration. Together with the noise which the ADC introduces, this is then called the readout noise. The shifting noise together with the dark noise is visible as a gradient (\refFig{gradient}) since each shift adds new charges due to excitations in the semiconductors. In order to characterize this, one can take the variance of the image, which should be zero for no noise.
+
+\plt{gradient}{Gradient on the chip during readout}{Dark current accumulates on the chip over time. During readout, this is visible as a gradient, since the pixels that have not been read out are still affected by this noise. As the chip temperature is being lowered, the gradient will also degrade.}
 
 In \refFig{hvspeed}, the readout speeds were probed for their noise. The measurement was carried out by taking images at low exposure time and low temperature, so that the main noise source would be the readout and not the dark current. The variance of an image then indicates the noise accumulation on the chip and it has been shown, that slower readout speeds accumulate less noise, although it is only dependent on the horizontal, not on the vertical shift speed.
 
@@ -140,11 +145,10 @@ Due to the high quantum efficiency, the camera is very sensitive to stray light.
 
 \subsection{Electronic and mechanical setup}
 \label{subsec:shutter_electronic}
-\todo{cite andor manual somewhere}
 
 The high QE of the Andor camera translates into a high sensitivity of the CCD chip to stray light. Therefore, in order to not unnecessarily illuminate the chip between measurements, a mechanical shutter was built into the optical path, which can also be seen in \refFig{imaging_path}. By opening the shutter shortly before the imaging sequence and closing it immediately afterwards, the stray light that is implying the CCD detector can be minimized.
 
-The shutter has five fans, as seen in \todo{appendix image}, which are mechanically guided, such that they together perform a circular motion outwards. The circular motion is best achieved for narrow fans, therefore needing more in order to close the shutter properly.
+The shutter has five fans, as seen in \refAp{shutter_design}, which are mechanically guided, such that they together perform a circular motion outwards. The circular motion is best achieved for narrow fans, therefore needing more in order to close the shutter properly.
 
 The guides are connected to each other and can be pulled outwards with a mechanical switch, that can be manually pushed or pulled. To drive the shutter electronically, a magnetic coil and a magnet are used. When the coil receives a current, the magnet, which is connected to the switch, will pull the guides, moving them outwards, therefore opening the shutter.
 
@@ -204,10 +208,9 @@ The results will later be used to time the triggers in the measurement, so that 
 }
 {shutterOpen}{Sample dynamics}{
 	The figure shows opening and closing time as well as the opening velocity for a strong spring. The spring closed the shutter quickly while it prevented it from opening fast.
-	The velocity was measured by using the beam diameter as the distance the shutter needed to transverse. For each offset, a set of ~100 images were taken and the errors found as being the variance. It is noticeable, that the opening velocity on the right side is faster at first than on the left side. This is due to the structure of the shutter, as can be seen in [Appendix image of shutter].
+	The velocity was measured by using the beam diameter as the distance the shutter needed to transverse. For each offset, a set of ~100 images were taken and the errors found as being the variance. It is noticeable, that the opening velocity on the right side is faster at first than on the left side. This is due to the structure of the shutter, as can be seen in \refAp{shutter_design}.
 	The overall opening speed on the other hand is not affected by this and seems to be linear with the offset.
 }
-\todo{appendix image}
 
 It has been found that the opening time actually consists of three timings. The initial trigger signal runs through the electronics, until it is sent to the shutter coil. The coil then has a delay, until it starts pulling the magnet. The opening time is then found by additionally adding the time until the fans are fully open. This is also shown in \refFig{shutterSignals}.
 
@@ -291,7 +294,7 @@ The mathematical formalism of Huygens principle is simply the sum of all spheric
 E(x,z) = E_0 C \int_{Slit} \frac{1}{r^2} \mathrm{exp}(-ikr)\mathrm{d}x'.
 \end{equation}
 Here, $r=\sqrt{(x-x')^2 + z^2}$ is the radius of a two dimensional wave, C is a normalization constant.
-Taylor expansion of the radius for large $z$ allows us, to substitute $r^2$ with $z^2$ and $r$ with $\frac{(x-x')^2}{2z} + z^2$, while also the approximation $(x-x') \ll z$ needs to be fulfilled. Therefore we get:
+Taylor expansion of the radius for large $z$ allows us, to substitute $r^2$ with $z^2$ and $r$ with $\frac{(x-x')^2}{2z} + z$, while also the approximation $(x-x') \ll z$ needs to be fulfilled. Therefore we get:
 \begin{equation}
 E(x,z) = E_0 e^{-ikz}\sqrt{\frac{ik}{2\pi z}}\int_{Slit} \mathrm{exp}\left( -\frac{ik}{2z}(x-x')^2\right) \mathrm{d}x'.
 \end{equation}
@@ -301,7 +304,7 @@ We want to also write the exponential as a function of $-\frac{i\pi t^2}{2}$, du
 \frac{k}{2z}(x-x')^2 = \frac{\pi t^2}{2},
 \end{equation}
 \begin{equation}
-\Rightarrow t = \sqrt{\frac{k}{z\pi}}(x-x'), \\
+\Rightarrow t(x') = \sqrt{\frac{k}{z\pi}}(x-x'), \\
 \end{equation}
 \begin{equation}
 \Rightarrow \mathrm{d}x' = -\mathrm{d}t \sqrt{\frac{z\pi}{k}},

@@ -1,4 +1,5 @@
 \chapter{Thermometry of an ultracold ideal fermi gas}
+\label{ch:idealfermigas}
 The purpose of the camera is to measure scientifically important data from dense atomic clouds consisting of Lithium and Caesium.
 The improvement of the resolution in the whole imaging setup now allows to explore new attributes that could not be measured before and as an example, ultracold ideal Fermi Gases were chosen. They are apparent at very low temperatures, where only few atoms due to evaporative cooling are present. Their density distribution differs slightly from a gaussian form and from that, one can extract temperatures and atom numbers.
 
@@ -81,10 +82,14 @@ k_BT = \frac{1}{2} mw_i^2 \frac{R_i^2}{1+w_i^2t^2}\frac{1}{f(e^q)}.
 As seen before, from an ideal Fermi gas, one can deduce the temperature and Fermi temperature of a gas.
 In order to implement ideal Fermi gases, Lithium was prepared in an optical dipole trap. The power was ramped down several times at the Feshbach resonance $B=\SI{896}{\gauss}$, until only a fraction of the atoms remained. The spin-down atoms received a short laser pulse, so that the cloud only consisted of spin-up $^6$Li.
 
-To compare the properties of the gas, the dipole trap was ramped down to three different powers, and everything I would write from here on is probably not correct, so I will be discussing this in person tomorrow as my results are super weird.
-
 \pltCustom{
 	\begin{center}
 		\includegraphics[width=0.7\textwidth]{drafts/fermi_fit.pdf}
 	\end{center}
 }{fermi_fit}{saywhat}{plt pls.}
+
+The measurement was executed for three different powers of the laser beam. The atoms were imaged in situ (in the trap) and after a short time of flight of \SI{1}{\milli\second}. In order to fit the function \refEq{n1d}, the absorption image yielding the optical density as seen in \refFig{fermi_fit} was integrated over one axis, giving a one dimensional distribution for the atoms.
+
+As the imaging is not properly optimized at this point, the distribution in the horizontal (x-axis) direction does not represent the theory well, even after averaging over several acquisitions. This problem could not be resolved due to timing constrictions, therefore the fit parameters were extracted solely from the vertical direction.
+
+On the vertical axis, a common systematic error was a small peak for high values, which did not correspond to the atoms and is probably due to the lenses, which are not properly aligned. This was excluded from the fit. The results are found in [reftable]\todo{reftable}.
