@@ -84,9 +84,18 @@ In order to implement ideal Fermi gases, Lithium was prepared in an optical dipo
 
 \pltCustom{
 	\begin{center}
-		\includegraphics[width=0.7\textwidth]{drafts/fermi_fit.pdf}
+		\input{plots/fermi_fit.pgf}
 	\end{center}
-}{fermi_fit}{saywhat}{plt pls.}
+	\begin{textblock}{2}(2.5,-4.85)
+		\textbf{a.}
+	\end{textblock}
+	\begin{textblock}{2}(2.5,-3.4)
+		\textbf{b.}
+	\end{textblock}
+	\begin{textblock}{2}(2.5,-1.85)
+		\textbf{c.}
+	\end{textblock}
+}{fermi_fit}{Fitting the fermi distribution to an ideal Fermi gas}{The cloud of the ideal Fermi gas can be seen in \textbf{a.}, with a maximal optical density $OD_{max} = 0.36$ and a minimal optical density of $OD_{min} = -0.02$. The data was integrated over one axis, leaving one axis free for fitting. Figure \textbf{b.} and \textbf{c.} therefore represent the y- and x-axis respectively. As the camera is not perfectly aligned as of the writing of this thesis, the x-axis does not seem to represent the theory well. For the y-axis, \refEq{n1d} was fitted, yielding the results in [table].}\todo{reftab}
 
 The measurement was executed for three different powers of the laser beam. The atoms were imaged in situ (in the trap) and after a short time of flight of \SI{1}{\milli\second}. In order to fit the function \refEq{n1d}, the absorption image yielding the optical density as seen in \refFig{fermi_fit} was integrated over one axis, giving a one dimensional distribution for the atoms.
 
