@@ -3,7 +3,7 @@
 In order to understand the nature of atoms in more detail, experiments are conducted where they are trapped and cooled. Under these circumstances, interactions between atoms can be tuned using Feshbach resonances. This allows to build up for example Bose-Einstein condensates (BEC) or Cooper pairs. The complete setup has been explained in more detail before \cite{Repp2013a}. The following sections will focus on the imaging in order to extract these attributes and the measures it takes to reduce noise sources on the camera.
 
 \section{Experimental requirements}
-In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower, which transfers them into a magneto-optical trap. The MOT will further cool the atoms up to the doppler limit (~\SI{140}{\micro\kelvin}). To reach lower temperatures, the atoms will be trapped inside an optical dipole trap. Forced evaporative cooling will release the fastest atoms, until temperatures of a few nano Kelvin are reached.
+In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower, which transfers them into a magneto-optical trap. The MOT will further cool the atoms up to the doppler limit (around \SI{140}{\micro\kelvin}). To reach lower temperatures, the atoms will be trapped inside an optical dipole trap. Forced evaporative cooling will release the fastest atoms, until temperatures of a few nano Kelvin are reached.
 
 \pltCustom{
 	\vspace{1em}
@@ -23,24 +23,24 @@ In order to image the atoms, an imaging beam is pointing along the $z$-axis acco
 An achromatic doublett \todo{get back to stephan. is this correct?} lens focuses the imaging beam onto the CCD camera, which is located on top of the vacuum chamber.
 
 In order to measure even at low atom numbers ($n=1000$), the setup was refined allowing for high resolutions. The first lens, which collimates the image of the atoms has a low focal length (f=\todo{focal length}).
-The image is refocused into the camera by the second lens. Since the imaging uses two separate frequencies to image both Lithium and Caesium, the chromatic shift introduced by the lenses will result in two different focal points for the images. This can be compensated by a high focal length, which therefore allows to have the camera in the Rayleigh range of both laser beams.
+The image is refocused into the camera by the second lens. Since the imaging uses two separate frequencies to image both Lithium and Caesium, the chromatic shift introduced by the lenses will result in two different focal points for the images. This can be compensated by a high focal length, which therefore allows to have the camera in the Rayleigh range of both laser beams, when they are assumed to be gaussian.
 
-This setup then allows to image for example Bose-Einstein gases, polarized Fermi gases or superfluids with high accuracy.
+Having the first lens as close as possible to the atoms then allows for the highest resolution. With the high resolution of the camera it is then possible to take detailed images of atomic clouds.
 
 
 \section{Camera for double species imaging}
 \label{ch:camera}
-The camera used in order to find atoms, the Andor iKon M\cite{andorManual}, is a charge-coupled device (CCD). Using this camera, noise sources such as Readout noise and Dark noise can be reduced, by cooling the chip, which are explained in the following sections. The camera also ships with a new acquisition mode, where it is now possible to take two consecutive images of the same atom cloud in a time of flight (ToF) measurement, which was not possible before.
+The camera used in order to find atoms, the Andor iKon M\cite{andorManual}, is a charge-coupled device (CCD). Using this camera, noise sources such as Readout noise and Dark noise can be reduced, by cooling the chip, which are explained in the following sections. The camera also ships with a new acquisition mode, where it is now possible to take two consecutive images of the same atom cloud in a time of flight (ToF) measurement.
 
 \subsection{Basics of CCD cameras}
 \label{ch:ccd_basics}
 
-A camera operates by means of converting photons first into electrons then into voltage, which is finally read out as data\cite{ccdoperationUrl}\cite{guppy38Bsheet}. Each conversion process can add noise to the final image, which needs to be minimized in order to acquire accurate data. The most common noise sources are covered in \refCh{camera}.
+A camera operates by means of converting photons first into electrons then into voltage, which is finally read out as data\cite{ccdoperationUrl}\cite{guppy38Bsheet}. Each conversion process can add noise to the final image, which needs to be minimized in order to acquire accurate data.
 
-The photons are collected on an array of semiconductor photo diodes, called the pixels, where ideally the spacing between the pixels is zero to gain maximum accuracy. The resolution is then dependent on the pixel size, which is usually between \SI{10}{\micro\meter} and \SI{20}{\micro\meter} per pixel for scientific cameras. Bigger pixels means higher photon sensitivity but usually lower resolution.
+The photons are collected on an array of semiconductor photo diodes, called the pixels, where ideally the spacing between the pixels is zero to gain maximum accuracy. The resolution is then dependent on the pixel size, which is usually between \SI{10}{\micro\meter} and \SI{20}{\micro\meter} per pixel for scientific cameras. Bigger pixels mean higher photon sensitivity but usually lower resolution.
 
 \draft{ccd_shifts}{Schematic design of a CCD array and its readout}{
-	The pixels are arranged in the pixel array. During readout they are shifted into the readout register and then to the side into the analog to digital converter
+	The pixels are arranged in the pixel array. During readout they are shifted into the readout register and then to the side into the analog to digital converter (ADC).
 }
 
 To create a digital image, the charges from the pixels have to be shifted one-by-one into the analog to digital converter (ADC). This is done by vertically shifting them into the readout register and then horizontally into the ADC, where the charges are multiplied and converted to digital data. This is illustrated in \refFig{ccd_shifts}.
@@ -56,7 +56,7 @@ Moving electrons to the next region is a three-step process. The charges are fir
 
 \subsection{Comparison with the previous setup}
 \label{sec:comparison}
-For the imaging of small atomic clouds, it is very important to have cameras with minimal noise and maximal readout speed. The new setup improves both. The dark noise, which is an temperature dependant effect, where counts accumulate over time, can be significantly reduced by cooling the chip down to less than \SI{-70}{\degreeCelsius}. A new readout mode, called fast kinetics, makes it possible to acquire all images before reading out. This significantly improves the speed at which images can be taken.
+For the imaging of small atomic clouds, it is very important to have cameras with minimal noise and maximal readout speed. The new setup improves both. The dark noise, which is a temperature dependant effect, where counts accumulate over time, can be significantly reduced by cooling the chip down to less than \SI{-70}{\degreeCelsius}. A new readout mode, called fast kinetics, makes it possible to acquire all images before reading out. This significantly improves the speed at which images can be taken.
 
 The readout speed is highly important in our setup. Since absorption imaging is the technique of choice to measure atom attributes, three images need to be taken in each sequence, being the absorption, division and background image.
 The old setup used a Guppy-38B \cite{Repp2013} camera, which has a frame rate of 30fps. This meant the acquisition was finished after \SI{100}{\milli\second}. The new Andor camera, on the other hand, can take images quickly without the need to read out in-between. At the fastest shift speed, the acquisition is finished after \SI{1.632}{\milli\second}, improving the speed by a factor of more than $60$.
@@ -65,7 +65,7 @@ The quantum efficiency is explained in \refCh{quantumeff} and is also highly imp
 
 When comparing the resolution, the chip size also has to be considered. Since higher resolutions seem to be preferable at first, it also means that for the same pixel sizes, the photon sensitivities will decrease. The pixel sizes are \SI{8.4}{\micro\meter} $*$ \SI{9.8}{\micro\meter} in the old setup and \SI{13}{\micro\meter} * \SI{13}{\micro\meter} in the new setup, while the resolutions are \SI{768x492}{} and \SI{1024x1024}{} respectively. This means that the new setup allows larger magnification.
 
-The Guppy camera is a lot smaller than the Andor (\SI{48.2x30x30}{\milli\meter} vs \SI{204.2x105x107}{\milli\meter}), therefore making an implementation on a full experimental table easier. To implement the complex imaging system surrounding the Andor camera, a lot of preparation was made in the thesis of Carmen Renner \cite{Renner2014}.
+The Guppy camera is a lot smaller than the Andor (\SI{48.2x30x30}{\milli\meter} \\vs \SI{204.2x105x107}{\milli\meter}), therefore making an implementation on a full experimental table easier. To implement the complex imaging system surrounding the Andor camera, a lot of preparation was made in the thesis of Carmen Renner \cite{Renner2014}.
 
 In spite of its large size, the new camera offers the ability to image both Lithium and Caesium species at once, while two Guppy cameras were needed beforehand, which also meant placing them on different imaging axes.
 

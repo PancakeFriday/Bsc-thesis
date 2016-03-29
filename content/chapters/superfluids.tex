@@ -1,16 +1,14 @@
 \chapter{Thermometry of an ultracold ideal fermi gas}
 The purpose of the camera is to measure scientifically important data from dense atomic clouds consisting of Lithium and Caesium.
-The improvement of the resolution in the whole imaging setup now allows to explore new attributes that could not be measured before and as an example, ultracold ideal fermi gases were chosen. They are apparent at very low temperatures, where only few atoms due to evaporative cooling are present. Their density distribution differs slightly from a gaussian form and from that one can extract temperatures and atom numbers.
+The improvement of the resolution in the whole imaging setup now allows to explore new attributes that could not be measured before and as an example, ultracold ideal Fermi Gases were chosen. They are apparent at very low temperatures, where only few atoms due to evaporative cooling are present. Their density distribution differs slightly from a gaussian form and from that, one can extract temperatures and atom numbers.
 
-In order to image the atoms, a technique called absorption imaging is used which is explained in the next section, before the introduction to ideal fermi gases.
+In order to image the atoms, a technique called absorption imaging is used which is explained in the next section, before the introduction to ideal Fermi Gases.
 
 \section{Absorption imaging}
 In order to find microscopic attributes of atoms, or systems of atoms, it is necessary to look at the atoms themselves. This is commonly accomplished using either fluorescence or absorption imaging\cite{Murmann2011}. In both cases, a laser beam is pointed at an atomic cloud, that is cooled and confined in a trap. In fluorescence imaging, the scattered light is collected, typically in a direction that is different than the illuminating beam.
 The intensity from the light through this method is not very high, since it is radiated in all directions. Therefore, long exposure times are required during which atoms can move and the information about the initial density and energy distribution is lost. Nevertheless, it is useful for single- and few-atom detection. \todo{cite phd thesis of Serwane, Selim, Science 332, 336 (2011)}
 
 In contrast, in absorption imaging\cite{helmrich2013}, the transmitted intensity of the imaging beam is recorded. Without atoms, one would see a beam profile of the laser beam. With atoms, a shadow is visible due to the atoms "blocking" the light. This is accomplished, by correctly tuning the laser to a resonance frequency of the atoms, which enables them to absorb the light, exciting them to a higher state. Through spontaneous emission, the atoms will decay, making it possible to excite them once again. This method works well, when the "signal" from the absorbed light is significantly larger compared to the noise sources.
-
-\todo{example two level atom excitation image}
 
 There are a set of optical elements in the imaging path, like lenses to collimate the image and refocus it, or mirrors to guide the light into the camera. Since the surfaces will most likely introduce errors into the imaging, for example from impurities or dust, only the absorption image will not suffice to gain reliable data. This is compensated by taking a total of three pictures, in order to extract only the relevant information from the image.
 
@@ -27,8 +25,6 @@ The laser intensity $I_0$ is measured in a separate frame, containing the laser 
 \frac{I_{CCD} - I_{back}}{I_0' - I_{back}} = e^{-OD}.
 \end{equation}
 \todo{three images as example}
-%cool reference: http://muellergroup.lassp.cornell.edu/basictraining2009/OpticalAbs.pdf
-\todo{read comment}
 
 From the resulting optical density, one can now conclude, for example, atom density distributions, atom numbers or excitation rates.
 
@@ -46,9 +42,9 @@ In the degenerate regime however, for $T/TF \ll 1$, the radius is described by t
 \begin{equation}
 R_{Fi} = \sqrt{\frac{2E_F}{mw_i^2}},
 \end{equation}
-using the Fermi energy $E_F$.
+using the Fermi energy $E_F$, due to the fermions filling up the eigenstates of the potential.
 
-It is therefore suggested to use a unified radius, as the temperatures are not known a priori:
+It is therefore suggested\cite{Ketterle2008} to use a unified radius, as the temperatures are not known a priori:
 \begin{equation}
 R_i^2 = \frac{2k_BT}{mw_i^2}f( e^{\frac{\mu}{k_BT}}).
 \end{equation}
@@ -58,7 +54,7 @@ f(x) = \frac{Li_1(-x)}{Li_0(-x)}
 \end{equation}
 where $Li_n$ is polylogarithm and can be defined as
 \begin{equation}
-Li_s(z) = \sum_{k=1}^{\inf} \frac{z^k}{k^s}.
+Li_s(z) = \sum_{k=1}^{\infty} \frac{z^k}{k^s}.
 \end{equation}
 
 In our case, we integrate over all but one axes, and therefore find the fitting function for the atom numbers:
