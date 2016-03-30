@@ -31,24 +31,25 @@ From the resulting distribution of optical density, one can now extract, for exa
 \section{Density distribution of an ideal Fermi gas}
 \label{sec:densdistrfermi}
 
-An ideal Fermi gas consists of only one spin component. This way, each energy level in a harmonic potential up to the chemical potential $\mu$ is occupied by one or zero atoms, so that the Fermions do not interact with each other. This leads to a new distribution of the atoms, which differs from the common Maxwell-Boltzmann distribution of thermal clouds.
+An ideal Fermi gas consists of atoms, that all occupy the same internal state and are thus indistinguishable. This way, each energy level in the trapping potential is occupied by one or zero atoms up to the chemical potential $\mu$, so that the fermions do not interact with each other. This leads to a density distribution of the atoms, which, depending on the temperature $T$ and the chemical potential, can range between a common thermal distribution or a Fermi distribution for a degenerate cloud of atoms.
 
-The fermionic cloud can be characterized by the degeneracy parameter $T/T_F$. For values $T/T_F \gg 1$ the gas is then called thermal and will follow Maxwell-Boltzmann statistics. The cloud is called degenerate for $T/T_F \ll 1$ and the density profile will be a Fermi distribution. This is analogue to introducing a parameter $q=\frac{\mu}{k_BT}$ with the Boltzmann constant $k_B$ and the Temperature $T$, which is negative in the thermal and positive in the degenerate regime.
+The fermionic cloud is characterized by the degeneracy parameter $T/T_F$, there $T_F$ is the Fermi temperature, which corresponds to the chemical potential for $T=0$. For values $T/T_F \gg 1$ the gas is then called thermal and will follow Maxwell-Boltzmann statistics. The cloud is called degenerate for $T/T_F \ll 1$ and the density profile will be a Fermi distribution. This is described by a shape parameter $q=\frac{\mu}{k_BT}$ with the Boltzmann constant $k_B$, which is large and negative in the thermal and large and positive in the degenerate regime. In this way, both the regimes are connected by contous tuning of $q$.
 
 In order to find out if the cloud is thermal or degenerate, one can fit a distribution, that interpolates between both regimes. The following derivations can be found in \cite{Ketterle2008}.
 
-In the Maxwell-Boltzmann distribution, the radius is defined by
+In the Gaussian distribution, the width $\sigma_i$ is defined by
 \begin{equation}
 \sigma _i = \sqrt{\frac{2k_BT}{mw_i^2}},
 \end{equation}
-where $m$ is the mass of Lithium and $w_i$ is the trapping frequency in the $i=\{x,y,z\}$ direction of the radius. Due to the alignment of the dipole trap, the cloud will not have a spherical shape and will therefore have different radii\cite{Heck2012}.
+where $m$ is the mass of Lithium and $w_i$ is the trapping frequency in the $i=\{x,y,z\}$ direction of the cloud. Due to the alignment of the dipole trap, the cloud will not have a spherical shape and will therefore have different radii\cite{Heck2012}.
 
 In the degenerate regime however, the atom density is best described by a Thomas-Fermi distribution with the Fermi radius
 \begin{equation}
 R_{Fi} = \sqrt{\frac{2E_F}{mw_i^2}},
 \end{equation}
-where $E_F=\hbar \bar{w} (6N)^{1/3}$ is the Fermi energy ($N$ being the number of atoms and $\bar{w}=(w_1 w_2 w_3)^{1/3}$ the trapping frequency).
+where $E_F=\hbar \bar{w} (6N)^{1/3}$ is the Fermi energy ($N$ being the number of atoms and $\bar{w}=(w_1 w_2 w_3)^{1/3}$ is the geometrically averaged trapping frequency).
 
+Experimentally, it is very hard to prepare a purely degenerate Fermi gas, such that a typical density distribution will contain contributions also from the thermal fraction of atoms.
 Therefore a unified radius,
 \begin{equation}
 R_i^2 = \frac{2k_BT}{mw_i^2}f( e^{q}),
@@ -63,10 +64,10 @@ where $Li_n$ is the n-th order polylogarithm and can be defined as
 Li_s(z) = \sum_{k=1}^{\infty} \frac{z^k}{k^s}.
 \end{equation}
 
-In our case, we integrate over all but one axes, and therefore the fitting function for the atom density distribution yields
+In our case, we integrate over all but one axes, and therefore the fitting function for the doubly integrated atom density distribution yields
 \begin{equation}
 \label{eq:n1d}
-n_{1D}(x) = n_{1D,0}\frac{Li_{5/2}\left( \pm \mathrm{exp}\left[ q-\frac{x^2}{R_x^2}f(e^q)\right] \right)}{Li_{5/2}(\pm e^q)}.
+n_{1D}(x) = n_{1D,0}\frac{Li_{5/2}\left( \pm \mathrm{exp}\left[ q-\frac{x^2}{R_i^2}f(e^q)\right] \right)}{Li_{5/2}(\pm e^q)}.
 \end{equation}
 During fitting, the shape parameter $q=\frac{\mu}{k_B T}$ is extracted, which describes the ratio between chemical potential and thermal energy of the gas.
 
@@ -83,7 +84,7 @@ R_{0,i} = \frac{R_{i}}{\sqrt{1+ w_i^2}},
 which can then be used to calculate the temperature of the cloud using
 \begin{equation}
 \label{eq:temp}
-k_BT = \frac{1}{2} mw_i^2 \frac{R_i^2}{1+w_i^2t^2}\frac{1}{f(e^q)}.
+T = \frac{1}{2} \frac{mw_i^2}{k_B} \frac{R_i^2}{1+w_i^2t^2}\frac{1}{f(e^q)}.
 \end{equation}
 
 
@@ -91,8 +92,15 @@ k_BT = \frac{1}{2} mw_i^2 \frac{R_i^2}{1+w_i^2t^2}\frac{1}{f(e^q)}.
 \section{Preparation and imaging of an ultracold Fermi gas}
 \label{sec:fermiexperiment}
 
-As seen before, from an ideal Fermi gas, one can deduce the temperature and Fermi temperature of a gas.
-In order to implement ideal Fermi gases, Lithium was prepared in an optical dipole trap. The power was ramped down several times at the Feshbach resonance $B=\SI{896}{\gauss}$, until only a fraction of the atoms remained. The spin-down atoms received a short laser pulse, so that the cloud only consisted of spin-up $^6$Li.
+In order to conduct an experiment involving an ideal Fermi gas, Lithium atoms were prepared using various traps. From a magneto-optical trap, the atoms were transferred into a D1 cooling and then loaded into an optical dipole trap. From there on, the fermions were further evaporatively cooled, by tuning the power of the dipole lasers. Naturally, the spins of the atoms are uniformly distributed, which helps with the evaporative cooling process, due to momentum transfers of the atoms. In order to create an ideal Fermi gas, one spin component is removed by resonantly exciting them with a laser pulse, which will not affect the other component, leaving them in the trap. Atoms were prepared for several trap depths in order to compare the results.
+
+The cloud was imaged using the new camera system, yielding the results in \refFig{fermi_fit}. The atoms can be seen as a cloud which is slightly larger in x than in the y direction, which is due to the geometry of the optical dipole trap. The distributions along the x and y axis already have a gaussian shape which is discussed in the next step.
+
+In order to extract the physical quantities, \refEq{n1d} was fitted, leaving $q$, $n_{1D,0}$ and $R_i$ free. The distribution along the x axis have fragments, which are most likely due to the alignment of the optical setup, which has not been refined as of the writing of this thesis. Therefore, the fit was included in the picture, but the fit parameters were not extracted as they are most likely not accurate. On the y axis, a linear gradient is visible. This is an effect of the readout of the chip and was fitted as well, but does not affect the physics as it does not interfere with the original function.
+
+From the fit parameters, the temperature and degeneracy parameter were calculated, which are found in Table \ref{tab:fermi_fit}. Additionally, a temperature $T_{tof}$ was calculated by taking a time of flight measurement from a different camera, which relates the linear expansion to the velocity and therefore to the temperature of the gas.
+
+From the results, we find that there is a match between the temperatures, although the temperature extracted from the original fit is probably better, since it includes the degenerate fraction as well. This is especially true for the two lower trap frequencies, where the shape parameter $q$ indicates that the cloud is more degenerate than thermal.
 
 \pltCustom{
 	\begin{center}
@@ -107,33 +115,26 @@ In order to implement ideal Fermi gases, Lithium was prepared in an optical dipo
 	\begin{textblock}{2}(8.35,-4.7)
 		\textbf{c.}
 	\end{textblock}
-}{fermi_fit}{Fitting the fermi distribution to an ideal Fermi gas}{In order to find the physical properties of a fermionic cloud, they were imaged at three different trap depths which correspond to the $\bar{\omega} = (\omega_x \omega_y \omega_z)^{1/3}$, where $w_i$ is the trap frequency in the corresponding axis. As of the writing of this thesis, the imaging system was not yet well aligned in the x-Direction, therefore the data does not represent the theory well. The results of the fits are given in Table \ref{tab:fermi_fit}.}
+}{fermi_fit}{Fitting the Fermi distribution to an ultracold gas of Li atoms}{In order to find the physical properties of a fermionic cloud, they were imaged at three different trap depths which correspond to the $\bar{\omega} = (\omega_x \omega_y \omega_z)^{1/3}$, where $w_i$ is the trap frequency in the corresponding axis. As of the writing of this thesis, the imaging system was not yet well aligned in the x-Direction, therefore the data does not represent the theory well. The results of the fits are given in Table \ref{tab:fermi_fit}.}
 
-The measurement was executed for three different powers of the laser beam. The atoms were imaged after a short time of flight of \SI{1}{\milli\second}. In order to fit the function \refEq{n1d}, the absorption image yielding the optical density as seen in \refFig{fermi_fit} was integrated over one axis, giving a one dimensional distribution for the atoms.
-
-As the imaging is not properly optimized at this point, the distribution in the horizontal (x-axis) direction does not represent the theory well, even after averaging over several acquisitions. This problem could not be resolved due to timing constrictions, therefore the fit parameters were extracted solely from the vertical direction.
-
-On the vertical axis, a common systematic error was a small peak for high values, which did not correspond to the atoms and is probably due to the lenses, which are not properly aligned. This was excluded from the fit. Due to the alignment in the x-Direction, the measurement could not be included, as the fragments disturbed the data too much.
 \begin{table}
 	\begin{center}
-		\begin{tabular}{M{1cm}!M{4cm}|M{4cm}|M{4cm}N}
+		\begin{tabular}{M{1.5cm}!M{4cm}|M{4cm}|M{4cm}N}
 			& $\bar{\omega}=\SI{53.8}{\hertz}$ & $\bar{\omega}=\SI{67.8}{\hertz}$ & $\bar{\omega}=\SI{119.8}{\hertz}$ & \\[7pt]
 			\thickhline
 			$n_{1D}$ & $25.6\pm0.1$ & $34.07\pm0.13$ & $44.98\pm0.24$ & \\ [7pt]
 			\hline
 			$q$ & $1.87\pm0.35$ & $1.08\pm0.34$ & $-2.0\pm1.85$ & \\[7pt]
 			\hline
-			$R_y$ & $23.9\pm0.72$ & $23.80\pm0.75$ & $26.79\pm1.06$ & \\[7pt]
+			$R_y [\SI{}{\micro\meter}]$ & $41.4\pm1.3$ & $41.3\pm1.3$ & $46.4\pm1.8$ & \\[7pt]
 			\hline
-			$T$ & $(5.92\pm0.55)*10^{-8}$ & $(7.43\pm0.14)*10^{-7}$ & $(1.23\pm0.25)*10^{-6}$ & \\[7pt]
+			$T [\SI{}{\nano\kelvin}]$ & $59.2\pm2.5$ & $117.4\pm3.7$ & $536\pm77$ & \\[7pt]
 			\hline
-			$T/T_F$ & $0.34$ & $0.42$ & $1.01$ & \\[7pt]
+			$T/T_F$ & $0.34\pm0.11$ & $0.42\pm0.04$ & $1.01\pm0.41$ & \\[7pt]
+			\hline
+			$T_{tof} [\SI{}{\nano\kelvin}]$ & $56$ & $97$ & $480$ & \\[7pt]
 		\end{tabular}
 	\end{center}
 	\setCaption{Fit parameters for various trap depths}{The Fermions were fitted using \refEq{n1d}, where the parameter $n_{1D}$ describes the amplitude of the peak. $q$ is a shape parameter, which is negative if the cloud is thermal or positive if the cloud is degenerate. $R_y$ is then the clouds radius similar as the radius can be described in a gaussian distribution which is in units of pixels and can be calculated in natural units using the pixel size (\SI{13}{\micro\meter}) and the magnification ($7.5$).}
 	\label{tab:fermi_fit}
 \end{table}
-
-In order to properly fit \refEq{n1d}, a linear function had to be added, as there was a constrant gradient on the chip, most likely due to the readout of the image. From the fit parameters in Table \ref{tab:fermi_fit}, it was possible to calculate the temperature and the degeneracy parameter from \ref{eq:temp} and \ref{eq:tovertf} respectively. From the results of $T/T_F$ it can be seen, that the gas is becoming more degenerate, as the trapping frequencies become lower. Additionally, the temperature of the gas is becoming cooler, as more atoms leave the trap, which is expected from evaporative cooling as well.
-
-This experiment already shows the operation of the camera as a scientific instrument. As predicted from theory \cite{Ketterle2008}, the gas follows a Fermi distribution as the cloud becomes colder.
