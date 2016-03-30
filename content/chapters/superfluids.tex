@@ -92,15 +92,17 @@ T = \frac{1}{2} \frac{mw_i^2}{k_B} \frac{R_i^2}{1+w_i^2t^2}\frac{1}{f(e^q)}.
 \section{Preparation and imaging of an ultracold Fermi gas}
 \label{sec:fermiexperiment}
 
-In order to conduct an experiment involving an ideal Fermi gas, Lithium atoms were prepared using various traps. From a magneto-optical trap, D1 cooling was applied, from where the atoms were loaded into an optical dipole trap. Afterwards, the fermions were cooled even further using evaporative cooling, by tuning the power of the dipole lasers. Naturally, the spins of the atoms are uniformly distributed, which helps with the evaporative cooling process, due to momentum transfers of the atoms. In order to create an ideal Fermi gas, one spin component is removed by resonantly exciting them with a laser pulse, which will not affect the other component, leaving them in the trap. Atoms were prepared for several trap depths in order to compare the results.
+In order to conduct an experiment involving an ideal Fermi gas, Lithium atoms were prepared using various traps. Starting with a magneto-optical trap, D1 cooling was applied, from where the atoms were loaded into an optical dipole trap. Afterwards, the fermions were cooled even further using evaporative cooling, by tuning the power of the dipole lasers. Naturally, the atoms are distributed in the lowest two spin states, which helps with the evaporative cooling process, as the atoms need to rethermalize. This is only possible, if the atoms can collide with each other. In order to create an ideal Fermi gas, one spin component is removed by resonantly exciting them with a laser pulse, which will not affect the other component, leaving them in the trap. Atoms were prepared for several trap depths in order to compare the results.
 
-The cloud was imaged using the new camera system, yielding the results in \refFig{fermi_fit}. The atoms can be seen as a cloud which is slightly larger in x than in y direction, which is due to the geometry of the optical dipole trap. The distributions along the x and y axis already have a gaussian shape which is discussed in the following.
+The cloud was imaged using the new camera system, yielding the results in \refFig{fermi_fit}. The atoms can be seen as a cloud which is slightly larger in x than in y direction, which is due to the geometry of the optical dipole trap.
 
-In order to extract the physical quantities from the density distribution, \refEq{n1d} was fitted to the optical density of the absorption image, leaving $q$, $n_{1D,0}$ and $R_i$ free. The distribution along the x axis have fragments, which are most likely due to the alignment of the optical setup, which has not been refined as of the writing of this thesis. Therefore, the fit from the x direction was included in \refFig{fermi_fit}, but the fit parameters were not extracted as they are most likely not accurate. On the y axis, a linear gradient is visible. This is an effect of the readout of the chip and was fitted as well, but does not affect the physics as it does not interfere with the original function.
+In order to extract the physical quantities from the density distribution, \refEq{n1d} was fitted to the optical density of the absorption image, leaving $q$, $n_{1D,0}$ and $R_i$ as free parameters. The fitted values are tabulated in Table \ref{tab:fermi_fit}. The doubly integrated distribution along the x axis displays large noise, which is most likely due to the suboptimal alignment of the optical setup, at the moment of the writing of this thesis. Therefore, the fit in the x direction was included in \refFig{fermi_fit}, but the fit parameters are not presented as they are most likely not accurate. On the y axis, a linear gradient is visible. This is an effect of the readout of the chip and was fitted as well, but does not affect the physics as it does not interfere with the original fitting function.
 
-From the fit parameters, the temperature and degeneracy parameter were calculated, which are found in Table \ref{tab:fermi_fit}. Additionally, a temperature $T_{tof}$ was calculated by taking a time of flight measurement from a different camera, which relates the linear expansion to the velocity and therefore to the temperature of the gas.
+From the fit parameters, the temperature and degeneracy parameter were calculated, which are found also in Table \ref{tab:fermi_fit}. Additionally, a temperature $T_{tof}$ was obtained by taking a time of flight measurement from a different camera, which relates the expansion of the cloud to the velocity and therefore to the temperature of the gas.
 
-From the results, we find that there is a match between the temperatures, although the temperature extracted from the original fit is probably better, since it includes the degenerate fraction as well. This is especially true for the two lower trap frequencies, where the shape parameter $q$ indicates that the cloud is more degenerate than thermal.
+From the results, we find that there is a match between the temperatures, although the temperature extracted from the Fermi distribution is probably better, since it includes the degenerate fraction as well. This is especially true for the two lower trap frequencies, where the shape parameter $q$ indicates that the cloud is more degenerate than thermal.
+
+When the atoms are in the degenerate regime, a gaussian fit should diverge for smaller $T/T_F$. Therefore a gaussian distribution was also fitted to the fermi gas. The $\chi^2$ of both fits was investigated and we found the relative values to be $\chi_{Fermi} / \chi_{Gauss} = \{0.85, 0.87, 0.76\}$. From this we can conclude, that the Li atoms are in the degenerate regime, although they can still be explained by a gaussian.
 
 \pltCustom{
 	\begin{center}
@@ -115,7 +117,7 @@ From the results, we find that there is a match between the temperatures, althou
 	\begin{textblock}{2}(8.35,-4.7)
 		\textbf{c.}
 	\end{textblock}
-}{fermi_fit}{Fitting the Fermi distribution to an ultracold gas of Li atoms}{In order to find the physical properties of a fermionic cloud, they were imaged at three different trap depths which correspond to the $\bar{\omega} = (\omega_x \omega_y \omega_z)^{1/3}$, where $w_i$ is the trap frequency in the corresponding axis. As of the writing of this thesis, the imaging system was in the x direction not yet well aligned, therefore the data does not match the theoretic expectation well. The results of the fits in y direction are given in Table \ref{tab:fermi_fit}.}
+}{fermi_fit}{Fitting the Fermi distribution to an ultracold gas of Li atoms}{The atoms were imaged at three different trap depths which correspond to different $\bar{\omega}$. The upper row are false-color images of atom density distributions. As of the writing of this thesis, the imaging system was not yet well aligned, therefore large noise is observed in the distributions along the x axis (bottom row). The results of the fits in y direction (middle row) are given in Table \ref{tab:fermi_fit}.}
 
 \begin{table}
 	\begin{center}
@@ -130,9 +132,13 @@ From the results, we find that there is a match between the temperatures, althou
 			\hline
 			$T [\SI{}{\nano\kelvin}]$ & $59.2\pm2.5$ & $117.4\pm3.7$ & $536\pm77$ & \\[7pt]
 			\hline
-			$T/T_F$ & $0.34\pm0.11$ & $0.42\pm0.04$ & $1.01\pm0.41$ & \\[7pt]
+			$T/T_F$ & $0.34\pm0.03$ & $0.42\pm0.04$ & $1.01\pm0.41$ & \\[7pt]
 			\hline
 			$T_{tof} [\SI{}{\nano\kelvin}]$ & $56$ & $97$ & $480$ & \\[7pt]
+			\hline
+			$N_{side}$ & $56$ & $97$ & $480$ & \\[7pt]
+			\hline
+			$N_{calc}$ & $56$ & $97$ & $480$ & \\[7pt]
 		\end{tabular}
 	\end{center}
 	\setCaption{Fit parameters for various trap depths}{The density distributions were fitted using \refEq{n1d}, where the parameter $n_{1D}$ describes the amplitude of the peak. $q$ is a shape parameter, which is negative if the cloud is thermal and positive if the cloud is degenerate. $R_y$ is then the clouds radius. An additional temperature was calculated from a time of flight measurement, from a calibrated camera and was included in the table for comparison.}
