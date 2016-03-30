@@ -11,6 +11,16 @@
 % General
 \LoadClassWithOptions{scrreprt}
 
+% Table
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1.5pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{!}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+
 % Language
 \usepackage[ngerman,english]{babel} % all languages being used, with main language last in list
 

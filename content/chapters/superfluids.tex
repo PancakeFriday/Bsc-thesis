@@ -106,25 +106,21 @@ As the imaging is not properly optimized at this point, the distribution in the 
 On the vertical axis, a common systematic error was a small peak for high values, which did not correspond to the atoms and is probably due to the lenses, which are not properly aligned. This was excluded from the fit. Due to the alignment in the x-Direction, the measurement could not be included, as the fragments disturbed the data too much.
 \begin{table}
 	\begin{center}
-		\begin{tabular}{|l||l|l|l|}
+		\begin{tabular}{M{1cm}!M{4cm}|M{4cm}|M{4cm}N}
+			& $\bar{\omega}=\SI{53.8}{\hertz}$ & $\bar{\omega}=\SI{67.8}{\hertz}$ & $\bar{\omega}=\SI{119.8}{\hertz}$ & \\[7pt]
+			\thickhline
+			$n_{1D}$ & $25.6\pm0.1$ & $34.07\pm0.13$ & $44.98\pm0.24$ & \\ [7pt]
 			\hline
-			& $\bar{\omega}=\SI{53.8}{\hertz}$ & $\bar{\omega}=\SI{67.8}{\hertz}$ & $\bar{\omega}=\SI{119.8}{\hertz}$ \\ 
+			$q$ & $1.87\pm0.35$ & $1.08\pm0.34$ & $-2.0\pm1.85$ & \\[7pt]
 			\hline
+			$R_y$ & $23.9\pm0.72$ & $23.80\pm0.75$ & $26.79\pm1.06$ & \\[7pt]
 			\hline
-			$n_{1D}$ & $25.6\pm0.1$ & $34.07\pm0.13$ & $44.98\pm0.24$ \\ 
+			$T$ & $(5.92\pm0.55)*10^{-8}$ & $(7.43\pm0.14)*10^{-7}$ & $(1.23\pm0.25)*10^{-6}$ & \\[7pt]
 			\hline
-			$q$ & $1.87\pm0.35$ & $1.08\pm0.34$ & $-2.0\pm1.85$ \\
-			\hline
-			$R_y$ & $23.9\pm0.72$ & $23.80\pm0.75$ & $26.79\pm1.06$ \\
-			\hline
-			\hline
-			$T$ & $(5.92\pm0.55)*10^{-8}$ & $(7.43\pm0.14)*10^{-7}$ & $(1.23\pm0.25)*10^{-6}$ \\
-			\hline
-			$T/T_F$ & $0.34$ & $0.42$ & $1.01$ \\
-			\hline
+			$T/T_F$ & $0.34$ & $0.42$ & $1.01$ & \\[7pt]
 		\end{tabular}
 	\end{center}
-	\setCaption{Fit parameters for various trap depths.}{The Fermions were fitted using \refEq{n1d}, where the parameter $n_{1D}$ describes the amplitude of the peak. $q$ is a shape parameter, which is negative if the cloud is thermal or positive if the cloud is degenerate. $R_y$ is then the clouds radius similar as the radius can be described in a gaussian distribution which is in units of pixels and can be calculated in natural units using the pixel size (\SI{13}{\micro\meter}) and the magnification ($7.5$).}
+	\setCaption{Fit parameters for various trap depths}{The Fermions were fitted using \refEq{n1d}, where the parameter $n_{1D}$ describes the amplitude of the peak. $q$ is a shape parameter, which is negative if the cloud is thermal or positive if the cloud is degenerate. $R_y$ is then the clouds radius similar as the radius can be described in a gaussian distribution which is in units of pixels and can be calculated in natural units using the pixel size (\SI{13}{\micro\meter}) and the magnification ($7.5$).}
 	\label{tab:fermi_fit}
 \end{table}
 
