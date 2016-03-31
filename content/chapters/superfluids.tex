@@ -7,13 +7,13 @@ Finally, in \refSec{fermiexperiment}, the performed experiment with an ultracold
 
 \section{Absorption imaging}
 \label{sec:absim}
-In order to find microscopic properties of atoms, or assembles of atoms, it is necessary to look at the atoms themselves. This is commonly accomplished using either fluorescence or absorption imaging\cite{Murmann2011}. In both cases, a laser beam is pointed at an atomic cloud, that is cooled and confined in a trap. In fluorescence imaging, the scattered light is collected, typically in a direction that is different than the illuminating beam.
+In order to find microscopic properties of atoms, or assembles of atoms, it is necessary to look at the atoms themselves. This is commonly accomplished using either fluorescence or absorption imaging\cite{Ketterle1999}. In both cases, a laser beam is pointed at an atomic cloud, that is cooled and confined in a trap. In fluorescence imaging, the scattered light is collected, typically in a direction that is different than the illuminating beam.
 The intensity from the light reaching the detector is not very high, since it is radiated in all directions. Therefore, long exposure times are required during which atoms can move and the information about the initial density and energy distribution is lost. Nevertheless, this approach is useful for single- and few-atom detection.
 
-In contrast, in absorption imaging\cite{helmrich2013}, the transmitted intensity of an imaging beam is recorded. Without atoms, one would detect the beam profile of the laser beam. With atoms, a shadow is visible due to the atoms "blocking" the light. This is accomplished, by correctly tuning the laser to a resonance frequency of the atoms, which enables them to absorb the light, exciting them to a higher state. Through spontaneous emission, the atoms will decay, making it possible to excite them once again. This method works well, when the "signal" from the absorbed light is significantly larger compared to the noise sources, and the atomic transition used for imaging is "closed", i.e. the excited atoms decay only into the imaging state.
+In contrast, in absorption imaging\cite{Ketterle1999}, the transmitted intensity of an imaging beam is recorded. Without atoms, one would detect the beam profile of the laser beam. With atoms, a shadow is visible due to the atoms "blocking" the light. This is accomplished, by correctly tuning the laser to a resonance frequency of the atoms, which enables them to absorb the light, exciting them to a higher state. Through spontaneous emission, the atoms will decay, making it possible to excite them once again. This method works well, when the "signal" from the absorbed light is significantly larger compared to the noise sources, and the atomic transition used for imaging is "closed", i.e. the excited atoms decay only into the imaging state.
 
 In order to extract physical properties of the atoms after they have been illuminated, a quantity called optical density $OD$ is found in the absorption profile, which has an exponential dependency to the intensity reaching the CCD. From the optical density, one can conclude for example atomic distribution and atom numbers.
-This is put into equations as follows:\cite{Murmann2011}
+This is put into equations as follows\cite{Ketterle1999}:
 \begin{equation}
 I_{CCD} = I_0 e^{-OD} + I_{back},
 \end{equation}
@@ -33,7 +33,7 @@ From the resulting distribution of optical density, one can now extract, for exa
 
 An ideal Fermi gas consists of atoms, that all occupy the same internal state and are thus indistinguishable. This way, each energy level in the trapping potential is occupied by one or zero atoms up to the chemical potential $\mu$, so that the fermions do not interact with each other. This leads to a density distribution of the atoms, which, depending on the temperature $T$ and the chemical potential, can range between a common thermal distribution or a Fermi distribution for a degenerate cloud of atoms.
 
-The fermionic cloud is characterized by the degeneracy parameter $T/T_F$, there $T_F$ is the Fermi temperature, which corresponds to the chemical potential for $T=0$. For values $T/T_F \gg 1$ the gas is then called thermal and will follow Maxwell-Boltzmann statistics. The cloud is called degenerate for $T/T_F \ll 1$ and the density profile will be a Fermi distribution. This is described by a shape parameter $q=\frac{\mu}{k_BT}$ with the Boltzmann constant $k_B$, which is large and negative in the thermal and large and positive in the degenerate regime. In this way, both the regimes are connected by contous tuning of $q$.
+The fermionic cloud is characterized by the degeneracy parameter $T/T_F$, there $T_F$ is the Fermi temperature, which corresponds to the chemical potential for $T=0$. For values $T/T_F \gg 1$ the gas is then called thermal and will follow Maxwell-Boltzmann statistics. The cloud is called degenerate for $T/T_F \ll 1$ and the density profile will be a Fermi distribution. This is described by a shape parameter $q=\frac{\mu}{k_BT}$ with the Boltzmann constant $k_B$, which is large and negative in the thermal and large and positive in the degenerate regime. In this way, both the regimes are connected by tuning $q$.
 
 In order to find out if the cloud is thermal or degenerate, one can fit a distribution, that interpolates between both regimes. The following derivations can be found in \cite{Ketterle2008}.
 
@@ -47,7 +47,7 @@ In the degenerate regime however, the atom density is best described by a Thomas
 \begin{equation}
 R_{Fi} = \sqrt{\frac{2E_F}{mw_i^2}},
 \end{equation}
-where $E_F=\hbar \bar{w} (6N)^{1/3}$ is the Fermi energy ($N$ being the number of atoms and $\bar{w}=(w_1 w_2 w_3)^{1/3}$ is the geometrically averaged trapping frequency).
+where $E_F=\hbar \bar{w} (6N)^{1/3}$ is the Fermi energy ($N$ being the number of atoms and $\bar{w}=(w_x w_y w_z)^{1/3}$ is the geometrically averaged trapping frequency).
 
 Experimentally, it is very hard to prepare a purely degenerate Fermi gas, such that a typical density distribution will contain contributions also from the thermal fraction of atoms.
 Therefore a unified radius,
@@ -77,7 +77,7 @@ In order to calculate the degeneracy parameter $T/T_F$, the value of $q$ is inse
 \frac{T}{T_F} = \left[ -6 Li_3(-e^q) \right]^{-1/3}.
 \end{equation}
 
-As the camera only has a finite resolution, the cloud can be released and imaged after a short time. At the time of the acqusition, the gas will have expanded, although the distribution is approximately the same. During expansion of the cloud, the temperature, which is dependent on the radius, will not change. Therefore, the radius is contracted in order to receive the radius of the inital distribution by
+As the imaging system only has a finite resolution, the cloud can be released and imaged after a short time. At the time of the acqusition, the gas will have expanded, although the distribution is approximately the same. During expansion of the cloud, the temperature, which is dependent on the radius, will not change. Therefore, the radius is contracted in order to receive the radius of the inital distribution by
 \begin{equation}
 R_{0,i} = \frac{R_{i}}{\sqrt{1+ w_i^2}},
 \end{equation}
@@ -92,9 +92,9 @@ T = \frac{1}{2} \frac{mw_i^2}{k_B} \frac{R_i^2}{1+w_i^2t^2}\frac{1}{f(e^q)}.
 \section{Preparation and imaging of an ultracold Fermi gas}
 \label{sec:fermiexperiment}
 
-In order to conduct an experiment involving an ideal Fermi gas, fermionic Lithium atoms were cooled and captured with standard laser cooling techniques\cite{Repp2013, Pires2014}. Starting with a magneto-optical trap, D1 cooling was applied, from where the atoms were loaded into an optical dipole trap. Afterwards, the fermions were cooled even further using evaporative cooling, by tuning the power of the dipole lasers. Naturally, the atoms are distributed in the lowest two spin states, which helps with the evaporative cooling process, as the atoms need to rethermalize. This is only possible, if the atoms can collide with each other. In order to create an ideal Fermi gas, one spin component is removed by resonantly exciting them with a laser pulse, which will not affect the other component, leaving them in the trap. Atoms were prepared for several trap depths in order to observe the gradual change between thermal and Fermi density distribution.
+In order to conduct an experiment involving an ideal Fermi gas, fermionic Lithium atoms were cooled and captured with standard laser cooling techniques\cite{Repp2013, Pires2014}. Starting with a magneto-optical trap, D1 cooling was applied, from where the atoms were loaded into an optical dipole trap. Afterwards, the fermions were cooled even further using evaporative cooling, by reducing the power of the dipole beams. Naturally, the atoms are distributed in the lowest two spin states, which helps with the evaporative cooling process, as the atoms need to rethermalize. This is only possible, if the atoms can collide with each other. In order to create an ideal Fermi gas, one spin component is removed by resonantly exciting them with a laser pulse, which will not affect the other component, leaving them in the trap. Atoms were prepared for several trap depths in order to observe the gradual change between thermal and Fermi density distribution.
 
-The cloud was imaged using the new camera system, yielding the results in \refFig{fermi_fit}. The atoms can be seen as a cloud which is slightly larger in x than in y direction, which is due to the geometry of the optical dipole trap.
+The cloud was imaged using the new imaging system, yielding the results in \refFig{fermi_fit}. The atoms can be seen as a cloud which is larger in x than in y direction, which is due to the geometry of the optical dipole trap.
 
 In order to extract the physical quantities from the density distribution, \refEq{n1d} was fitted to the optical density of the absorption image, leaving $q$, $n_{1D,0}$ and $R_i$ as free parameters. The fitted values are tabulated in Table \ref{tab:fermi_fit}. The doubly integrated distribution along the x axis displays large noise, which is most likely due to the suboptimal alignment of the optical setup, at the moment of the writing of this thesis. Therefore, the fit in the x direction was included in \refFig{fermi_fit}, but the fit parameters are not presented as they are most likely not accurate. On the y axis, a linear gradient is visible. This is an effect of the readout of the chip and was fitted as well, but does not affect the physics as it does not interfere with the original fitting function.
 

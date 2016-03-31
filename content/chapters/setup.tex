@@ -4,7 +4,7 @@ In order to understand the nature of atoms in more detail, experiments are condu
 
 \section{Experimental requirements}
 \label{ch:expreq}
-In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower, which transfers them into a magneto-optical trap. The MOT will further cool the atoms up to the Doppler limit (around \SI{140}{\micro\kelvin}). To reach lower temperatures, the atoms will be trapped inside an optical dipole trap. Forced evaporative cooling will release the fastest atoms, until temperatures of a few nano Kelvin are reached.
+In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are trapped and cooled inside a vacuum chamber. The atoms are emitted from an oven into a Zeeman slower, which transfers them into a magneto-optical trap (MOT). The MOT will further cool the atoms down to the Doppler limit (around \SI{140}{\micro\kelvin}). To reach lower temperatures, the atoms will be trapped inside an optical dipole trap. Forced evaporative cooling will release the fastest atoms, until temperatures of a few tens of nano Kelvin are reached.
 
 \pltCustom{
 	\vspace{1em}
@@ -23,20 +23,20 @@ In this double species experiment, fermionic $^6$Li and bosonic $^{133}$Cs are t
 In order to image the atoms, an imaging beam is pointing along the $z$-axis according to \refFig{imaging_path}.
 An achromatic doublet lens focuses the imaging beam onto the CCD camera, which is located on top of the vacuum chamber.
 
-In order to measure even at low atom numbers ($n=1000$), the setup was refined allowing for high resolutions\cite{Renner2014}. The first lens, which collimates the image of the atoms has a low focal length (f=\SI{100}{\milli\meter}).
-The image is refocused into the camera by the second lens. Since the imaging uses two separate frequencies to image both Lithium and Caesium, the chromatic shift introduced by the lenses will result in two different focal points for the images. This can be compensated by a high focal length, which therefore allows to have the camera in the Rayleigh range of both laser beams, when they are assumed to be gaussian.
+In order to measure even at low atom numbers ($n=1000$), the setup was refined allowing for high resolution\cite{Renner2014}. The first lens, which collimates the image of the atoms has a low focal length of f=\SI{100}{\milli\meter}.
+The image is refocused into the camera by the second lens ($f=\SI{750}{\milli\meter}$). Since the imaging uses two separate wavelengths to image both Lithium and Cesium, the chromatic shift introduced by the lenses will result in two different focal points for the images. This is compensated by a high focal length, which therefore allows the camera to be approximately in the focus of both images.
 
 Having the first lens as close as possible to the atoms then allows for the highest resolution. With the high resolution of the camera it is then possible to take detailed images of atomic clouds.
 
 
 \section{Camera for double species imaging}
 \label{ch:camera}
-The camera used in order to find atoms, the Andor iKon M\cite{andorManual}, is a charge-coupled device (CCD). Using this camera, noise sources such as Readout noise and Dark noise can be reduced, by cooling the chip, which are explained in the following sections. The camera also ships with a new acquisition mode, where it is now possible to take two consecutive images of the same atom cloud in a time of flight (ToF) measurement.
+The camera used in order to image atoms, the Andor iKon M\cite{andorManual}, is a charge-coupled device (CCD). Using this camera, the dark noise, which a common effect on all CCD cameras, can be reduced, by cooling the chip, which are explained in the following sections. The camera also ships with a new acquisition mode, where it is now possible to take two consecutive images with only little delay.
 
 \subsection{Basics of CCD cameras}
 \label{ch:ccd_basics}
 
-A camera operates by means of converting photons first into electrons then into voltage, which is finally read out as data\cite{ccdoperationUrl}\cite{guppy38Bsheet}. Each conversion process can add noise to the final image, which needs to be minimized in order to acquire accurate data.
+A camera operates by means of converting photons first into electrons then into voltage, which is finally read out as data\cite{ccdoperationUrl, guppy38Bsheet}. Each conversion process can add noise to the final image, which needs to be minimized in order to acquire accurate data.
 
 The photons are collected on an array of semiconductor photo diodes, called the pixels, where ideally the spacing between the pixels is zero to gain maximum accuracy. The resolution is then dependent on the pixel size, which is usually between \SI{10}{\micro\meter} and \SI{20}{\micro\meter} per pixel for scientific cameras. Bigger pixels mean higher photon sensitivity but usually lower resolution.
 
@@ -57,12 +57,12 @@ Moving electrons to the next region is a three-step process. The charges are fir
 
 \subsection{Comparison with the previous setup}
 \label{sec:comparison}
-For the imaging of small atomic clouds, it is very important to have cameras with minimal noise and maximal readout speed. The new setup improves both. The dark noise, which is a temperature dependant effect, where counts accumulate over time, can be significantly reduced by cooling the chip down to less than \SI{-70}{\degreeCelsius}. A new readout mode, called fast kinetics, makes it possible to acquire all images before reading out. This significantly improves the speed at which images can be taken.
+For the imaging of small atomic clouds, it is very important to have cameras with minimal noise and maximal readout speed. The new setup improves both. The dark noise, which is a temperature dependent effect, where counts accumulate over time, can be significantly reduced by cooling the chip down to less than \SI{-70}{\degreeCelsius}. A new readout mode, called fast kinetics, makes it possible to acquire all images before reading out. This significantly improves the speed at which images can be taken.
 
 The readout speed is highly important in our setup. Since absorption imaging is the technique of choice to measure atom attributes, three images need to be taken in each sequence, being the absorption, division and background image.
 The old setup used a Guppy-38B \cite{Repp2013} camera, which has a frame rate of 30fps. This meant the acquisition was finished after \SI{100}{\milli\second}. The new Andor camera, on the other hand, can take images quickly without the need to read out in-between. At the fastest shift speed, the acquisition is finished after \SI{1.632}{\milli\second}, improving the speed by a factor of more than $60$.
 
-The quantum efficiency is explained in \refCh{quantumeff} and is also highly important, as it describes how many photons are detected on a camera and is directly connected to the sensitivity. A higher quantum efficiency therefore means better results. They compare as $QE_{Li} = 79\%, QE_{Cs} = 77.3\%$ for the Andor and $QE_{Li} = 35\%, QE_{Cs} = 10\%$ for the Guppy camera, therefore the sensitivity of the new camera is significantly higher.
+The quantum efficiency is explained in \refCh{quantumeff} and is also highly important, as it describes how many photons are detected on a camera and is directly connected to the sensitivity. A higher quantum efficiency therefore means better results. They compare as $QE_{Li} = 79\%, QE_{Cs} = 77.3\%$ for the Andor and $QE_{Li} = 35\%, QE_{Cs} = 10\%$ for the Guppy camera\cite{Renner2014}, for Lithium and Caesium respectively, as the QE is frequency dependent. Therefore the sensitivity of the new camera is significantly higher.
 
 When comparing the resolution, the chip size also has to be considered. Since higher resolutions seem to be preferable at first, it also means that for the same pixel sizes, the photon sensitivities will decrease. The pixel sizes are \SI{8.4}{\micro\meter} $*$ \SI{9.8}{\micro\meter} in the old setup and \SI{13}{\micro\meter} * \SI{13}{\micro\meter} in the new setup, while the resolutions are \SI{768x492}{} and \SI{1024x1024}{} respectively. This means that the new setup allows larger magnification.
 
@@ -76,7 +76,7 @@ In spite of its large size, the new camera offers the ability to image both Lith
 %http://www.mpia.de/AO/INSTRUMENTS/FPRAKT/4_F36_CCDscript2011.pdf
 A common noise source that is apparent in all CCD cameras, is the so-called dark current. It originates from the thermal excitation of electrons in individual pixels. Since they are made of semiconductors, once in a while, an electron can pass the potential between valence and conduction band simply due to their thermal energy. Thus, excess electrons accumulate, which contribute to the background signal and introduce additional noise\cite{FP362011}.
 
-The dark current has a strong temperature dependence\cite{Ottenstein2006}
+The dark current has a strong temperature dependence\cite{Ottenstein2006}:
 \begin{equation}
 \label{eq:darkcurrent}
 I_{dark}(T) \propto T^{\frac{3}{2}} \mathrm{exp}(-E_g/2k_BT),
@@ -86,7 +86,7 @@ Therefore in order to reduce dark current noise, the temperature of the chip can
 
 This reduction of dark current with lower temperature has been measured and verified in \refFig{electrpp}, using the built-in peltier element in the Andor camera to control the temperature of the CCD chip. For a long exposure time, dark current accumulates on all pixels. The counts are measured for several temperature settings and the counts $C$ are converted to electrons per pixel per second ($I_i$)\cite{Ottenstein2006} for each pixel $i$ as
 \begin{equation}
-I_{i} = \frac{C}{G t_{exp}},
+I_{i} = \frac{C_i}{G t_{exp,i}},
 \end{equation}
 
 \plt[true]{electrpp}{Dark noise accumulation on the chip}{
@@ -94,7 +94,7 @@ I_{i} = \frac{C}{G t_{exp}},
 }
 
 with the Gain $G$ of the camera, and the exposure time $t_{exp}$. The readout time of the pixels can be neglected, as it is significantly lower than the exposure time (see \refCh{fast_kin}).
-The data should then follow the theory in \refEq{darkcurrent}, although deviations are visible in the low temperature regime, which result from the fan not being able to divert the heat from the chip.
+The data should then follow the theory in \refEq{darkcurrent}, although deviations are visible in the low temperature regime, which result from the internal fan not being able to divert the heat from the chip.
 
 As it is important to minimize the noise source, the chip is cooled to the lowest possible temperature. This reduces the possibility of thermal electrons creating counts in the detector, so that even at small atom numbers, they are still distinguishable from the noise.
 
@@ -104,7 +104,7 @@ As described in \refCh{ccd_basics}, pixels are shifted in order to be read out b
 
 \plt{gradient}{Gradient on the chip during readout}{Dark current accumulates on the chip over time. During readout, this is visible as a gradient, since the pixels that have not been read out are still affected by this noise. As the chip temperature is being lowered, the gradient will also decrease.}
 
-In \refFig{hvspeed}, the readout speeds were probed for their noise. The measurement was carried out by taking images at low exposure time and low temperature, so that the main noise source would be the readout and not the dark current. The variance of an image then indicates the noise accumulation on the chip and it has been shown, that slower readout speeds accumulate less noise, although it is only dependent on the horizontal, not on the vertical shift speed.
+In \refFig{hvspeed}, the readout speeds were probed for their noise. The measurement was carried out by taking images at short exposure time of $\sim$\SI{}{\micro\second} and low temperature of $T=\SI{-70}{\degreeCelsius}$, so that the main noise source would be from the readout and not the dark current. The variance of an image then indicates the noise accumulation on the chip and it has been shown, that slower readout speeds accumulate less noise, although it is only dependent on the horizontal, not on the vertical shift speed.
 
 The actual readout of the chip can be done at slow speeds, so that the noise from horizontal shifting is low. As the vertical shifts do not add significant noise, it can safely be set to fast speeds, which is also favourable, as $^6$Li and $^{133}$Cs are imaged back to back as fast as possible, so that the cloud dynamics are still approximately the same.
 
@@ -134,19 +134,19 @@ Now the quantum efficiency reads
 QE = \frac{h \nu N_{detected}}{P t_{exp}}.
 \end{equation}
 
-In order to find the QE, one would now measure the accumulated counts for several exposure times, since the frequency $\nu$ and the power $P$ are known. For the Andor camera used in our experiment, they have been measured as \SI{70.7}{\percent} for \SI{671}{\nano\meter} and \SI{69.9}{\percent} for \SI{852}{\nano\meter}.
+In order to find the QE, one would now measure the accumulated counts for several exposure times, since the frequency $\nu$ and the power $P$ are known. For the Andor camera used in our experiment, they have been measured as\cite{Renner2014} \SI{79.0}{\percent} for \SI{671}{\nano\meter} and \SI{77.3}{\percent} for \SI{852}{\nano\meter}.
 
 This camera was especially chosen for its quantum efficiency, since it is important in our case, to be able to detect most photons from Lithium and Caesium absorption.
 
 \section{Mechanical shutter}
 \label{sec:shutter}
 
-Due to the high quantum efficiency, the camera is very sensitive to stray light. Therefore it is necessary to cover the chip from stray light. A mechanical shutter which can be electronically controlled is therefore built in front of the light path, which prevents the camera from damage between measurements. The electronics were set up and the shutter characterized in order to find perfect timings, so that light only enters the chip, when a measurement is running.
+Due to the high quantum efficiency, the camera is very sensitive to stray light. Therefore it is necessary to cover the chip when it is not actively exposed. A mechanical shutter which can be electronically controlled is therefore built in front of the light path, which prevents the camera from damage between measurements. The electronics were set up and the shutter characterized in order to find perfect timings, so that light only enters the chip, when a measurement is running.
 
 \subsection{Electronic and mechanical setup}
 \label{subsec:shutter_electronic}
 
-The high QE of the Andor camera translates into a high sensitivity of the CCD chip to stray light. Therefore, in order to not unnecessarily illuminate the chip between measurements, a mechanical shutter was built into the optical path, which can also be seen in \refFig{imaging_path}. By opening the shutter shortly before the imaging sequence and closing it immediately afterwards, the stray light that is implying the CCD detector can be minimized.
+The high QE of the Andor camera translates into a high sensitivity of the CCD chip to stray light. Therefore, in order to not unnecessarily illuminate the chip, a mechanical shutter was built into the optical path, which can also be seen in \refFig{imaging_path}. By opening the shutter shortly before the imaging sequence and closing it immediately afterwards, the stray light that is implying the CCD detector can be minimized.
 
 The shutter has five fans, as seen in \refAp{shutter_design}, which are mechanically guided, such that they together perform a circular motion outwards. The circular motion is best achieved for narrow fans, therefore needing more in order to close the shutter properly.
 
@@ -156,7 +156,7 @@ Although the coil can pull the magnet in, it cannot be pushed away. This is comp
 
 The optimal case would be now to have fast opening and closing times, since we want to prevent illumination between measurements. This can be achieved by testing several springs and to make the pull from the magnetic coils as fast as possible, which means increasing the current to drive it.
 
-A custom circuit as shown in \refFig{shutter_circuit_simplified} is used. In order to obtain a high current to increase the pull from the magnetic coil on the magnet, a transistor is used, which is controlled by a MOSFET driver. The complete circuit also contains a voltage regulator, so that the user does not need to know the input of the driver and can simply use a high voltage to open the shutter ($V\in\left[2,8\right]\mathrm{V}$) and a low voltage ($V=\SI{0}{\volt}$) to close it.
+A custom circuit as shown in \refFig{shutter_circuit_simplified} is used. In order to obtain a high current to increase the pull from the magnetic coil on the magnet, a transistor is implemented, which is controlled by a MOSFET driver. The complete circuit also contains a voltage regulator, so that the user does not need to know the input of the driver and can simply use a high voltage to open the shutter ($V\in\left[2,8\right]\mathrm{V}$) and a low voltage ($V=\SI{0}{\volt}$) to close it.
 
 \pltCustom{
 	\begin{center}
@@ -164,7 +164,7 @@ A custom circuit as shown in \refFig{shutter_circuit_simplified} is used. In ord
 	\end{center}
 }{shutter_circuit_simplified}{Electronic circuit to control the shutter}{
 The first element in the circuit is the optocoupler which is used to decouple parts from the circuit in order to not create  loops, which would induce charges when the magnetic fields are on.
-The remaining parts can be skipped, by setting the jumpers. The inverter will flip the sign on the voltage. The MOSFET driver is used in order to serve the correct voltage at the transistor's gate and to help during discharge, such that the MOSFET will not overheat. The transistor will finally serve a high current of \SI{2.5}{\ampere}, that is throughput to the shutter.
+The remaining parts can be skipped by setting the jumpers. The inverter will flip the sign on the voltage. The MOSFET driver is used in order to serve the correct voltage at the transistor's gate and to help during discharge, such that the MOSFET will not overheat. The transistor will finally serve a high current of \SI{2.5}{\ampere}, that is throughput to the shutter.
 The jumpers in this figure are set as they are used in the experiment. The complete circuit can be found in \refAp{shutter_circuit}.
 }
 
@@ -186,18 +186,13 @@ It was discussed before, in \refSubsec{shutter_electronic}, that more fans give 
 	\end{textblock}
 }{shutter_experiment}{Probing the shutter for dynamics}{The shutter is proped at several positions using a laser. The offset in y direction was varied to find opening and closing times as a function of their offset.}
 
-To find the actual dynamics of the shutter, an experiment was set up. The shutter was probed at several positions, using a laser, to find the opening time. An example of one of many measurements is shown in \refFig{shutterDiodeSignal}. The laser beam has a gaussian intensity distribution, which results in a error function on the photodiode as only partial intensity is received from the diode, when the shutter is still blocking parts of the beam.
-
-The points have been found by pointing a laser beam at a photodiode, which was blocked by the shutter. Since the laser has a finite radius, there is a transition in the signal from the minimum to the maximum, which is due to the approximately linear opening velocity of the shutter and the gaussian intensity distribution of the laser beam.
-
 \plt{shutterDiodeSignal}{
 	Shutter characterization}{The dynamics of the shutter were measured using a laser beam with a variable horizontal offset, which is fixed in this plot, and a photo diode measuring the laser intensity. In this figure, the offset is \SI{9.3}{\milli\meter} from the centre. An error function was fitted yielding the time until the shutter opens. The opening time is defined here as the mean value of the error function, and was found to be \SI{41.35}{\milli\second} in this case.
 }
 
-In order to find the opening and closing times of the shutter as seen in \refFig{shutterOpen}a., the offset from the centre of the shutter was varied. For larger offsets, the time from the initial trigger until a signal in the photodiode was received is longer when the shutter is opening, while it is shorter when it is closing.
-In \refFig{shutterOpen}b. the speed is not perfectly linear. The deviations close to the centre originate from the shape of the fans. As there are five fans, there is no mirror symmetry, so that opening to the left and right is different in the end.
+To find the actual dynamics of the shutter, an experiment was set up. The shutter was probed at several positions, using a laser, to find the opening time. An example of one of many measurements is shown in \refFig{shutterDiodeSignal}. The laser beam has a gaussian intensity distribution, which results in a error function on the photodiode as only partial intensity is received from the diode, when the shutter is still blocking parts of the beam.
 
-The results will later be used to time the triggers in the measurement, so that the shutter can stay closed as long as possible. But in order to optimize it, there were two shutters at hand, and several springs to choose from, the combination of which were all tested until the optimal timings for opening $t_{open}=\SI{0.12}{\second}$ and for closing $t_{closing}=\SI{0.14}{\second}$ were found.
+The data points have been found by pointing a laser beam at a photodiode, which was blocked by the shutter. Since the laser has a finite radius, there is a transition in the signal from the minimum to the maximum, which is due to the approximately linear opening velocity of the shutter and the gaussian intensity distribution of the laser beam.
 
 \pltCustom{
 	\begin{center}
@@ -207,9 +202,14 @@ The results will later be used to time the triggers in the measurement, so that 
 }
 {shutterOpen}{Sample dynamics}{
 	The figure shows opening and closing time as well as the opening velocity for a strong spring. The spring closed the shutter quickly while it prevented it from opening fast.
-	The velocity was measured by using the beam diameter as the distance the shutter needed to transverse. For each offset, a set of ~100 images were taken and the errors found as being the variance. It is noticeable, that the opening velocity on the right side is faster at first than on the left side. This is due to the structure of the shutter, as can be seen in \refAp{shutter_design}.
+	The velocity was measured by using the gaussian beam diameter from the incident laser beam as the distance the shutter needed to transverse. For each offset, a set of ~100 images were taken and the errors found as being the variance. It is noticeable, that the opening velocity on the right side is faster at first than on the left side. This is due to the structure of the shutter, as can be seen in \refAp{shutter_design}.
 	The overall opening speed on the other hand is not affected by this and seems to be linear with the offset.
 }
+
+In order to find the opening and closing times of the shutter as seen in \refFig{shutterOpen}a., the offset from the centre of the shutter was varied. For larger offsets, the time from the initial trigger until a signal in the photodiode was received is longer when the shutter is opening, while it is shorter when it is closing.
+In \refFig{shutterOpen}b. the speed is not perfectly linear. The deviations close to the centre originate from the shape of the fans. As there are five fans, there is no mirror symmetry, so that opening to the left and right is different in the end.
+
+The results will later be used to time the triggers in the measurement, so that the shutter can stay closed as long as possible. But in order to optimize it, there were two shutters at hand, and several springs to choose from, the combination of which were all tested until the optimal timings for opening $t_{open}=\SI{12}{\milli\second}$ and for closing $t_{closing}=\SI{14}{\milli\second}$ were found.
 
 It has been found that the opening time actually consists of three timings. The initial trigger signal runs through the electronics, until it is sent to the shutter coil. The coil then has a delay, until it starts pulling the magnet. The opening time is then found by additionally adding the time until the fans are fully open. This is also shown in \refFig{shutterSignals}.
 
@@ -272,7 +272,7 @@ and
 Therefore, in our application, we chose an exposure of \SI{204}{\px} with an offset of \SI{820}{\px}, which gives a series length of $4$.
 The pixels that are used as temporary storage of accumulated charge until the readout process begins need to be shielded from light. This is achieved with a slit in front of the camera that blocks part of the light beam implying on the CCD detector.
 
-Since we will be imaging two atomic species, an absorption image for each species will be followed by two division images, as well as background images to subtract the noise. The fast kinetic mode now allows us to do this quickly, which is important when imaging multiple species together.
+Since we will be imaging two atomic species, an absorption image for each species will be followed by two division images, as well as background images to subtract the noise, which is further explained in \refSec{absim}. The fast kinetic mode now allows us to do this quickly, which is important when imaging multiple species together.
 
 \subsection{Frequency response of a slit}
 \label{subsec:slit}
@@ -323,7 +323,7 @@ S(x) = \int_0^x \mathrm{sin}\left(\frac{\pi t^2}{2}\right)\mathrm{d}t,
 
 so that in combination with Eulers equations and splitting up the integrals the equation for the electric field is:
 \begin{equation}
-E(x,z) = E_0 \sqrt{\frac{i}{2}} e^{-ikz} \left [ C(-a/2) - C(a/2) - iS(-a/2) + iS(a/2) \right ].
+E(x,z) = E_0 \sqrt{\frac{i}{2}} e^{-ikz} \left [ C(t(-a/2)) - C(t(a/2)) - iS(t(-a/2)) + iS(t(a/2)) \right ].
 \end{equation}
 
 In a real experiment, the light on a CCD chip is detected as intensity, which is given by

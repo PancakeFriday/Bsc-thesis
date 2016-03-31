@@ -4,6 +4,14 @@
 During absorption imaging, the Andor camera will take eight images, which consist of two absorption, two division and four background images (or if the user specifies to only image one species, then there is one absorption and division image and six background images).
 % we are not using the macro as I do not need captions or labels and stuff and the image has to be exactly here
 
+\begin{figure}[hb]
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{drafts/acqseq.pdf}
+	\end{center}
+	\setCaption{Trigger signals}{The triggers are sent as a rectangular signal. The camera will interpret the rising edge of the signal as the starting point of the exposure. Here, $t_{vshift}$ is the time it takes to shift the illuminated pixels downwards, $t_{readout}$ is the time it takes the chip to read out the data and $t_{exposure}$ the exposure time.}
+	\label{fig:acqseq}
+\end{figure}
+
 As the camera is only interested in the rising edge of the signal, the trigger length is not really important. But the chip will be exposed for the duration of the exposure time, after which the laser should be turned off. The, in our case, 204 pixels are then shifted downwards, taking $t_{vshift}$, which can be calculated by multiplying the vertical shift speed with the pixel height. For the fastest shift speed, this would result in
 \begin{equation}
 t_{vshift} = \SI{2}{\micro\second\per\px} * \SI{204}{\px} = \SI{408}{\micro\second},
@@ -12,8 +20,6 @@ for the slowest speed we find
 \begin{equation}
 t_{vshift} = \SI{64}{\micro\second\per\px} * \SI{204}{\px} = \SI{13.1}{\milli\second}
 \end{equation}
-
-\draft{acqseq}{Trigger signals}{The triggers are sent as a rectangular signal. The camera will interpret the rising edge of the signal as the starting point of the exposure. Here, $t_{vshift}$ is the time it takes to shift the illuminated pixels downwards, $t_{readout}$ is the time it takes the chip to read out the data and $t_{exposure}$ the exposure time.}
 
 Therefore the four subsequent signals can be taken after
 \begin{equation}
@@ -27,28 +33,15 @@ For the whole chip, this gives us $i=4*204=816$, $j=1024$, $j_{max}=1024$, there
 \begin{equation}
 t_{readout} = 816*vspeed + 816*1024*hspeed.
 \end{equation}
-The trigger signals can finally be calculated via \refTab{trigg_timing}.
-\begin{table}
-\begin{center}
-\begin{tabular}{|l|l|}
-	\hline
-	\text{\textbf{Trigger number}} & \text{\textbf{Trigger time}} \\ 
-	\hline
-	\hline
-	1 & 0 \\ 
-	2 & $t_{trig}$ \\ 
-	3 & $2*t_{trig}$ \\ 
-	4 & $3*t_{trig}$ \\ 
-	5 & $4*t_{trig} + t_{readout}$ \\ 
-	6 & $5*t_{trig} + t_{readout}$ \\ 
-	7 & $6*t_{trig} + t_{readout}$ \\ 
-	8 & $7*t_{trig} + t_{readout}$ \\
-	\hline
-\end{tabular}
-\setCaption{Trigger timing}{The trigger signals are limited by the readout speeds of the chip. This table lists the minimal timings necessary to fully read out the chip. Between signal 4 and 5, the illuminated pixels are still shifted downwards, before the chip is read out. This prevents introducing unnecessary errors, as all relevant pixels are then behind the cover of the slit.}
-\label{tab:trigg_timing}
-\end{center}
-\end{table}
+The minimal timings for an individual trigger signal $t_i$ for the frame $i$ can finally be calculated via
+$$
+t_n = \left\{
+\begin{array}{ll}
+(n-1)t_{ŧrig} & \quad n < 5 \\
+(n-1)t_{trig} + t_{readout} & \quad n \geq 5 .
+\end{array}
+\right.
+$$
 
 \chapter{Design of the shutter}
 \label{ch:shutter_design}
