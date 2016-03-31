@@ -92,7 +92,7 @@ T = \frac{1}{2} \frac{mw_i^2}{k_B} \frac{R_i^2}{1+w_i^2t^2}\frac{1}{f(e^q)}.
 \section{Preparation and imaging of an ultracold Fermi gas}
 \label{sec:fermiexperiment}
 
-In order to conduct an experiment involving an ideal Fermi gas, Lithium atoms were prepared using various traps. Starting with a magneto-optical trap, D1 cooling was applied, from where the atoms were loaded into an optical dipole trap. Afterwards, the fermions were cooled even further using evaporative cooling, by tuning the power of the dipole lasers. Naturally, the atoms are distributed in the lowest two spin states, which helps with the evaporative cooling process, as the atoms need to rethermalize. This is only possible, if the atoms can collide with each other. In order to create an ideal Fermi gas, one spin component is removed by resonantly exciting them with a laser pulse, which will not affect the other component, leaving them in the trap. Atoms were prepared for several trap depths in order to compare the results.
+In order to conduct an experiment involving an ideal Fermi gas, fermionic Lithium atoms were cooled and captured with standard laser cooling techniques\cite{Repp2013, Pires2014}. Starting with a magneto-optical trap, D1 cooling was applied, from where the atoms were loaded into an optical dipole trap. Afterwards, the fermions were cooled even further using evaporative cooling, by tuning the power of the dipole lasers. Naturally, the atoms are distributed in the lowest two spin states, which helps with the evaporative cooling process, as the atoms need to rethermalize. This is only possible, if the atoms can collide with each other. In order to create an ideal Fermi gas, one spin component is removed by resonantly exciting them with a laser pulse, which will not affect the other component, leaving them in the trap. Atoms were prepared for several trap depths in order to observe the gradual change between thermal and Fermi density distribution.
 
 The cloud was imaged using the new camera system, yielding the results in \refFig{fermi_fit}. The atoms can be seen as a cloud which is slightly larger in x than in y direction, which is due to the geometry of the optical dipole trap.
 
@@ -102,7 +102,7 @@ From the fit parameters, the temperature and degeneracy parameter were calculate
 
 From the results, we find that there is a match between the temperatures, although the temperature extracted from the Fermi distribution is probably better, since it includes the degenerate fraction as well. This is especially true for the two lower trap frequencies, where the shape parameter $q$ indicates that the cloud is more degenerate than thermal.
 
-As a cross-check in order to investigate, whether the atoms are in the degenerate regimen, we fitted a gaussian distribution and extracted the "goodness" of the fit $\chi^2$. As the cloud is thermal, the gaussian and fermi distributions should fit approximately the same, while we would expect larger deviations for $T/T_F \ll 1$. We found the relative values to be $\chi_{Fermi} / \chi_{Gauss} = \{0.85, 0.87, 0.76\}$. This tells us, that the atoms are probably already degenerate, although the gaussian distribution still fits into the data. In the end, we would expect values of $\chi_{Fermi} / \chi_{Gauss} \propto 10^{-2}$.
+As a cross-check, we fitted a gaussian distribution and extracted the "goodness" of the fit $\chi^2$. As the cloud is not yet deeply degenerate for our values of $T/T_F$, the gaussian and Fermi distributions should fit approximately the same, while we would expect larger deviations for $T/T_F \ll 1$. We compared $\chi_{Fermi}^2$ of the Fermi distribution to $\chi_{Gauss}^2$ of the Gauss distribution with the values $\chi_{Fermi}^2=1.71$ and $\chi_{Gauss}^2=1.85$ for the trapping frequency $\bar{w}=\SI{53.8}{\hertz}$. This tells us that, although the gaussian distribution still fits the data very well, Fermi-fit is already sensitive to changes in the shape of the cloud. This is substantiated furthermore by the fact, that the extracted temperature $T$ and $T_{tof}$ from the Fermi fit and the time-of-flight measurement, respectively, are in good agreement.
 
 \pltCustom{
 	\begin{center}
@@ -122,7 +122,11 @@ As a cross-check in order to investigate, whether the atoms are in the degenerat
 \begin{table}
 	\begin{center}
 		\begin{tabular}{M{1.5cm}!M{4cm}|M{4cm}|M{4cm}N}
-			& $\bar{\omega}=\SI{53.8}{\hertz}$ & $\bar{\omega}=\SI{67.8}{\hertz}$ & $\bar{\omega}=\SI{119.8}{\hertz}$ & \\[7pt]
+			\hline
+			\hline
+			$P [mW]$ & $43.4$ & $77.0$ & $255.0$ & \\ [7pt]
+			\hline
+			$\bar{\omega}[\SI{}{\hertz}]$ & $53.8$ & $67.8$ & $119.8$ & \\[7pt]
 			\thickhline
 			$n_{1D}$ & $25.6\pm0.1$ & $34.07\pm0.13$ & $44.98\pm0.24$ & \\ [7pt]
 			\hline
@@ -130,17 +134,15 @@ As a cross-check in order to investigate, whether the atoms are in the degenerat
 			\hline
 			$R_y [\SI{}{\micro\meter}]$ & $41.4\pm1.3$ & $41.3\pm1.3$ & $46.4\pm1.8$ & \\[7pt]
 			\hline
-			$T [\SI{}{\nano\kelvin}]$ & $59.2\pm2.5$ & $117.4\pm3.7$ & $536\pm77$ & \\[7pt]
+			$T/T_F$ & $0.34\pm0.26$ & $0.42\pm0.23$ & $1.01\pm0.56$ & \\[7pt]
 			\hline
-			$T/T_F$ & $0.34\pm0.03$ & $0.42\pm0.04$ & $1.01\pm0.41$ & \\[7pt]
+			$T [\SI{}{\nano\kelvin}]$ & $59.2\pm6.0$ & $117\pm15$ & $536\pm95$ & \\[7pt]
 			\hline
 			$T_{tof} [\SI{}{\nano\kelvin}]$ & $56$ & $97$ & $480$ & \\[7pt]
 			\hline
-			$N_{side}$ & $56$ & $97$ & $480$ & \\[7pt]
 			\hline
-			$N_{calc}$ & $56$ & $97$ & $480$ & \\[7pt]
 		\end{tabular}
 	\end{center}
-	\setCaption{Fit parameters for various trap depths}{The density distributions were fitted using \refEq{n1d}, where the parameter $n_{1D}$ describes the amplitude of the peak. $q$ is a shape parameter, which is negative if the cloud is thermal and positive if the cloud is degenerate. $R_y$ is then the clouds radius. An additional temperature was calculated from a time of flight measurement, from a calibrated camera and was included in the table for comparison.}
+	\setCaption{Fit parameters for various trap depths}{The density distributions were fitted using \refEq{n1d} for various trapping frequencies $\bar{w}$, which were tuned by setting the power $P$ of the dipole laser beams. The parameter $n_{1D}$ describes the amplitude of the peak. $q$ is a shape parameter, which is negative if the cloud is thermal and positive if the cloud is degenerate. $R_y$ is then the clouds radius. An additional temperature was calculated from a time of flight measurement, from a calibrated camera and was included in the table for comparison.}
 	\label{tab:fermi_fit}
 \end{table}
