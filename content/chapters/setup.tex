@@ -102,7 +102,7 @@ As it is important to minimize the noise source, the chip is cooled to the lowes
 \label{subsec:readoutnoise}
 As described in \refCh{ccd_basics}, pixels are shifted in order to be read out by the ADC. Moving charges from pixel to pixel causes noise that accumulates over each iteration. Together with the noise which the ADC introduces, this is then called the readout noise. The shifting noise together with the dark noise is visible as a gradient (\refFig{gradient}) since each shift adds new charges due to excitations in the semiconductors. In order to characterize this, one can take the variance of the image, which should be zero for no noise.
 
-\plt{gradient}{Gradient on the chip during readout}{Dark current accumulates on the chip over time. During readout, this is visible as a gradient, since the pixels that have not been read out are still affected by this noise. As the chip temperature is being lowered, the gradient will also degrade.}
+\plt{gradient}{Gradient on the chip during readout}{Dark current accumulates on the chip over time. During readout, this is visible as a gradient, since the pixels that have not been read out are still affected by this noise. As the chip temperature is being lowered, the gradient will also decrease.}
 
 In \refFig{hvspeed}, the readout speeds were probed for their noise. The measurement was carried out by taking images at low exposure time and low temperature, so that the main noise source would be the readout and not the dark current. The variance of an image then indicates the noise accumulation on the chip and it has been shown, that slower readout speeds accumulate less noise, although it is only dependent on the horizontal, not on the vertical shift speed.
 
